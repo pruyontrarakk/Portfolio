@@ -2,4 +2,4 @@
 
 Welcome to my UX/UI Design porfolio website!
 
-The website will be up soon :)
+https://pruyontrarakk.github.io/Portfolio/website/home.html
