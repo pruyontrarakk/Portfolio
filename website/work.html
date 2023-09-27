@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Pru Yontrarak Portfoilo</title>
+
+
+
+    <style>
+      .row {
+        display: flex; 
+        justify-content: center; 
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .rectangle_button {
+          text-align: center;
+          padding: 2rem;
+          background-color: #f7f3fc;
+          color: #4e3565;
+          text-decoration: none;
+          border-radius: 10px;
+          width: 90%;
+          height: 200px;
+          transition: background-color 0.3s;
+          margin: 0 1rem; 
+      }
+
+      .button_content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      hr {
+            width: 140%;
+            margin: 10px auto 0 -10px; 
+            border: none; 
+            border-top: 2px solid #b5a9c0; 
+        }
+
+        .hr1 {
+            width: 140%;
+            margin: 15px 50px 0px -125px;
+            border: none;
+            border-top: 2px solid #b5a9c0;
+        }
+
+    </style>
+
+
+
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#" id="home-button" >Pru Yontrarak</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="#" id="work-button" >case studies</a></li>
+          <li><a href="#" id="profile-button" >about me</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br><br><br><br><br>
+
+      <!-- my projects -->
+        <!-- Rectangle 1 -->
+
+        <div class="section__container1">
+          <div class="content" >
+            <a href="shaft.html" class="rectangle_button" style="margin-left: 80px;">
+              <div class="button_content">
+                <p class="title">
+                  theShaft
+                </p>
+                <hr>
+                <br>
+                <p class="description1">
+                  Redesign website for Columbia and Barnard housing descriptions and lottery.
+                </p>
+              </div>
+            </a>
+          </div>
+        
+          <div class="image">
+            <img src="mainshaft.png" style=" width: 700px; height: auto; margin-left: 10px;"/>
+          </div>
+        </div>
+
+
+
+        <!-- Rectangle 2 -->
+
+        <div class="section__container1">
+          <div class="content" >
+            <a href="podcast.html" class="rectangle_button" style="margin-left: 80px;">
+              <div class="button_content">
+                <p class="title">
+                  Columbia Daily Spectator
+                </p>
+                <hr>
+                <br>
+                <p class="description1">
+                  Design of the mobile app's Podcast Page for the Columbia Daily Spectator Website.
+                </p>
+              </div>
+            </a>
+          </div>
+        
+          <div class="image">
+            <img src="mainpodcast.png" style=" width: 755px; height: auto; margin-left: 10px;"/>
+          </div>
+        </div>
+
+
+
+        <!-- Rectangle 3 -->
+
+        <div class="section__container1">
+          <div class="content" >
+            <a href="wt.html" class="rectangle_button" style="margin-left: 80px;">
+              <div class="button_content">
+                <p class="title">
+                  Wunderman Thompson
+                </p>
+                <hr>
+                <br>
+                <p class="description1">
+                  Design mobile app to be used in a smart office building.
+                </p>
+              </div>
+            </a>
+          </div>
+        
+          <div class="image">
+            <img src="mainwt.png" style=" width: 750px; height: auto; margin-left: 10px;"/>
+          </div>
+        </div>
+        <br><br><br><br>
+
+
+    <script>
+        // Get references to the buttons and add click event listeners
+        const homeButton = document.getElementById('home-button');
+        const workButton = document.getElementById('work-button');
+        const profileButton = document.getElementById('profile-button');
+
+        homeButton.addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+
+        workButton.addEventListener('click', function() {
+            window.location.href = 'work.html';
+        });
+
+        profileButton.addEventListener('click', function() {
+            window.location.href = 'profile.html';
+        });
+    </script>
+
+
+    <script src="background.js"></script>  
+
+  </body>
+</html>

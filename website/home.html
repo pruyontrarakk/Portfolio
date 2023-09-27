@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Pru Yontrarak Portfoilo</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button" ><a href="#">Pru Yontrarak</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="#" id="work-button" >case studies</a></li>
+          <li><a href="#" id="profile-button" >about me</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+      <div class="section__container">
+        <div class="content">
+          <h1 class="title">
+            Welcome to my portfolio!
+          </h1>
+          <p class="description">
+            My name is Pru Yontrarak, and I am a New York City-based UX/UI designer and programmer.
+          </p>
+
+        </div>
+        <div class="image">
+          <img src="img.png" alt="profile" style="width: 520px; height: auto;" />
+        </div>
+      </div>
+
+
+    <script>
+        // Get references to the buttons and add click event listeners
+        const homeButton = document.getElementById('home-button');
+        const workButton = document.getElementById('work-button');
+        const profileButton = document.getElementById('profile-button');
+
+        homeButton.addEventListener('click', function() {
+            window.location.href = 'home.html';
+        });
+
+        workButton.addEventListener('click', function() {
+            window.location.href = 'work.html';
+        });
+
+        profileButton.addEventListener('click', function() {
+            window.location.href = 'profile.html';
+        });
+    </script>
+
+
+
+    <script src="background.js"></script>  
+
+
+  </body>
+</html>
