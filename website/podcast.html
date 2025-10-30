@@ -8,35 +8,14 @@
     <link rel="stylesheet" href="style.css" />
     <title>Pru Yontrarak Portfolio</title>
 
-
     <style>
+      /* Match research pages layout exactly */
       .section__work {
-        min-height: 100vh;
-        max-width: var(--max-width);
-        margin: auto;
-        padding: 2rem 2rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        width: 90vw;
+        max-width: 1200px;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
       }
-
-      /* Match research page typography */
-      .section__work h1,
-      .section__work h2,
-      .section__work h3,
-      .section__work p,
-      .section__work ul,
-      .section__work li {
-        font-family: "Poppins", sans-serif;
-        line-height: 1.6;
-        color: var(--text-light);
-      }
-
-      ul.methods { display: block; list-style: disc outside; padding-left: 1.25rem; margin: 0.5rem 0 0 0; }
-      ul.methods > li { display: list-item; margin-bottom: .5rem; }
     </style>
-
-
   </head>
   <body>
     <nav>
@@ -47,144 +26,92 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#research" id="research-button">research</a></li>
-          <li><a href="index.html#work" id="work-button" >case studies</a></li>
+          <li><a href="index.html#research" id="research-button">cs research</a></li>
+          <li><a href="index.html#work" id="work-button" >ux case studies</a></li>
         </ul>
       </div>
     </nav>
 
-    <br>
-    <br>
-    <br>
-    <br>
+    
 
 
     <div class="section__work">
-      <div class="content">
-        <h1 class="title">
-          Podcast Section Mobile App Design Case Study 
-        </h1>
-        <p class="description">
-          <strong>Team</strong>: Myself (Product Designer), Muchen Guo (Head of Product), Ariel Wu (Product Manager), Michelle Twan (Product Designer)
-          <br>
-          <strong>Company</strong>: Columbia Daily Spectator
-          <br>
-          <strong>Duration</strong>: February - April 2023
-          <br>
-          <strong>Tools</strong>: Figma
-          <br> 
-        </p>
-
-      
-          <h1 class="subtitle">
-            Overview
-          </h1>
-          <p class="description">
-            In this project, the Product Design team is committed to the transformation of the existing Columbia Daily 
-            Spectator website into a mobile app. My involvement started during the project's 2.0 phase, which includes 
-            the design of pages beyond the core Journalism sections. My responsibility was the design and adaptation of 
-            the Podcasts section into a mobile app interface that prioritizes simplicity and user-friendliness. Additionally, 
-            I was tasked with incorporating a feature allowing for in-app podcast playback.
-
-          </p>
-
-        <h1 class="subtitle">
-          1 - Current Website Design
-        </h1>
-        <p class="description">
-          The current podcase section first shows a featured podcast. The website has 5 sections on the navigation bar. 
-          The first four listed are the sections of the podcast, while the last one is special edition page. 
-          Clicking on the sections with the arrows will result on the two images depicted to the right. 
-        </p>
-
-        <img src="assets/podcast/webspec.png" style="width: 100%;"/>
+      <h1 class="title">Podcast Section Mobile App Design Case Study</h1>
+      <p class="description note">
+        <strong>Team</strong>: Myself (Product Designer), Muchen Guo (Head of Product), Ariel Wu (Product Manager), Michelle Twan (Product Designer)
         <br>
+        <strong>Company</strong>: Columbia Daily Spectator
         <br>
-
-
-        <h1 class="subtitle">
-          2 - Research
-        </h1>
-        <p class="description">
-          To gain understanding of how to curate the podcast page, we performed a <strong>competitive analysis </strong> on 
-          these three well-known platforms: Spotify, New York Times, and Apple Music. Through our research, we 
-          assessed which features would be beneficial to integrate into our app to make it as <strong> user friendly and 
-            intuitive</strong> as possible. One primary feature that we saw in all three apps was the pop-up at the bottom 
-          when the podcast is played in order for users to pause, play, skip forward, and play back. 
-        </p>
-        <img src="assets/podcast/podcast_research.png" style="width: 100%;"/>
+        <strong>Duration</strong>: February - April 2023
         <br>
-
-        <h1 class="subtitle">
-          3 - Design Opportunities
-        </h1>
-        <p class="description">
-          <br>
-          - <strong>Homepage</strong>: This page showcases a featured podcast at the very top, along with by four organized 
-          sections, offering users convenient podcast selection. Additionally, given our previously established Spotify page, 
-          an accessible button can be provided for users to seamlessly transition to the Spotify platform.
-          <br> <br>
-          - <strong>Section Pages</strong>: Each section page has an informative section description at the top, followed by 
-          a list of podcasts. To enhance user experience and minimize scrolling, a "Next" button facilitates navigation to more podcasts.
-          <br> <br>
-          - <strong>Transcript / Audio Page</strong>: A notable feature we aim to provide is the ability to enjoy podcasts
-           directly within the app, addressing the current limitation restricted to Spotify. This page incorporates a play 
-           button at the top, initiating podcast playback. Furthermore, a sticky pop-up interface at the bottom allows users 
-           to pause, play, skip forward, and rewind .
-           <br> <br>
-           - <strong>Search Page</strong>: Users can conveniently use the the search button to easily find a particular podcast.
-           <br>
-        </p>
-
+        <strong>Tools</strong>: Figma
         <br>
-
-        <h1 class="subtitle">
-          4 - Wireframe
-        </h1>
-        <img src="assets/podcast/podcastwf1.png" style="width: 100%;"/>
-        <br>
-        <img src="assets/podcast/podcastwf2.png" style="width: 100%;"/>
-
-        <br>
-        <br>
-
-        <h1 class="subtitle">
-          5 - Prototype
-        </h1>
-        
-        <br>
-        <div style="display: flex;">
-          <img src="assets/podcast/podcast2.gif" style="width: 25%;">
-          <p style="flex: 1; margin-left: 80px;" class="description" > 
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            This is the prototype of the final design. The home page has one feature article that would change periodically
-            along with the four section pages. Clicking into any of the four section pages would then show a new page with
-            the description of the section at the top followed with the list podcasts. Clicking into one of the podcasts,
-            the transcript page is shown with the podcast being available to play in the app. Buttons to save or share the
-            podcast are conviently located at the top right corner.  
-          </p>
+      </p>
+      <h1 class="subtitle">Overview</h1>
+      <p class="description">
+        In this project, the Product Design team is committed to the transformation of the existing Columbia Daily 
+        Spectator website into a mobile app. My involvement started during the project's 2.0 phase, which includes 
+        the design of pages beyond the core Journalism sections. My responsibility was the design and adaptation of 
+        the Podcasts section into a mobile app interface that prioritizes simplicity and user-friendliness. Additionally, 
+        I was tasked with incorporating a feature allowing for in-app podcast playback.
+      </p>
+      <h1 class="subtitle">1 - Current Website Design</h1>
+      <p class="description">
+        The current podcase section first shows a featured podcast. The website has 5 sections on the navigation bar. 
+        The first four listed are the sections of the podcast, while the last one is special edition page. 
+        Clicking on the sections with the arrows will result on the two images depicted to the right. 
+      </p>
+      <img src="assets/podcast/webspec.png" class="img-fluid"/>
+      <h1 class="subtitle">2 - Research</h1>
+      <p class="description">
+        To gain understanding of how to curate the podcast page, we performed a <strong>competitive analysis </strong> on 
+        these three well-known platforms: Spotify, New York Times, and Apple Music. Through our research, we 
+        assessed which features would be beneficial to integrate into our app to make it as <strong> user friendly and 
+          intuitive</strong> as possible. One primary feature that we saw in all three apps was the pop-up at the bottom 
+        when the podcast is played in order for users to pause, play, skip forward, and play back. 
+      </p>
+      <img src="assets/podcast/podcast_research.png" class="img-fluid"/>
+      <h1 class="subtitle">3 - Design Opportunities</h1>
+      <p class="description">
+        - <strong>Homepage</strong>: This page showcases a featured podcast at the very top, along with by four organized 
+        sections, offering users convenient podcast selection. Additionally, given our previously established Spotify page, 
+        an accessible button can be provided for users to seamlessly transition to the Spotify platform.
+        <br><br>
+        - <strong>Section Pages</strong>: Each section page has an informative section description at the top, followed by 
+        a list of podcasts. To enhance user experience and minimize scrolling, a "Next" button facilitates navigation to more podcasts.
+        <br><br>
+        - <strong>Transcript / Audio Page</strong>: A notable feature we aim to provide is the ability to enjoy podcasts
+         directly within the app, addressing the current limitation restricted to Spotify. This page incorporates a play 
+         button at the top, initiating podcast playback. Furthermore, a sticky pop-up interface at the bottom allows users 
+         to pause, play, skip forward, and rewind.
+         <br><br>
+         - <strong>Search Page</strong>: Users can conveniently use the the search button to easily find a particular podcast.
+      </p>
+      <h1 class="subtitle">4 - Wireframe</h1>
+      <img src="assets/podcast/podcastwf1.png" class="img-fluid"/>
+      <img src="assets/podcast/podcastwf2.png" class="img-fluid"/>
+      <h1 class="subtitle">5 - Prototype</h1>
+      <div class="media-row">
+        <div class="media">
+          <img src="assets/podcast/podcast2.gif" class="img-fluid">
         </div>
-        <br>
-        <br>
-        <h1 class="subtitle">
-          6 - Reflection
-        </h1>
-        <p class="description">
-          I had a genuine passion for working on this product as I knew it would benefit my community in their day-to-day 
-          lives once launched. The project is currently undergoing alpha testing within the company to identify and rectify 
-          any bugs before further beta testing is done through the public. I'm looking forward to seeing the trajectory of 
-          this project, and cannot wait to contribute further once we've gathered insights from our testing phases.
+        <div class="text">
+        <p class="description"> 
+          This is the prototype of the final design. The home page has one feature article that would change periodically
+          along with the four section pages. Clicking into any of the four section pages would then show a new page with
+          the description of the section at the top followed with the list podcasts. Clicking into one of the podcasts,
+          the transcript page is shown with the podcast being available to play in the app. Buttons to save or share the
+          podcast are conviently located at the top right corner.  
         </p>
-        <br>
-
-
-
+        </div>
       </div>
+      <h1 class="subtitle">6 - Reflection</h1>
+      <p class="description">
+        I had a genuine passion for working on this product as I knew it would benefit my community in their day-to-day 
+        lives once launched. The project is currently undergoing alpha testing within the company to identify and rectify 
+        any bugs before further beta testing is done through the public. I'm looking forward to seeing the trajectory of 
+        this project, and cannot wait to contribute further once we've gathered insights from our testing phases.
+      </p>
     </div>
 
 

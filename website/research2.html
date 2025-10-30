@@ -9,38 +9,11 @@
     <title>Pru Yontrarak Portfolio - Research 2</title>
 
     <style>
+      /* Slightly larger margins for research pages only */
       .section__work {
-        min-height: 100vh;
-        max-width: var(--max-width);
-        margin: auto;
-        padding: 2rem 2rem; 
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      /* Force Research page to use site font (Poppins) */
-      .section__work h1,
-      .section__work h2,
-      .section__work h3,
-      .section__work p,
-      .section__work ul,
-      .section__work li {
-        font-family: "Poppins", sans-serif;
-        line-height: 1.6;
-        color: var(--text-light);
-      }
-
-      /* Force vertical bullets even if a global flex/inline rule exists */
-      ul.methods {
-        display: block;
-        list-style: disc outside;
-        padding-left: 1.25rem;
-        margin: 0.5rem 0 0 0;
-      }
-      ul.methods > li {
-        display: list-item;
-        margin-bottom: .5rem;
+        width: 90vw;
+        max-width: 1200px;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
       }
     </style>
   </head>
@@ -53,38 +26,65 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#research" id="research-button">research</a></li>
-          <li><a href="index.html#work" id="work-button" >case studies</a></li>
+          <li><a href="index.html#research" id="research-button">cs research</a></li>
+          <li><a href="index.html#work" id="work-button" >ux case studies</a></li>
         </ul>
       </div>
     </nav>
 
-    <br><br><br><br>
+    
 
     <div class="section__work">
-      <h1 class="title">Soros Lab, Summer Research Institute</h1>
-      <p class="description">
-        Project: Exploiting Failure in Evolution: Variants of FI-2Pop in the Lunar Lander Environment — tested whether preserving “failed” individuals improves evolutionary search and reveals reward-hacking behaviors.
+      <h1 class="title">Exploiting Failure in Evolution</h1>
+
+      <p class="description note">
+        <span class="label">Position</span>: Undergraduate Researcher
+        <br>
+        <span class="label">Institute</span>: Soros Lab, Summer Research Institute
+        <br>
+        <span class="label">Duration</span>: May 2024 - May 2025 
+        <br>
+        <span class="label">Tools</span>: Python (NumPy, multiprocessing, heapq), Matplotlib/Seaborn, OpenAI Gym, Git
+        <br> 
       </p>
 
-      <h1 class="subtitle">Background</h1>
-      <p class="description">
-        Algorithms typically try to minimize errors and failures. However, this research seeks to challenge
-        this paradigm by investigating the potential advantages of failure. We explore <strong>failure-preserving
-        evolutionary algorithms</strong> in the context of the Lunar Lander game environment (below) where the purple
-        lander is the agent.
-      </p>
+      <h1 class="subtitle">SWE Highlights</h1>
+        <ul class="methods" style="margin-top:0.5rem;">
+          <li><strong>Scalable experiment framework:</strong> modular runners for RS, ES, MAP-Elites (+mortality), FI-2Pop, and FI-2Pop with MAP-Elites.</li>
+          <li><strong>Performance:</strong> Python <code>multiprocessing</code>, batched rollouts (≈<strong>6.7×</strong> output speedup).</li>
+          <li><strong>Algorithmic engineering:</strong> mortality in MAP-Elites; FI-2Pop with MAP-Elites (novel variant).</li>
+        </ul>
+
+
+
+        <h1 class="subtitle">Overview</h1>
+          <p class="description">
+            Algorithms typically try to minimize errors and failures. However, this research seeks to challenge this paradigm by investigating the
+            potential advantages of failure. We explore <strong>failure-preserving evolutionary algorithms</strong> in the
+            context of the Lunar Lander game environment, where the purple lander is the agent. 
+            Variants of <strong>FI-2Pop</strong> in the Lunar Lander environment are tested whether preserving “failed”
+            individuals improves evolutionary search, revealing reward-hacking behaviors. 
+          </p>
+
+        
 
       <h1 class="subtitle">Methods</h1>
       <p class="description">
         We ran these algorithms with 100,000 agents and selected the highest fitness agents:
       </p>
       <ul class="methods">
-        <li>Random Search (RS): (baseline 1) Search a randomly-initialized group of agents.</li>
-        <li>Evolution Strategy (ES): (baseline 2) Over successive generations, regenerate the entire population by mutating the previous generation’s fittest agents.</li>
-        <li>MAP-Elites: Maintain “elites”, which represent the fittest agents of a feature niche in a 2D map. + mortality: old agents are removed from the map</li>
-        <li>FI-2Pop: Modify ES by maintaining two populations (feasible/infeasible) based on some fitness-based threshold.</li>
-        <li>MAP-Elites with FI-2Pop: Modify MAP-Elites by maintaining two feature maps (feasible/infeasible).</li>
+        <li> <strong>Random Search (RS):</strong> (baseline 1) Search a randomly-initialized group of agents.</li>
+        <li><strong>Evolution Strategy (ES):</strong> (baseline 2) Over successive generations, regenerate the entire population by mutating the previous generation’s fittest agents.</li>
+        <li><strong>MAP-Elites:</strong> Maintain “elites”, which represent the fittest agents of a feature niche in a 2D map. + mortality: old agents are removed from the map</li>
+        <li><strong>FI-2Pop:</strong> Modify ES by maintaining two populations (feasible/infeasible) based on some fitness-based threshold.</li>
+        <li style="list-style: none;">
+          <img src="assets/research2/f2p.png" class="img-fluid" style="max-width: 500px; width: 100%; margin: 0.5rem 0;" />
+        </li>
+        
+        <li><strong>MAP-Elites with FI-2Pop:</strong> Modify MAP-Elites by maintaining two feature maps (feasible/infeasible).</li>
+        <li style="list-style: none;">
+          <img src="assets/research2/f2p+map.png" class="img-fluid" style="max-width: 500px; width: 100%; margin: 0.5rem 0;" />
+        </li>
       </ul>
 
       <h1 class="subtitle">Findings</h1>
@@ -103,10 +103,13 @@
 
 
       <h1 class="subtitle">Poster</h1>
-      <p class="description">Presented a research poster at the Lida Orzeck '68 Poster Session at Barnard College on July 31, 2024.</p>
+      <p class="description">Presented a research poster at the Lida Orzeck '68 Poster Session at Barnard College on July 31, 2024 and 
+        at the Barnard Computer Science Senior Research Symposium on April 25, 2025. </p>
+        <a href="assets/research2/SRIPoster.pdf" target="_blank">View Research Poster (PDF)</a>
+
     </div>
 
-    <script src="background.js"></script>
+    
     <footer>
       <div class="footer__content">
         <div>© Pru Yontrarak</div>
