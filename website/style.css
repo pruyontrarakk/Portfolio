@@ -6,8 +6,11 @@
   --secondary-color: #b4aabc;
   --text-dark: #1f2937;
   --text-light: #6a6573;
-  --extra-light: #f7f3fc;
+  --extra-light: #fdfcff;
   --max-width: 1200px;
+  --surface: #f7f3fc;
+  --shadow: 0 10px 20px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.06);
+  --page-background: #fcfafe;
 }
 
 * {
@@ -22,6 +25,7 @@ a {
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--page-background);
 }
 
 nav {
@@ -83,6 +87,12 @@ ul li a {
 ul li a:hover {
   border-bottom-color: var(--secondary-color);
   color: var(--secondary-color);
+}
+
+/* Active nav link when section is in view */
+ul li a.active {
+  border-bottom-color: var(--primary-color-dark);
+  color: var(--primary-color-dark);
 }
 
 
@@ -170,6 +180,55 @@ ul li a:hover {
   border-radius: 10%;
 }
 
+/* Section visual separators */
+.section-box {
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e7e1ee;
+  padding: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Research cards */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--secondary-color);
+  border: 1px solid #e7e1ee;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 1.25rem 1.5rem;
+}
+
+.card .title {
+  margin-bottom: 0.5rem;
+  color: #1f1a23;
+}
+
+.card .description {
+  margin-bottom: 0;
+  color: #1f1a23;
+}
+
+/* Typed.js cursor styling */
+.typed-cursor{
+  color: var(--primary-color);
+  display: inline-block;
+  margin-left: 2px;
+  animation: typed-blink 0.9s steps(1) infinite;
+}
+
+@keyframes typed-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 @media (max-width: 750px) {
   nav .checkbox {
     display: block;
@@ -201,6 +260,10 @@ ul li a:hover {
     grid-template-columns: repeat(1, 1fr);
   }
 
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
   
   .image {
     grid-area: 1/1/2/2;
@@ -214,7 +277,7 @@ ul li a:hover {
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: --extra-light;
+    background-color: var(--extra-light);
     min-width: 160px;
     z-index: 1;
 }
@@ -226,7 +289,7 @@ ul li a:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: --extra-light;
+    background-color: var(--extra-light);
 }
 
 

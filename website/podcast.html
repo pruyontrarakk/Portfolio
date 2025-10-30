@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    <title>Pru Yontrarak Portfoilo</title>
+    <title>Pru Yontrarak Portfolio</title>
 
 
     <style>
@@ -28,15 +28,14 @@
   <body>
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="#">Pru Yontrarak</a></div>
+        <div class="logo" id="home-button"><a href="home.html#top">Pru Yontrarak</a></div>
         <label for="check" class="checkbox">
           <i class="ri-menu-line"></i>
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-
-          <li><a href="#" id="work-button" >case studies</a></li>
-          <li><a href="#" id="profile-button" >about me</a></li>
+          <li><a href="home.html#research" id="research-button">research</a></li>
+          <li><a href="home.html#work" id="work-button" >case studies</a></li>
         </ul>
       </div>
     </nav>
@@ -85,7 +84,7 @@
           Clicking on the sections with the arrows will result on the two images depicted to the right. 
         </p>
 
-        <img src="webspec.png" style="width: 100%;"/>
+        <img src="assets/podcast/webspec.png" style="width: 100%;"/>
         <br>
         <br>
 
@@ -100,7 +99,7 @@
             intuitive</strong> as possible. One primary feature that we saw in all three apps was the pop-up at the bottom 
           when the podcast is played in order for users to pause, play, skip forward, and play back. 
         </p>
-        <img src="podcast_research.png" style="width: 100%;"/>
+        <img src="assets/podcast/podcast_research.png" style="width: 100%;"/>
         <br>
 
         <h1 class="subtitle">
@@ -129,9 +128,9 @@
         <h1 class="subtitle">
           4 - Wireframe
         </h1>
-        <img src="podcastwf1.png" style="width: 100%;"/>
+        <img src="assets/podcast/podcastwf1.png" style="width: 100%;"/>
         <br>
-        <img src="podcastwf2.png" style="width: 100%;"/>
+        <img src="assets/podcast/podcastwf2.png" style="width: 100%;"/>
 
         <br>
         <br>
@@ -142,7 +141,7 @@
         
         <br>
         <div style="display: flex;">
-          <img src="podcast2.gif" style="width: 25%;">
+          <img src="assets/podcast/podcast2.gif" style="width: 25%;">
           <p style="flex: 1; margin-left: 80px;" class="description" > 
             <br>
             <br>
@@ -178,27 +177,7 @@
 
 
 
-    <script>
-        // Get references to the buttons and add click event listeners
-        const homeButton = document.getElementById('home-button');
-        const workButton = document.getElementById('work-button');
-        const profileButton = document.getElementById('profile-button');
-
-        homeButton.addEventListener('click', function() {
-            // Redirect to the home page URL
-            window.location.href = 'home.html';
-        });
-
-        workButton.addEventListener('click', function() {
-            // Redirect to the work page URL
-            window.location.href = 'work.html';
-        });
-
-        profileButton.addEventListener('click', function() {
-            // Redirect to the profile page URL
-            window.location.href = 'profile.html';
-        });
-    </script>
+    
 
 
 

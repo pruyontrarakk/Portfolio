@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Pru Yontrarak Portfolio - Research 2</title>
+
+    <style>
+      .section__work {
+        min-height: 100vh;
+        max-width: var(--max-width);
+        margin: auto;
+        padding: 2rem 2rem; 
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      /* Force Research page to use site font (Poppins) */
+      .section__work h1,
+      .section__work h2,
+      .section__work h3,
+      .section__work p,
+      .section__work ul,
+      .section__work li {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--text-light);
+      }
+
+      /* Force vertical bullets even if a global flex/inline rule exists */
+      ul.methods {
+        display: block;
+        list-style: disc outside;
+        padding-left: 1.25rem;
+        margin: 0.5rem 0 0 0;
+      }
+      ul.methods > li {
+        display: list-item;
+        margin-bottom: .5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button"><a href="home.html#top">Pru Yontrarak</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="home.html#research" id="research-button">research</a></li>
+          <li><a href="home.html#work" id="work-button" >case studies</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <br><br><br><br>
+
+    <div class="section__work">
+      <h1 class="title">Soros Lab, Summer Research Institute</h1>
+      <p class="description">
+        Project: Exploiting Failure in Evolution: Variants of FI-2Pop in the Lunar Lander Environment — tested whether preserving “failed” individuals improves evolutionary search and reveals reward-hacking behaviors.
+      </p>
+
+      <h1 class="subtitle">Background</h1>
+      <p class="description">
+        Algorithms typically try to minimize errors and failures. However, this research seeks to challenge
+        this paradigm by investigating the potential advantages of failure. We explore <strong>failure-preserving
+        evolutionary algorithms</strong> in the context of the Lunar Lander game environment (below) where the purple
+        lander is the agent.
+      </p>
+
+      <h1 class="subtitle">Methods</h1>
+      <p class="description">
+        We ran these algorithms with 100,000 agents and selected the highest fitness agents:
+      </p>
+      <ul class="methods">
+        <li>Random Search (RS): (baseline 1) Search a randomly-initialized group of agents.</li>
+        <li>Evolution Strategy (ES): (baseline 2) Over successive generations, regenerate the entire population by mutating the previous generation’s fittest agents.</li>
+        <li>MAP-Elites: Maintain “elites”, which represent the fittest agents of a feature niche in a 2D map. + mortality: old agents are removed from the map</li>
+        <li>FI-2Pop: Modify ES by maintaining two populations (feasible/infeasible) based on some fitness-based threshold.</li>
+        <li>MAP-Elites with FI-2Pop: Modify MAP-Elites by maintaining two feature maps (feasible/infeasible).</li>
+      </ul>
+
+      <h1 class="subtitle">Findings</h1>
+      <ul class="methods">
+        <li>Best agents routinely exceeded fitness 200; a characteristic “tap-dancing” reward hack maximized score without landing between flags.</li>
+        <li>Top-performing agent achieved a fitness score of 237.278 with endpoint features <code>(0.591, −0.215)</code>.
+        <li>Aggregated heatmaps of elites across 20 trials revealed distinct coverage patterns for each evolutionary method (see poster figure set).</li>
+      </ul>
+
+      <h1 class="subtitle">Key Contributions</h1>
+      <ul class="methods">
+        <li>Added <strong>mortality</strong> to MAP-Elites; implemented <strong>heap-based parent selection</strong> for ES; built reproducible visualization pipelines.</li>
+  <li>Parallelized evaluations with Python <code>multiprocessing</code>, achieving approximately <strong>6.7×</strong> faster trial throughput.</li>
+  <li>Validated RS/ES/MAP-Elites baselines against prior results to ensure correctness.</li>
+      </ul>
+
+
+      <h1 class="subtitle">Poster</h1>
+      <p class="description">Presented a research poster at the Lida Orzeck '68 Poster Session at Barnard College on July 31, 2024.</p>
+    </div>
+
+    <script src="background.js"></script>
+  </body>
+</html>

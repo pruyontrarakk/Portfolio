@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Pru Yontrarak Portfolio - Research 1</title>
+
+    <style>
+        .section__work {
+          min-height: 100vh;
+          max-width: var(--max-width);
+          margin: auto;
+          padding: 2rem 2rem; 
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+  
+        /* Force Research page to use site font (Poppins) */
+        .section__work h1,
+        .section__work h2,
+        .section__work h3,
+        .section__work p,
+        .section__work ul,
+        .section__work li {
+          font-family: "Poppins", sans-serif;
+          line-height: 1.6;
+          color: var(--text-light);
+        }
+  
+        /* Force vertical bullets even if a global flex/inline rule exists */
+        ul.methods {
+          display: block;
+          list-style: disc outside;
+          padding-left: 1.25rem;
+          margin: 0.5rem 0 0 0;
+        }
+        ul.methods > li {
+          display: list-item;
+          margin-bottom: .5rem;
+        }
+      </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button"><a href="home.html#top">Pru Yontrarak</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="home.html#research" id="research-button">research</a></li>
+          <li><a href="home.html#work" id="work-button" >case studies</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="section__work">
+
+        <h1 class="title">The Accessible and Accelerated Robotics Lab (A²R Lab)</h1>
+        <p class="description">
+            Investigates how five constraint-handling methods (Unconstrained, Log Barrier, Augmented Lagrangian, Interior-Point, QP) impact PDDP’s feasibility, convergence, and speed on robotic control tasks using a Python + CUDA implementation.
+        </p>
+        <h1 class="subtitle">Background</h1>
+        <p class="description">
+            Robotic trajectory optimizers often fail under hard constraints (e.g., joint limits, obstacles). This project strengthens Parallel DDP (PDDP) by evaluating constraint-handling methods to improve feasibility, stability, and speed on CPU/GPU.
+          </p>
+
+        <h1 class="subtitle">Methods</h1>
+        <ul class="methods">
+            <li><strong>Unconstrained (Baseline):</strong> Standard PDDP backward/forward passes with adaptive LM-style regularization; no explicit constraint terms.</li>
+            <li><strong>Log Barrier:</strong> Adds barrier terms to the cost (e.g., −μ&nbsp;∑log(slack)) to discourage constraint violation; uses a decreasing barrier schedule and safeguarded step sizes.</li>
+            <li><strong>Augmented Lagrangian (AL):</strong> Penalty + multipliers for state/path constraints with conservative μ updates; enforces feasibility via violation metrics and PD-checked <code>Q<sub>uu</sub></code>.</li>
+            <li><strong>Interior-Point (IP):</strong> Primal-dual formulation with slack variables; solves damped/centered subproblems to reduce KKT residuals while maintaining strict feasibility.</li>
+            <li><strong>Quadratic Programming (QP):</strong> Local QP subproblems from linearized dynamics + quadratic cost; applies explicit state/box/linear constraints via batched QP solves for control updates.</li>
+          </ul>
+
+        <h1 class="subtitle">My Contributions</h1>
+        <ul class="methods">
+            <li>Developed and implemented the <strong>Augmented Lagrangian constraint-handling method</strong> within PDDP in both Python and CUDA, combining penalty and multiplier updates to enforce state feasibility.</li>
+            <li>Designed a <strong>μ-update rule</strong> that increased only after consecutive violations and decreased once constraints were satisfied, improving numerical stability and avoiding oscillation.</li>
+            <li>Documented the implementation and benchmark results for future lab use in extending PDDP to higher-dimensional robotic systems.</li>
+        </ul>
+          
+        <h1 class="subtitle">Python Results</h1>
+        <p class="description">We are able to see that the Augmented Lagrangian method is able to converge to the solution.</p>
+
+
+        <h1 class="subtitle">Next Steps</h1>
+        <p class="description">Placeholder plans for future work or extensions.</p>
+
+    </div>
+
+    <script src="background.js"></script>
+  </body>
+  </html>
+
