@@ -304,6 +304,24 @@ ul li a.active {
     align-items: flex-start;
   }
 
+  /* Ensure section boxes and research cards are left-aligned */
+  .section-box,
+  .section-box .content,
+  .section-box .title,
+  .section-box .description {
+    text-align: left;
+  }
+
+  .section-box a {
+    display: block;
+    text-align: left;
+  }
+
+  /* Footer coloring on mobile */
+  footer {
+    background-color: #f7f3fc !important;
+  }
+
   /* Ensure case cards cover entire area and are full-width on mobile */
   .rectangle_button {
     display: block;
