@@ -260,6 +260,26 @@ ul li a.active {
     grid-template-columns: repeat(1, 1fr);
   }
 
+  /* Stack two-column case study rows on mobile */
+  .section__container1 {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  /* Ensure case cards cover entire area and are full-width on mobile */
+  .rectangle_button {
+    display: block;
+    width: 100% !important;
+    height: auto;
+    min-height: 200px;
+    margin: 0 !important;
+  }
+
+  .button_content {
+    align-items: flex-start;
+  }
+
   .card-grid {
     grid-template-columns: 1fr;
   }
@@ -267,6 +287,13 @@ ul li a.active {
   
   .image {
     grid-area: 1/1/2/2;
+  }
+
+  /* Override large inline image widths on small screens */
+  .image img {
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
   }
 
   .action__btns {
