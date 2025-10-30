@@ -37,6 +37,38 @@ nav {
   z-index: 99;
 }
 
+/* Footer */
+footer {
+  background-color: #f7f3fc;
+  border-top: 2px solid #b5a9c0;
+  margin-top: 3rem;
+}
+
+.footer__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer__links a {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.footer__links a:hover {
+  color: var(--secondary-color);
+}
+
 .nav__content {
   max-width: var(--max-width);
   margin: auto;
@@ -256,7 +288,7 @@ ul li a.active {
 
   .section__container {
     padding: 8rem 1rem 5rem 1rem;
-    text-align: center;
+    text-align: left;
     grid-template-columns: repeat(1, 1fr);
   }
 
@@ -265,6 +297,11 @@ ul li a.active {
     grid-template-columns: 1fr;
     padding: 2rem 1rem;
     text-align: left;
+  }
+
+  /* Ensure inner content aligns left */
+  .content {
+    align-items: flex-start;
   }
 
   /* Ensure case cards cover entire area and are full-width on mobile */
@@ -286,7 +323,7 @@ ul li a.active {
 
   
   .image {
-    grid-area: 1/1/2/2;
+    grid-area: auto;
   }
 
   /* Override large inline image widths on small screens */
