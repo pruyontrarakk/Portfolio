@@ -27,7 +27,7 @@
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="index.html#research" id="research-button">cs research</a></li>
-          <li><a href="index.html#work" id="work-button" >ux case studies</a></li>
+          <li><a href="index.html#work" id="work-button" >case studies</a></li>
         </ul>
       </div>
     </nav>
@@ -38,13 +38,13 @@
     <div class="section__work">
       <h1 class="title">Podcast Section Mobile App Design Case Study</h1>
       <p class="description note">
-        <strong>Team</strong>: Myself (Product Designer), Muchen Guo (Head of Product), Ariel Wu (Product Manager), Michelle Twan (Product Designer)
+        <strong>Position</strong>: Product Manager
         <br>
-        <strong>Company</strong>: Columbia Daily Spectator
+        <strong>Company</strong>: Spectator Publishing Company, Columbia Daily Spectator
         <br>
         <strong>Duration</strong>: February - April 2023
         <br>
-        <strong>Tools</strong>: Figma
+        <strong>Tools</strong>: Figma, Trello
         <br>
       </p>
       <h1 class="subtitle">Overview</h1>
@@ -55,14 +55,34 @@
         the Podcasts section into a mobile app interface that prioritizes simplicity and user-friendliness. Additionally, 
         I was tasked with incorporating a feature allowing for in-app podcast playback.
       </p>
-      <h1 class="subtitle">1 - Current Website Design</h1>
+
+      <h1 class="subtitle">Goals & Constraints</h1>
+      <ul class="list">
+        <li><strong>Goals</strong>  
+          <ul class="list">
+            <li>Design a mobile interface that allows users to discover and play podcasts seamlessly within the app.</li>
+            <li>Maintain brand consistency with the Spectator website while optimizing for small-screen navigation.</li>
+            <li>Increase podcast listen-through and retention by reducing redirect friction to external platforms (Spotify).</li>
+          </ul>
+        </li>
+        <li><strong>Constraints</strong>
+          <ul class="list">
+            <li>Existing back-end only supported embedded Spotify content at the time of design.</li>
+            <li>Limited engineering bandwidth for native playback; UX had to remain low-code friendly.</li>
+            <li>Four-week design sprint; minimal developer overlap.</li>
+          </ul>
+        </li>
+      </ul>
+
+
+      <h1 class="subtitle">Current Website Design</h1>
       <p class="description">
         The current podcase section first shows a featured podcast. The website has 5 sections on the navigation bar. 
         The first four listed are the sections of the podcast, while the last one is special edition page. 
         Clicking on the sections with the arrows will result on the two images depicted to the right. 
       </p>
       <img src="assets/podcast/webspec.png" class="img-fluid"/>
-      <h1 class="subtitle">2 - Research</h1>
+      <h1 class="subtitle">Research</h1>
       <p class="description">
         To gain understanding of how to curate the podcast page, we performed a <strong>competitive analysis </strong> on 
         these three well-known platforms: Spotify, New York Times, and Apple Music. Through our research, we 
@@ -71,7 +91,7 @@
         when the podcast is played in order for users to pause, play, skip forward, and play back. 
       </p>
       <img src="assets/podcast/podcast_research.png" class="img-fluid"/>
-      <h1 class="subtitle">3 - Design Opportunities</h1>
+      <h1 class="subtitle">Design Opportunities</h1>
       <p class="description">
         - <strong>Homepage</strong>: This page showcases a featured podcast at the very top, along with by four organized 
         sections, offering users convenient podcast selection. Additionally, given our previously established Spotify page, 
@@ -87,7 +107,17 @@
          <br><br>
          - <strong>Search Page</strong>: Users can conveniently use the the search button to easily find a particular podcast.
       </p>
-      <h1 class="subtitle">4 - Wireframe</h1>
+
+      <h1 class="subtitle">Scope & Responsibilities</h1>
+      <ul class="list">
+        <li>Defined MVP scope balancing playback complexity against time and dev bandwidth.</li>
+        <li>Led prioritization sessions with design and editorial teams; managed backlog via Trello.</li>
+        <li>Wrote acceptance criteria for key user flows and defined qualitative success indicators.</li>
+        <li>Facilitated weekly check-ins and sprint retrospectives to maintain alignment.</li>
+      </ul>
+
+
+      <h1 class="subtitle">Wireframe</h1>
       <img src="assets/podcast/podcastwf1.png" class="img-fluid"/>
       <img src="assets/podcast/podcastwf2.png" class="img-fluid"/>
       <h1 class="subtitle">5 - Prototype</h1>
@@ -105,14 +135,6 @@
         </p>
         </div>
       </div>
-      <h1 class="subtitle">6 - Reflection</h1>
-      <p class="description">
-        I had a genuine passion for working on this product as I knew it would benefit my community in their day-to-day 
-        lives once launched. The project is currently undergoing alpha testing within the company to identify and rectify 
-        any bugs before further beta testing is done through the public. I'm looking forward to seeing the trajectory of 
-        this project, and cannot wait to contribute further once we've gathered insights from our testing phases.
-      </p>
-    </div>
 
 
 
@@ -134,5 +156,6 @@
         </div>
       </div>
     </footer>
+  <script src="sparkles.js" defer></script>
   </body>
 </html>

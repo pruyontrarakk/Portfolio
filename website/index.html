@@ -15,7 +15,7 @@
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="./#research" id="research-button">cs research</a></li>
-          <li><a href="./#work" id="work-button">ux case studies</a></li>
+          <li><a href="./#work" id="work-button">case studies</a></li>
         </ul>
       </div>
       <hr>
@@ -25,10 +25,10 @@
       <div class="content">
         <br>
         <br>
-        <h1 class="title">Hi, I'm Pru!</h1>
+        <h1 class="title">Hi, I'm Pru!</h1><br>
         <div class="description typing-box lead" id="lead-box">
           <span class="sizer" aria-hidden="true">
-            I'm a Computer Science major at Columbia University concentrating in Machine Learning.
+            I'm a computer science major at Columbia University concentrating in Machine Learning.
             <br><br>
             I'm interested in <span class="highlight">software engineering, product management, and design</span>, bridging technical insight with creative problem solving to build <span class="highlight">thoughtful, impactful products</span>.
           </span>
@@ -38,18 +38,23 @@
 
       <div class="image">
         <img src="assets/common/pru.jpg" alt="Pru Yontrarak" />
+        <br>
       </div>
     </div>
 
+    <h2 class="section-heading" id="research">Computer Science Research</h2>
     <!-- Research section -->
-    <br><br>
-    <div class="section__container1 section-box" id="research">
+    <br>
+    <div class="section__container1 section-box">
       <div class="content">
         <a href="research1.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Trajectory Optimization (A²R Lab)</p>
             <hr><br>
             <p class="description1">
+            <i>Python · CUDA · C++ · Robotics Simulation · Parallel Optimization</i>
+              <br>
+              <br>
               Investigates how constraint-handling methods impact PDDP's feasibility, convergence, and speed on robotic control tasks using a Python + CUDA implementation. <br><br>
               <br>
               <strong>read more</strong>
@@ -57,7 +62,9 @@
           </div>
         </a>
       </div>
-      <div class="image"></div>
+      <div class="image">
+        <img src="assets/research1/a2r.png" style="width:380px;height:auto;border-radius:10px;" alt="A2R Lab preview"/>
+      </div>
     </div>
 
     <br>
@@ -68,6 +75,9 @@
             <p class="title">Exploiting Failure in Evolution (Soros Lab, SRI)</p>
             <hr><br>
             <p class="description1">
+              <i>Python · OpenAI Gymnasium API · Evolutionary Algorithms · Parallel Processing</i>
+              <br>
+              <br>
               Tested FI-2Pop variants in the Lunar Lander environment to examine how preserving “failed” individuals affects search efficiency and reveals reward-hacking behaviors.
               <br>
               <br>
@@ -77,12 +87,15 @@
           </div>
         </a>
       </div>
-      <div class="image"></div>
+      <div class="image">
+        <img src="assets/research2/lander.png" style="width:400px;height:auto;border-radius:10px;" alt="Lunar Lander preview"/>
+      </div>
     </div>
 
     <br><br>
+    <h2 class="section-heading" id="work">Case Studies</h2>
     <!-- Work section -->
-    <div class="section__container1 section-box" id="work">
+    <div class="section__container1 section-box">
       <div class="content">
         <a href="shaft.html" class="rectangle_button">
           <div class="button_content">
@@ -97,7 +110,7 @@
         </a>
       </div>
       <div class="image">
-        <img src="assets/shaft/mainshaft.png" style="width:600px;height:auto;" alt="theShaft preview"/>
+        <img src="assets/shaft/mainshaft.png" style="width:550px;height:auto;" alt="theShaft preview"/>
       </div>
     </div>
 
@@ -117,7 +130,7 @@
         </a>
       </div>
       <div class="image">
-        <img src="assets/podcast/mainpodcast.png" style="width:755px;height:auto;" alt="Podcast preview"/>
+        <img src="assets/podcast/mainpodcast.png" style="width:700px;height:auto;" alt="Podcast preview"/>
       </div>
     </div>
 
@@ -137,7 +150,7 @@
         </a>
       </div>
       <div class="image">
-        <img src="assets/wt/mainwt.png" style="width:750px;height:auto;" alt="WT preview"/>
+        <img src="assets/wt/mainwt.png" style="width:700px;height:auto;" alt="WT preview"/>
       </div>
     </div>
 
@@ -215,6 +228,8 @@
       })();
     </script>
     <script src="background.js"></script>
+    <script src="labels-hover-stars.js" defer></script>
+    <script src="sparkles.js" defer></script>
 
     <footer>
       <div class="footer__content">

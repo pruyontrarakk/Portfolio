@@ -27,7 +27,7 @@
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="index.html#research" id="research-button">cs research</a></li>
-          <li><a href="index.html#work" id="work-button" >ux case studies</a></li>
+          <li><a href="index.html#work" id="work-button" >case studies</a></li>
         </ul>
       </div>
     </nav>
@@ -36,7 +36,7 @@
 
     <div class="section__work">
 
-        <h1 class="title">Trajectory Optimization</h1>
+        <h1 class="title">Trajectory Optimization in PDDP</h1>
         <p class="description note">
           <strong>Position</strong>: Graduate Researcher under Professor Brian Plancher
           <br>
@@ -77,8 +77,13 @@
         </ul>
           
         <h1 class="subtitle">Python Results</h1>
-        <p class="description">We are able to see that the Augmented Lagrangian method is able to converge to the solution.</p>
-
+        <p class="description">We are able to see that the Augmented Lagrangian method is able to converge to the solution while maintaining within the soft constraints set.</p>
+      <!-- Three images side by side -->
+      <div style="display:flex; flex-wrap:nowrap; gap:.5rem; margin:.5rem 0; align-items:flex-start;">
+        <img src="assets/research1/position.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Position plot" />
+        <img src="assets/research1/velocity.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Velocity plot" />
+        <img src="assets/research1/control.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Control plot" />
+      </div>
 
         <h1 class="subtitle">Next Steps</h1>
         <ul class="methods">
@@ -100,6 +105,7 @@
         </div>
       </div>
     </footer>
+  <script src="sparkles.js" defer></script>
   </body>
   </html>
 
