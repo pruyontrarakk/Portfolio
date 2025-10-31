@@ -203,11 +203,14 @@ nav + br + br + br + br { display: none; }
 .research-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 1.25rem;
+  gap: 1.5rem 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem; /* preserve left/right gutters like other sections */
 }
 .research-grid .section__container1 {
   grid-template-columns: 1fr; /* single column inside card */
-  padding: 1rem; /* tighter card padding */
+  padding: 1.5rem; /* comfortable interior padding */
 }
 .research-grid .section__container1 .image { display: none; }
 @media (max-width: 800px) { .research-grid { grid-template-columns: 1fr; } }

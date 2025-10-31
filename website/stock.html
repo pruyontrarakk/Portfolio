@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>StatusCo — Pru Yontrarak</title>
+
+    <style>
+      .section__work {
+        width: 90vw;
+        max-width: 1200px;
+        padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
+        margin: 0 auto;
+      }
+      .note { background: rgba(0,0,0,0.03); padding: .75rem 1rem; border-radius: 10px; }
+      /* Bullet alignment: consistent and left-aligned across all lists */
+      ul.methods, ul.feature-list, ul.api-list, ul.next-steps {
+        list-style-position: outside;
+        padding-left: 1.25rem;
+        margin: 0.25rem 0 0.5rem 0;
+      }
+      ul.methods li, ul.feature-list li, ul.api-list li, ul.next-steps li {
+        margin-bottom: .35rem;
+      }
+      /* Code elements in list items should flow naturally and wrap */
+      ul li code { display: inline; white-space: normal; }
+      code { background: rgba(0,0,0,0.05); padding: .1rem .3rem; border-radius: 4px; }
+      .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
+      .kpi { border: 1px solid rgba(0,0,0,.1); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
+      .skills { color:#666; font-style: italic; margin-top:.25rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html#research" id="research-button">cs projects</a></li>
+          <li><a href="index.html#work" id="work-button">case studies</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="section__work">
+      <h1 class="title">StatusCo: A Financial Sentiment Analyzer API</h1>
+      <p class="description note">
+        <strong>Position</strong>: Backend Engineer, Software Engineer, Project Manager<br>
+        <strong>Type</strong>: Team project (in progress)<br>
+        <strong>Duration</strong>: September 2025 - Present<br>
+        <strong>Stack</strong>: Java, Spring Boot, GitHub Actions, Postman<br>
+        <strong>Skills</strong>: API design, systems architecture, CI/CD </span>
+      </p>
+
+      <h1 class="subtitle">SWE Highlights</h1>
+        <ul class="methods">
+        <li><strong>Service architecture:</strong> Java 21 + Spring Boot microservice with <code>StockDataService</code>, <code>NewsDataService</code>, <code>ForecastDataService</code>, and a <code>CompositeController</code> facade.</li>
+        <li><strong>API design:</strong> Clear contracts for <code>/market/daily</code>, <code>/market/sentiment</code>, <code>/market/predict</code>, and planned <code>/market/combined</code>; JSON responses and CORS support.</li>
+        <li><strong>Caching & freshness:</strong> JSON cache with TTLs (daily 24h, sentiment 6h) and <code>?force=true</code> override; atomic reads/writes to prevent partial files.</li>
+        <li><strong>Testing & docs:</strong> Swagger, Postman smoke suites, and curl recipes; Maven build with unit tests around TTL, cache bypass, and parsing.</li>
+        </ul>
+
+
+      <h1 class="subtitle">Objective</h1>
+      <p class="description">
+        StatusCo is a Java-based
+        REST API that forecasts short-term stock movements by combining
+        <em>quantitative</em> (historical prices) and <em>qualitative</em>
+        (market sentiment) signals. The system ingests market data from
+        Alpha Vantage and news sentiment from
+        Hugging Face transformers, producing confidence-adjusted
+        predictions via three model pipelines—stock, sentiment, and combined
+        fusion. We will deploy API endpoints for X-day price, X-day sentiment,
+        and next-day combined prediction.
+      </p>
+
+      <h1 class="subtitle">Methods</h1>
+      <ul class="methods">
+        <li>
+          <strong>Modular microservice design:</strong> Built with Spring Boot
+          and separated into <code>StockDataService</code>,
+          <code>NewsDataService</code>, and
+          <code>ForecastDataService</code>, orchestrated by a unified
+          <code>CompositeController</code>.
+        </li>
+        <li>
+          <strong>Data ingestion layer:</strong> Pulls OHLCV time series from
+          Alpha Vantage and real-time news articles, storing results in local
+          JSON cache to limit API calls and accelerate repeated requests.
+        </li>
+        <li>
+          <strong>Model orchestration:</strong> Each endpoint triggers one of
+          three predictive models—TrendMaster (price), Hugging Face BERT
+          (sentiment), and a custom fusion model combining the two for
+          next-day output.
+        </li>
+        <li>
+          <strong>Cache & freshness control:</strong> Custom TTL validation for
+          stock (24 h) and sentiment (6 h) responses; optional
+          <code>?force=true</code> parameter to override.
+        </li>
+        <li>
+          <strong>Testing & documentation:</strong> Integrated Swagger UI,
+          Postman suites, and command-line curl validation; automated Maven
+          build and test cycle.
+        </li>
+      </ul>
+
+      <h1 class="subtitle">Key Features</h1>
+      <ul class="feature-list">
+        <li>
+          <strong>X-day stock prediction:</strong> Time-series model forecasts
+          near-term prices using Alpha Vantage daily or intraday data.
+        </li>
+        <li>
+          <strong>X-day sentiment prediction:</strong> Transformer-based model
+          computes mean sentiment trajectory from recent financial headlines.
+        </li>
+        <li>
+          <strong>Next-day combined prediction:</strong> Weighted fusion of
+          stock and sentiment forecasts for improved directional accuracy.
+        </li>
+        <li>
+          <strong>Adaptive endpoints:</strong> Works for any equity ticker;
+          supports custom horizon (<code>?horizon=1d</code>).
+        </li>
+        <li>
+          <strong>API-first design:</strong> JSON-formatted responses, CORS
+          enabled for easy front-end integration.
+        </li>
+      </ul>
+
+      <h1 class="subtitle">API Endpoints</h1>
+      <ul class="api-list">
+        <li>
+          <code>GET /market/daily?symbol=AMZN</code> — Retrieves daily stock
+          data (open, close, high, low, volume)
+        </li>
+        <li>
+          <code>GET /market/sentiment?symbol=AMZN</code> — Retrieves news
+          sentiment data for given ticker (positive, negative, neutral, etc.)
+        </li>
+        <li>
+          <code>GET /market/predict?symbol=AMZN&amp;horizon=1d</code> —
+          Generates X-day stock price prediction (price)
+        </li>
+        <li>
+          <code>GET /market/combined?symbol=AMZN</code> — (Planned) Combines
+          stock + sentiment models for next-day forecast
+        </li>
+      </ul>
+
+      <h1 class="subtitle">Next Steps</h1>
+      <ul class="next-steps">
+        <li>Add a GET /market/combined endpoint</li>
+        <li>Implement a machine learning model for the combined prediction</li>
+      </ul>
+
+
+    </main>
+
+    <footer>
+      <div class="footer__content">
+        <div>© Pru Yontrarak</div>
+        <div class="footer__links">
+          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/pruyontrarak" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:ppy2104@columbia.edu">Email</a>
+        </div>
+      </div>
+    </footer>
+  <script>
+    (function(){
+      var link = document.getElementById('research-button');
+      if (link) link.classList.add('active');
+    })();
+  </script>
+  </body>
+</html>

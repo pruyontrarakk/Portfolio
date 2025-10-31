@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Reinforcement Learning for Foosball - Pru Yontrarak</title>
+
+    <style>
+      /* Slightly larger margins for research pages only */
+      .section__work {
+        width: 90vw;
+        max-width: 1200px;
+        padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html#research" id="research-button">cs projects</a></li>
+          <li><a href="index.html#work" id="work-button" >case studies</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    
+
+    <div class="section__work">
+
+        <h1 class="title">Reinforcement Learning for Foosball</h1>
+        <p class="description note">
+          <strong>Position</strong>: Backend Engineer, Software Engineer, Project Manager
+          <br>
+          <strong>Type</strong>: Team project (in progress)
+          <br>
+          <strong>Duration</strong>: September 2025 - Present
+          <br>
+          <strong>Stack</strong>: Python, MuJoCo, TQC, SAC, OpenCV, YOLOv11, NumPy, PyTorch
+          <br> 
+        </p>
+
+        <h1>SWE Highlights</h1>
+        <ul>
+        <li><strong>Systems design:</strong> Built a MuJoCo environment with reset logic, contact tuning, reward hooks, and multi-rod control; separated env, vision, and RL training into clean modules.</li>
+        <li><strong>Algorithm engineering:</strong> Implemented TQC (distributional critics with quantile truncation), revived SAC baseline, and added vectorized rollouts with replay prioritization.</li>
+        <li><strong>Data pipeline:</strong> Wrote calibration → undistort → homography mapping → ball-state extraction; standardized trajectory CSVs for sim ingest.</li>
+        <li><strong>Performance:</strong> Batched env-steps and updates to raise throughput (vector env + async data writes); stabilized actor/critic losses via truncation and target-update schedules.</li>
+        </ul>
+
+
+        <h1 class="subtitle">Objective</h1>
+        <p class="description">
+          This project explores reinforcement learning for continuous control within a custom foosball simulation built in MuJoCo.
+          We trained agents using Truncated Quantile Critics (TQC) and benchmarked against Soft Actor-Critic (SAC) from an external codebase to study policy robustness.
+          We want to build a MuJoCo foosball sim grounded in real video, then train TQC agents that outperform a SAC baseline in interception rate and control stability.
+        </p>
+
+
+        <h1 class="subtitle">Timeline</h1>
+        <ul class="methods">
+          <li><strong>Weeks 1-2:</strong> Implement minimal MuJoCo foosball environment (ball + single rod per side). Set up Lerner Hall video capture pipeline; collect initial ball trajectory dataset.</li>
+          <li><strong>Weeks 3-4:</strong> Begin training RL agents with continuous actions using TQC. Troubleshoot and refine proposal. Run PPO, SAC, and TD3 code from existing paper code (where available).</li>
+          <li><strong>Week 5 (Milestone 1):</strong> Deliver functional simulation environment, preliminary TQC model, and training results. Submit refined proposal.</li>
+          <li><strong>Weeks 6-7:</strong> Extend environment to multiple rods; calibrate ball physics. Continue experiments with TQC and domain randomization with extended environment.</li>
+          <li><strong>Week 8:</strong> Collect additional Lerner Hall data; evaluate trained agents against baselines from existing paper with TQC. Improve training stability.</li>
+          <li><strong>Week 9 (Milestone 2):</strong> Deliver robust continuous-control agents + extended environment. Present evaluation results (win rates, intercepts, sim-vs-real comparison). Demo video of trained agent.</li>
+          <li><strong>Weeks 10-11:</strong> Finalize experiments and polish deliverables. Record final demo videos (agent-vs-agent). Write final report and prepare presentation.</li>
+        </ul>
+
+        <h1 class="subtitle">Implementation Progress</h1>
+        <ul class="methods">
+            <li><strong>Baseline environment (external):</strong> Compiled and ran the public RoboFoosball codebase; no changes beyond configuration and training harness integration.</li>
+            <li><strong>SAC baseline (external env):</strong> Re-trained from the baseline repo to establish control metrics.</li>
+            <li><strong>TQC training (external env):</strong> Implemented TQC and trained on the baseline env for parity.</li>
+            <li><strong>Data collection (ours):</strong> Overhead videos on a physical table with varied play styles; initial calibration and state extraction pipeline stood up.</li>
+            <li><strong>Custom env (ours):</strong> Specification complete; implementation begins in Phase 2 using our measurements and extracted trajectories.</li>
+        </ul>
+
+
+        <h1 class="subtitle">Preliminary Results</h1>
+        <ul class="methods">
+            <li><strong>SAC baseline:</strong> Successfully trained on external codebase environment.</li>
+            <li><strong>TQC on baseline:</strong> Successfully trained on external codebase environment.</li>
+            <li><strong>Calibration:</strong> RMS reprojection error 4.56 px; mean error 0.59 px, which is adequate for plane mapping.</li>
+            <li><strong>Camera intrinsics matrix:</strong><br>
+            <code>K = [2665.6, 0.0, 1577.0<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;0.0, 2693.4, 2260.7<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;0.0, 0.0, 1.0]</code>
+            </li>
+        </ul>
+
+
+        <h1 class="subtitle">Next Steps</h1>
+      <ul class="methods">
+        <li><strong>Build & validate our MuJoCo environment:</strong> encode table geometry, friction/restitution; implement multi-rod control; add reset invariants.</li>
+        <li><strong>Finalize data:</strong> re-collect higher-contrast footage; lock calibration/homography; export clean trajectory CSVs; spot-check rollout realism.</li>
+        <li><strong>Train in our environment:</strong> run matched TQC and SAC sweeps; report intercept rate, time-to-intercept, resets/1k steps, and action smoothness.</li>
+      </ul>
+
+
+
+
+    </div>
+
+    
+    <footer>
+      <div class="footer__content">
+        <div>© Pru Yontrarak</div>
+        <div class="footer__links">
+          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:ppy2104@columbia.edu">Email</a>
+        </div>
+      </div>
+    </footer>
+  <script src="sparkles.js" defer></script>
+  <script>
+    (function(){
+      var link = document.getElementById('research-button');
+      if (link) link.classList.add('active');
+    })();
+  </script>
+  </body>
+  </html>
