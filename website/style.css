@@ -92,6 +92,7 @@ footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; p
   min-height: var(--section-min-height); /* consistent minimal height */
   max-width: 1300px;
   margin: auto;
+  padding: 0 1rem; /* prevent cards from touching screen edges */
   display: grid; gap: 4rem;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "content image";
@@ -102,13 +103,19 @@ footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; p
 
 .content { display: flex; flex-direction: column; justify-content: center; grid-area: content; }
 .image   { display: grid; place-items: center; grid-area: image; }
-.image img { width: min(22rem, 80%); height: auto; border-radius: 10%; }
+.image img { width: clamp(20rem, 80%, 24rem); height: auto; border-radius: 14px; object-fit: cover; }
 
 /* Typography */
 .subtitle { letter-spacing: 2px; color: var(--text-light); font-weight: 360; margin-bottom: .5rem; }
 .title { font-size: 2.5rem; font-weight: 400; line-height: 3rem; color: var(--text-dark); margin-bottom: 1rem; text-align: left; }
 .title1 { font-size: 2.5rem; font-weight: 400; line-height: 3rem; color: var(--text-dark); margin-bottom: 1rem; text-align: right; }
 .title span { font-weight: 600; }
+
+/* Make card titles responsive (shrink on smaller screens) */
+.section-box .title {
+  font-size: clamp(1.35rem, 1.05rem + 1.4vw, 2.5rem);
+  line-height: 1.15em;
+}
 
 .description  { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; }
 .description1 { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; text-align: left; }
@@ -146,7 +153,8 @@ footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; p
 }
 
 /* Cards / boxes */
-.section-box { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); border: 1px solid #e7e1ee; padding: 2rem; max-width: var(--max-width); margin: 0 auto; }
+.section-box { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); border: 1px solid #e7e1ee; padding: 2rem; max-width: var(--max-width); margin: 0 auto 0 auto; overflow: hidden; }
+.section__container1.section-box { padding: 2rem 1rem; } /* ensure horizontal padding for case studies outside research-grid */
 .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .card { background: var(--secondary-color); border: 1px solid #e7e1ee; border-radius: 12px; box-shadow: var(--shadow); padding: 1.25rem 1.5rem; }
 .card .title { margin-bottom: .5rem; color: #1f1a23; }
@@ -214,6 +222,30 @@ nav + br + br + br + br { display: none; }
 }
 .research-grid .section__container1 .image { display: none; }
 @media (max-width: 800px) { .research-grid { grid-template-columns: 1fr; } }
+
+/* Case studies grid: single column layout with images */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* single column for case studies */
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 1rem; /* preserve left/right gutters like research-grid */
+}
+.case-studies-grid .section__container1 {
+  padding: 0; /* Remove padding since case-studies-grid provides outer padding */
+  max-width: none; /* Remove max-width since case-studies-grid provides it */
+}
+.case-studies-grid .section__container1.section-box {
+  padding: 2rem; /* Restore padding from section-box */
+}
+
+/* Make case-study images larger on wide screens (desktop) */
+@media (min-width: 1200px) {
+  .case-studies-grid .image img {
+    width: clamp(24rem, 38vw, 34rem);
+  }
+}
 
 /* ===== Case Page (Shared Additions) ===== */
 /* Methods list */
@@ -438,7 +470,7 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 
   .card-grid { grid-template-columns: 1fr; }
   .image { grid-area: image; }
-  .image img { width: 100% !important; height: auto !important; margin: 0 !important; }
+  .image img { width: 100% !important; height: auto !important; margin: 0 !important; max-width: 100%; }
 
   /* Blinking caret */
   .typed-cursor {
