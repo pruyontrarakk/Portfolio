@@ -63,10 +63,10 @@ nav .checkbox { display: none; }
 nav input { display: none; }
 nav .checkbox i { font-size: 2rem; color: var(--primary-color); cursor: pointer; }
 
-ul { display: flex; align-items: center; gap: 1rem; list-style: none; transition: left .3s; }
-ul li a { padding: .5rem 1rem; border: 2px solid transparent; font-weight: 600; color: var(--text-dark); transition: .3s; }
-ul li a:hover { border-bottom-color: var(--secondary-color); color: var(--secondary-color); }
-ul li a.active { border-bottom-color: var(--primary-color-dark); color: var(--primary-color-dark); }
+nav ul { display: flex; align-items: center; gap: 1rem; list-style: none; transition: left .3s; }
+nav ul li a { padding: .5rem 1rem; border: 2px solid transparent; font-weight: 600; color: var(--text-dark); transition: .3s; }
+nav ul li a:hover { border-bottom-color: var(--secondary-color); color: var(--secondary-color); }
+nav ul li a.active { border-bottom-color: var(--primary-color-dark); color: var(--primary-color-dark); }
 
 /* Footer */
 footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; position: fixed; left: 0; right: 0; bottom: 0; width: 100%; z-index: 97; height: var(--footer-height); }
@@ -395,13 +395,13 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 /* Mobile */
 @media (max-width: 750px) {
   nav .checkbox { display: block; }
-  ul {
+  nav ul {
     position: absolute; width: 100%; height: calc(100vh - var(--nav-height));
     left: -100%; top: var(--nav-height); background: var(--extra-light);
     flex-direction: column; justify-content: center; gap: 3rem;
   }
   nav #check:checked ~ ul { left: 0; }
-  ul li a { font-size: 1.25rem; }
+  nav ul li a { font-size: 1.25rem; }
 
   .section__container {
     padding: calc(var(--nav-height) + 1rem) 1rem 5rem 1rem;

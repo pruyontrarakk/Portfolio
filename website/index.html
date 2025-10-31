@@ -14,7 +14,7 @@
         <label for="check" class="checkbox"><i class="ri-menu-line"></i></label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="./#research" id="research-button">cs research</a></li>
+          <li><a href="./#research" id="research-button">cs projects</a></li>
           <li><a href="./#work" id="work-button">case studies</a></li>
         </ul>
       </div>
@@ -42,14 +42,14 @@
       </div>
     </div>
 
-    <h2 class="section-heading" id="research">Computer Science Research</h2>
+    <h2 class="section-heading" id="research">Computer Science Projects</h2>
     <!-- Research section -->
     <br>
     <div class="section__container1 section-box">
       <div class="content">
         <a href="research1.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Trajectory Optimization (A²R Lab)</p>
+            <p class="title">Trajectory Optimization Research @ A²R Lab</p>
             <hr><br>
             <p class="description1">
             <i>Python · CUDA · C++ · Robotics Simulation · Parallel Optimization</i>
@@ -72,7 +72,7 @@
       <div class="content">
         <a href="research2.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Exploiting Failure in Evolution (Soros Lab, SRI)</p>
+            <p class="title">Exploiting Failure in Evolution Research @ Soros Lab, SRI</p>
             <hr><br>
             <p class="description1">
               <i>Python · OpenAI Gymnasium API · Evolutionary Algorithms · Parallel Processing</i>
@@ -92,8 +92,9 @@
       </div>
     </div>
 
-    <br><br>
+    <br><br><br><br>
     <h2 class="section-heading" id="work">Case Studies</h2>
+    <br>
     <!-- Work section -->
     <div class="section__container1 section-box">
       <div class="content">
@@ -102,6 +103,9 @@
             <p class="title">theSHAFT Feature Design</p>
             <hr><br>
             <p class="description1">
+              <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
+              <br>
+              <br>
               Redesign of the unofficial housing website for Columbia and Barnard to include the new 360° room tour feature. <br><br>
               <br>
               <strong>read more</strong>
@@ -122,6 +126,9 @@
             <p class="title">Columbia Daily Spectator App Design</p>
             <hr><br>
             <p class="description1">
+              <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
+              <br>
+              <br>
               Design of the Columbia Daily Spectator mobile app's Podcast Page inspired by their existing website. <br><br>
               <br>
               <strong>read more</strong>
@@ -139,9 +146,12 @@
       <div class="content">
         <a href="wt.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">App Design @ Wunderman Thompson</p>
+            <p class="title">Smart Building App Design @ Wunderman Thompson</p>
             <hr><br>
             <p class="description1">
+              <i>UX/UI Design · Figma · User Research</i>
+              <br>
+              <br>
               Design mobile app for office buildings, enhancing workplace convenience and providing personalized comfort controls. <br><br>
               <br>
               <strong>read more</strong>
@@ -218,7 +228,8 @@
             i++;
             setTimeout(tick, speed);
           } else {
-            typedTarget.innerHTML = htmlToType + cursor.outerHTML; // keep blinking
+            // typing finished: remove the cursor so it doesn't linger
+            typedTarget.innerHTML = htmlToType;
           }
         }
         tick();
