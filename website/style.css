@@ -133,13 +133,15 @@ footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right:
 /* Keep the trailing status note (e.g., "Project in progress.") same color as description */
 .section-box .description1 i:last-of-type:not(:first-of-type),
 .section-box .description2 i:last-of-type:not(:first-of-type) { color: #b4aabc; }
-/* Light dusty pink for "read more" on hover */
+/* Muted pink for "read more" - always visible, bolder on hover */
 .section-box strong {
-  transition: color 0.2s ease;
+  color: #e0a8bb; /* light dusty pink */
+  transition: font-weight 0.2s ease;
+  font-weight: 600;
 }
 .section-box:hover strong,
 .section-box a:hover strong {
-  color: #e0a8bb; /* light dusty pink */
+  font-weight: 700; /* bolder on hover */
 }
 
 /* Nicer lead paragraph */
@@ -191,6 +193,8 @@ footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right:
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
+  overflow-wrap: break-word; /* Allow long words/URLs to wrap */
+  word-break: break-word; /* Break long words if needed */
 }
 .section__work h1,
 .section__work h2,
@@ -201,6 +205,14 @@ footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right:
   font-family: var(--font-body);
   line-height: 1.6;
   color: var(--text-light);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+/* Ensure links and code wrap properly */
+.section__work a,
+.section__work code {
+  overflow-wrap: break-word;
+  word-break: break-all; /* More aggressive breaking for URLs and code */
 }
 .section__work .title { color: var(--text-dark); }
 
@@ -472,6 +484,17 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   }
   nav #check:checked ~ ul { transform: translateX(0); }
   nav ul li a { font-size: 1.25rem; }
+  
+  /* Ensure consistent margins for all project pages on mobile */
+  .section__work {
+    width: 90vw !important;
+    max-width: 1200px !important;
+    padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem !important;
+    margin: 0 auto !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    box-sizing: border-box !important;
+  }
 
   .section__container {
     padding: calc(var(--nav-height) + 1rem) 1.5rem 5rem 1.5rem;
