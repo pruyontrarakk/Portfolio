@@ -1,5 +1,6 @@
 (function(){
-  var STAR_SETS = ["✦", "★", "✧", "✶", "✺", "✸" ];
+  var STAR_SETS = ["✦", "★", "✧", "✶"];
+  var BUNNY_SETS = ["૮ ․ ․ ྀིა", "꒰ᐢ. .ᐢ꒱" ];
   var COLORS = [
     "#4e3565", // dark purple
     "#8a6cff",
@@ -8,15 +9,23 @@
     "#b4aabc",
     "#6a5acd"
   ];
+  var starCounter = 0; // track star generations
   function randomInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
   function randomItem(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
   function randomStarsColored(){
-    var count = randomInt(1,4); // ensure at least one star
+    starCounter++;
+    var count = randomInt(1,3); // ensure at least one star
     var out = '';
     for (var i=0;i<count;i++){
       var star = randomItem(STAR_SETS);
       var color = randomItem(COLORS);
       out += '<span style="color:'+color+'">'+star+'</span>';
+    }
+    // Randomly add a bunny approximately every 5 stars
+    if (starCounter % 5 === 0 || Math.random() < 0.2) {
+      var bunny = randomItem(BUNNY_SETS);
+      var bunnyColor = randomItem(COLORS);
+      out += ' <span style="color:'+bunnyColor+'">'+bunny+'</span>';
     }
     return out;
   }

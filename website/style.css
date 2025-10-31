@@ -63,13 +63,18 @@ nav .checkbox { display: none; }
 nav input { display: none; }
 nav .checkbox i { font-size: 2rem; color: var(--primary-color); cursor: pointer; }
 
+/* Hamburger (mobile) */
+.checkbox .hamburger { display: inline-flex; flex-direction: column; gap: 4px; padding: 6px; border-radius: 8px; }
+.checkbox .hamburger span { display: block; width: 22px; height: 2px; background: var(--primary-color-dark); border-radius: 2px; }
+
+nav hr { display: none; }
 nav ul { display: flex; align-items: center; gap: 1rem; list-style: none; transition: left .3s; }
 nav ul li a { padding: .5rem 1rem; border: 2px solid transparent; font-weight: 600; color: var(--text-dark); transition: .3s; }
 nav ul li a:hover { border-bottom-color: var(--secondary-color); color: var(--secondary-color); }
 nav ul li a.active { border-bottom-color: var(--primary-color-dark); color: var(--primary-color-dark); }
 
 /* Footer */
-footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; position: fixed; left: 0; right: 0; bottom: 0; width: 100%; z-index: 97; height: var(--footer-height); }
+footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right: 0; bottom: 0; width: 100%; z-index: 97; height: var(--footer-height); }
 .footer__content {
   max-width: var(--max-width); margin: 0 auto; padding: 1.25rem 1rem;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 1rem;
@@ -113,13 +118,29 @@ footer { background: #f7f3fc; border-top: 2px solid #b5a9c0; margin-top: 3rem; p
 
 /* Make card titles responsive (shrink on smaller screens) */
 .section-box .title {
-  font-size: clamp(1.35rem, 1.05rem + 1.4vw, 2.5rem);
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
   line-height: 1.15em;
 }
 
 .description  { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; }
-.description1 { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; text-align: left; }
-.description2 { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; text-align: right; }
+.description1 { line-height: 1.5rem; color: #b4aabc; margin-bottom: 2rem; text-align: left; }
+.description2 { line-height: 1.5rem; color: #b4aabc; margin-bottom: 2rem; text-align: right; }
+/* Default italicized text color */
+.section-box i { color: var(--text-light); }
+/* Dark grey for technology keywords (first italic in description) - matches description hover color */
+.section-box .description1 i:first-of-type,
+.section-box .description2 i:first-of-type { color: #5a5562; }
+/* Keep the trailing status note (e.g., "Project in progress.") same color as description */
+.section-box .description1 i:last-of-type:not(:first-of-type),
+.section-box .description2 i:last-of-type:not(:first-of-type) { color: #b4aabc; }
+/* Light dusty pink for "read more" on hover */
+.section-box strong {
+  transition: color 0.2s ease;
+}
+.section-box:hover strong,
+.section-box a:hover strong {
+  color: #e0a8bb; /* light dusty pink */
+}
 
 /* Nicer lead paragraph */
 .description.lead {
@@ -360,7 +381,7 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 /* Static section headings */
 .section-heading {
   font-family: var(--font-heading);
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
   color: var(--primary-color-dark);
   letter-spacing: 0;
   font-weight: 400;
@@ -368,8 +389,19 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   margin: 1rem 0 .75rem 0;
   text-align: center;
 }
+/* Limit hr width below section headings */
+.section-heading + hr {
+  max-width: 1300px;
+  margin: 0 auto;
+  border: none;
+  border-top: 1px solid #e7e1ee;
+}
+/* Reduce space specifically above the first heading after the hero */
+.section__container.hero + .section-heading { margin-top: 0.35rem; }
 /* Hover letter effect (used by section tags and headings) */
-.char { display: inline-block; transition: transform .18s ease, opacity .18s ease; cursor: default; font: inherit; line-height: inherit; letter-spacing: inherit; color: inherit; }
+.char { display: inline-block; transition: transform .18s ease, opacity .18s ease; cursor: default; font: inherit; line-height: inherit; letter-spacing: inherit; color: inherit; font-weight: 400 !important; font-size: 1em !important; }
+/* Ensure injected star/bunny spans match text size/weight */
+.char span { font-size: 1em !important; font-weight: 400 !important; line-height: inherit; }
 #top .title .char { font-weight: 400; font-family: var(--font-heading); }
 
 /* Hero title color */
@@ -432,14 +464,17 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   nav .checkbox { display: block; }
   nav ul {
     position: absolute; width: 100%; height: calc(100vh - var(--nav-height));
-    left: -100%; top: var(--nav-height); background: var(--extra-light);
+    left: 0; top: var(--nav-height); background: var(--extra-light);
     flex-direction: column; justify-content: center; gap: 3rem;
+    transform: translateX(100%);
+    transition: transform .32s ease;
+    z-index: 98;
   }
-  nav #check:checked ~ ul { left: 0; }
+  nav #check:checked ~ ul { transform: translateX(0); }
   nav ul li a { font-size: 1.25rem; }
 
   .section__container {
-    padding: calc(var(--nav-height) + 1rem) 1rem 5rem 1rem;
+    padding: calc(var(--nav-height) + 1rem) 1.5rem 5rem 1.5rem;
     grid-template-columns: 1fr;
     grid-template-areas:
       "image"

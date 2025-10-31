@@ -11,7 +11,13 @@
     <nav>
       <div class="nav__content">
         <div class="logo" id="home-button"><a href="./#top">𐔌՞. .՞𐦯</a></div>
-        <label for="check" class="checkbox"><i class="ri-menu-line"></i></label>
+        <label for="check" class="checkbox" aria-label="Toggle navigation">
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="./#research" id="research-button">cs projects</a></li>
@@ -28,7 +34,7 @@
         <h1 class="title">Hi, I'm Pru!</h1><br>
         <div class="description typing-box lead" id="lead-box">
           <span class="sizer" aria-hidden="true">
-            I'm a computer science major at Columbia University concentrating in Machine Learning.
+            I'm a <span class="highlight">computer science</span> major master's student at Columbia University concentrating in machine learning.
             <br><br>
             I'm interested in <span class="highlight">software engineering, product management, and design</span>, bridging technical insight with creative problem solving to build <span class="highlight">thoughtful, impactful products</span>.
           </span>
@@ -43,6 +49,7 @@
     </div>
 
     <h2 class="section-heading" id="research">Computer Science Projects</h2>
+    <hr>
     <!-- Research section -->
     <br>
     <div class="research-grid">
@@ -57,7 +64,7 @@
               <i>Java · Spring Boot · REST APIs</i>
               <br>
               <br>
-              Financial sentiment forecasting API integrating stock data and news sentiment via transformer models. Project in progress.
+              Financial sentiment forecasting API integrating stock data and news sentiment via transformer models.
               <br>
               <br>
               <strong>read more</strong>
@@ -73,13 +80,13 @@
       <div class="content">
         <a href="foosball.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Foosball Reinforcement Learning</p>
+            <p class="title">Foosball RL</p>
             <hr><br>
             <p class="description1">
-              <i>Python · MuJoCo · Reinforcement Learning · OpenCV</i>
+              <i>C++ · MuJoCo · Reinforcement Learning · OpenCV</i>
               <br>
               <br>
-              An end-to-end reinforcement learning system modeling real foosball dynamics. Trained Truncated Quantile Critics (TQC) agents in a custom MuJoCo environment.
+              A reinforcement learning system modeling foosball dynamics. Trained Truncated Quantile Critics (TQC) agents in a custom MuJoCo environment.
               <br>
               <br>
               <strong>read more</strong>
@@ -133,6 +140,7 @@
 
     <br><br><br><br>
     <h2 class="section-heading" id="work">Case Studies</h2>
+    <hr>
     <br>
     <!-- Work section -->
     <div class="case-studies-grid">
@@ -140,7 +148,7 @@
       <div class="content">
         <a href="shaft.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">theSHAFT Feature Design</p>
+            <p class="title">theSHAFT Feature</p>
             <hr><br>
             <p class="description1">
               <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
@@ -162,7 +170,7 @@
       <div class="content">
         <a href="podcast.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Columbia Daily Spectator App Design</p>
+            <p class="title">Columbia Daily Spectator App</p>
             <hr><br>
             <p class="description1">
               <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
@@ -184,7 +192,7 @@
       <div class="content">
         <a href="wt.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Smart Building App Design @ Wunderman Thompson</p>
+            <p class="title">Smart Building App @ Wunderman Thompson</p>
             <hr><br>
             <p class="description1">
               <i>UX/UI Design · Figma · User Research</i>
@@ -253,7 +261,7 @@
           .trim();
 
         var i = 0;
-        var speed = 28;
+        var speed = 27;
 
         // Inline, blinking cursor right after the period
         var cursor = document.createElement('span');
@@ -274,6 +282,18 @@
         tick();
       }
 
+      // Close mobile menu when navigation link is clicked
+      var navLinks = document.querySelectorAll('nav ul li a');
+      var menuCheckbox = document.getElementById('check');
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (menuCheckbox && menuCheckbox.checked) {
+            menuCheckbox.checked = false;
+          }
+        });
+      });
+
+      // Removed downscroll nudge feature per request
 
       })();
     </script>

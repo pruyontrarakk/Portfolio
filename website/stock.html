@@ -58,12 +58,13 @@
         <strong>Skills</strong>: API design, systems architecture, CI/CD </span>
       </p>
 
-      <h1 class="subtitle">SWE Highlights</h1>
+      <h1>SWE Highlights</h1>
         <ul class="methods">
         <li><strong>Service architecture:</strong> Java 21 + Spring Boot microservice with <code>StockDataService</code>, <code>NewsDataService</code>, <code>ForecastDataService</code>, and a <code>CompositeController</code> facade.</li>
         <li><strong>API design:</strong> Clear contracts for <code>/market/daily</code>, <code>/market/sentiment</code>, <code>/market/predict</code>, and planned <code>/market/combined</code>; JSON responses and CORS support.</li>
-        <li><strong>Caching & freshness:</strong> JSON cache with TTLs (daily 24h, sentiment 6h) and <code>?force=true</code> override; atomic reads/writes to prevent partial files.</li>
-        <li><strong>Testing & docs:</strong> Swagger, Postman smoke suites, and curl recipes; Maven build with unit tests around TTL, cache bypass, and parsing.</li>
+        <li><strong>Caching & freshness:</strong> JSON cache and <code>?force=true</code> override; atomic reads/writes to prevent partial files.</li>
+        <li><strong>Testing & docs:</strong> Swagger, Postman, and curl; Maven build with unit tests, cache bypass, and parsing.</li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/pruyontrarakk/4156-P2KM" target="_blank" rel="noopener noreferrer">https://github.com/pruyontrarakk/4156-P2KM</a></li>
         </ul>
 
 
@@ -80,6 +81,12 @@
         and next-day combined prediction.
       </p>
 
+      <h1 class="subtitle">Why This API Product?</h1>
+      <p class="description">
+        While components like sentiment APIs and stock price feeds already exist, a single developer-facing platform that merges price data and sentiment analytics into one system and produces predictive outputs rather than just raw scores is uncommon. 
+        StatusCo fills that gap by unifying both signals into a reproducible forecasting API with caching, standardized schemas, and modular endpoints for analytics and scalability.
+      </p>
+
       <h1 class="subtitle">Methods</h1>
       <ul class="methods">
         <li>
@@ -90,7 +97,7 @@
           <code>CompositeController</code>.
         </li>
         <li>
-          <strong>Data ingestion layer:</strong> Pulls OHLCV time series from
+          <strong>Data ingestion layer:</strong> Pulls daily time series from
           Alpha Vantage and real-time news articles, storing results in local
           JSON cache to limit API calls and accelerate repeated requests.
         </li>
@@ -98,16 +105,15 @@
           <strong>Model orchestration:</strong> Each endpoint triggers one of
           three predictive models—TrendMaster (price), Hugging Face BERT
           (sentiment), and a custom fusion model combining the two for
-          next-day output.
+          next-day output (planned).
         </li>
         <li>
-          <strong>Cache & freshness control:</strong> Custom TTL validation for
+          <strong>Cache & freshness control:</strong> Custom validation for
           stock (24 h) and sentiment (6 h) responses; optional
           <code>?force=true</code> parameter to override.
         </li>
         <li>
-          <strong>Testing & documentation:</strong> Integrated Swagger UI,
-          Postman suites, and command-line curl validation; automated Maven
+          <strong>Testing & documentation:</strong> Utilize Postman suites and command-line curl validation; automated Maven
           build and test cycle.
         </li>
       </ul>
@@ -123,7 +129,7 @@
           computes mean sentiment trajectory from recent financial headlines.
         </li>
         <li>
-          <strong>Next-day combined prediction:</strong> Weighted fusion of
+          <strong>X-day combined prediction:</strong> Weighted fusion of
           stock and sentiment forecasts for improved directional accuracy.
         </li>
         <li>
@@ -131,8 +137,7 @@
           supports custom horizon (<code>?horizon=1d</code>).
         </li>
         <li>
-          <strong>API-first design:</strong> JSON-formatted responses, CORS
-          enabled for easy front-end integration.
+          <strong>API-first design:</strong> JSON-formatted responses.
         </li>
       </ul>
 
@@ -144,7 +149,7 @@
         </li>
         <li>
           <code>GET /market/sentiment?symbol=AMZN</code> — Retrieves news
-          sentiment data for given ticker (positive, negative, neutral, etc.)
+          sentiment data for given ticker (very positive, positive, negative, very negative, neutral)
         </li>
         <li>
           <code>GET /market/predict?symbol=AMZN&amp;horizon=1d</code> —
@@ -152,7 +157,7 @@
         </li>
         <li>
           <code>GET /market/combined?symbol=AMZN</code> — (Planned) Combines
-          stock + sentiment models for next-day forecast
+          stock + sentiment models for X-day forecast
         </li>
       </ul>
 
