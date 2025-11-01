@@ -49,11 +49,9 @@
       </p>
       <h1 class="subtitle">Overview</h1>
       <p class="description">
-        In this project, the Product Design team is committed to the transformation of the existing Columbia Daily 
-        Spectator website into a mobile app. My involvement started during the project's 2.0 phase, which includes 
-        the design of pages beyond the core Journalism sections. My responsibility was the design and adaptation of 
-        the Podcasts section into a mobile app interface that prioritizes simplicity and user-friendliness. Additionally, 
-        I was tasked with incorporating a feature allowing for in-app podcast playback.
+        In this project, the Product Design team is transforming the existing Columbia Daily Spectator website into a mobile app.
+        For this iteration, I managed the design and delivery of the Podcasts section—defining MVP scope, aligning editorial teams, and
+        adapting the experience for small screens—while adding research-driven features to reduce friction and improve listen-through.
       </p>
 
       <h1 class="subtitle">Goals & Constraints</h1>
@@ -65,31 +63,25 @@
             <li>Increase podcast listen-through and retention by reducing redirect friction to external platforms (Spotify).</li>
           </ul>
         </li>
-        <li><strong>Constraints</strong>
-          <ul class="list">
-            <li>Existing back-end only supported embedded Spotify content at the time of design.</li>
-            <li>Limited engineering bandwidth for native playback; UX had to remain low-code friendly.</li>
-            <li>Four-week design sprint; minimal developer overlap.</li>
-          </ul>
-        </li>
       </ul>
 
 
       <h1 class="subtitle">Current Website Design</h1>
       <p class="description">
-        The current podcase section first shows a featured podcast. The website has 5 sections on the navigation bar. 
-        The first four listed are the sections of the podcast, while the last one is special edition page. 
-        Clicking on the sections with the arrows will result on the two images depicted to the right. 
-      </p>
+        The current podcast section first shows a featured podcast. The website has five sections in the navigation bar:
+        the first four are podcast sections and the last is a special edition page. Clicking on the sections with arrows
+        leads to the two screens shown to the right.
+</p>
       <img src="assets/podcast/webspec.png" class="img-fluid"/>
       <h1 class="subtitle">Research</h1>
+      
       <p class="description">
-        To gain understanding of how to curate the podcast page, we performed a <strong>competitive analysis </strong> on 
-        these three well-known platforms: Spotify, New York Times, and Apple Music. Through our research, we 
-        assessed which features would be beneficial to integrate into our app to make it as <strong> user friendly and 
-          intuitive</strong> as possible. One primary feature that we saw in all three apps was the pop-up at the bottom 
-        when the podcast is played in order for users to pause, play, skip forward, and play back. 
+        To shape the podcast experience, we ran a <strong>competitive analysis</strong> of Spotify, The New York Times, and Apple Podcasts and paired it with quick user interviews. 
+        A clear pattern showed up across all three: a persistent, bottom mini-player that keeps listeners in context. 
+        Our interviews also confirmed that redirecting to external apps was not prefered. 
+        Based on these insights, we prioritized an <strong>in-app playback MVP</strong> of the podcast (a mini-player with play/pause, skip forward, and rewind) to keep users on the page.
       </p>
+      
       <img src="assets/podcast/podcast_research.png" class="img-fluid"/>
       <h1 class="subtitle">Design Opportunities</h1>
       <p class="description">
@@ -113,7 +105,7 @@
         <li>Defined MVP scope balancing playback complexity against time and dev bandwidth.</li>
         <li>Led prioritization sessions with design and editorial teams; managed backlog via Trello.</li>
         <li>Wrote acceptance criteria for key user flows and defined qualitative success indicators.</li>
-        <li>Facilitated weekly check-ins and sprint retrospectives to maintain alignment.</li>
+        <li>Facilitated weekly check-ins between teams and sprint retrospectives to maintain alignment.</li>
       </ul>
 
 
@@ -126,13 +118,13 @@
           <img src="assets/podcast/podcast2.gif" class="img-fluid">
         </div>
         <div class="text">
-        <p class="description"> 
-          This is the prototype of the final design. The home page has one feature article that would change periodically
-          along with the four section pages. Clicking into any of the four section pages would then show a new page with
-          the description of the section at the top followed with the list podcasts. Clicking into one of the podcasts,
-          the transcript page is shown with the podcast being available to play in the app. Buttons to save or share the
-          podcast are conviently located at the top right corner.  
+
+        <p class="description">
+          This is the prototype of the final design. The home page highlights a rotating featured episode and links to the four section pages.
+          Each section page presents a short description followed by a list of episodes. Selecting an episode opens the transcript/audio page
+          with in-app playback and a mini-player for controls. Save and share actions are available at the top right.
         </p>
+
         </div>
       </div>
 
@@ -156,6 +148,5 @@
         </div>
       </div>
     </footer>
-  <script src="sparkles.js" defer></script>
   </body>
 </html>

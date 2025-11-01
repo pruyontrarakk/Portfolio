@@ -20,6 +20,7 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
+          <li><a href="./#timeline" id="timeline-button">timeline</a></li>
           <li><a href="./#research" id="research-button">cs projects</a></li>
           <li><a href="./#work" id="work-button">case studies</a></li>
         </ul>
@@ -29,14 +30,15 @@
 
     <div class="section__container hero" id="top">
       <div class="content">
-        <br>
-        <br>
-        <h1 class="title">Hi, I'm Pru!</h1><br>
+        <h1 class="title">Hi, I'm Pru!</h1>
         <div class="description typing-box lead" id="lead-box">
           <span class="sizer" aria-hidden="true">
-            I'm a <span class="highlight">computer science</span> major master's student at Columbia University concentrating in machine learning.
+            I'm a <span class="highlight">computer science</span> master's student at Columbia University concentrating in <span class="highlight">machine learning</span>.
             <br><br>
-            I'm interested in <span class="highlight">software engineering, product management, and design</span>, bridging technical insight with creative problem solving to build <span class="highlight">thoughtful, impactful products</span>.
+            I'm interested in <span class="highlight">software engineering, product management, and design</span>, bridging technical insight with creative problem solving to build thoughtful, impactful products.
+            <br><br>
+            My current and past projects span building reliable services, defining scope and metrics, and prototyping research-informed interfaces. 
+        
           </span>
           <span id="typed-desc"></span>
         </div>
@@ -44,10 +46,42 @@
 
       <div class="image">
         <img src="assets/common/pru.jpg" alt="Pru Yontrarak" />
-        <br>
       </div>
     </div>
 
+    <div data-section="timeline-start" style="position: absolute; visibility: hidden;"></div>
+    <h2 class="section-heading" id="timeline">Timeline</h2>
+    <hr>
+    <div class="timeline-container">
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">M.S. in Computer Science, concentration in machine learning</span> · <span class="timeline-org">Columbia University, Fu Foundation School of Engineering and Applied Science | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">Intro to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Sep 2024 - May 2025</div><div><span class="timeline-title">B.A. in Computer Science, Minor in Statistics</span> · <span class="timeline-org">Barnard College, Columbia University | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Sep 2023 - May 2025</div><div><span class="timeline-title">Product Manager</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate Research Assistant / Grader</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">Jan 2024 - May 2024</div><div><span class="timeline-title">Intro to Statistics Teaching Assistant</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content"><div class="timeline-date">May 2022 - Aug 2022</div><div><span class="timeline-title">UX Design Intern</span> · <span class="timeline-org">Wunderman Thompson (currently VML) | Bangkok, Thailand</span></div></div>
+      </div>
+    </div>
+    <div data-section="timeline-end" style="position: absolute; visibility: hidden;"></div>
+
+    <br><br>
+    <div data-section="research-start" style="position: absolute; visibility: hidden;"></div>
     <h2 class="section-heading" id="research">Computer Science Projects</h2>
     <hr>
     <!-- Research section -->
@@ -58,13 +92,13 @@
       <div class="content">
         <a href="stock.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">StatusCo</p>
+            <p class="title">Financial Stock Price Forecasting API</p>
             <hr><br>
             <p class="description1">
-              <i>Java · Spring Boot · REST APIs</i>
+              <i>Java · Spring Boot · Microservices · REST APIs · Testing · CI/CD</i>
               <br>
               <br>
-              Financial sentiment forecasting API integrating stock data and news sentiment via transformer models.
+              API that combines real-time stock data with news sentiment analysis, using prediction models to generate market price forecasts.
               <br>
               <br>
               <strong>read more</strong>
@@ -80,10 +114,10 @@
       <div class="content">
         <a href="foosball.html" class="rectangle_button">
           <div class="button_content">
-            <p class="title">Foosball RL</p>
+            <p class="title">Foosball Reinforcement Learning</p>
             <hr><br>
             <p class="description1">
-              <i>C++ · MuJoCo · Reinforcement Learning · OpenCV</i>
+              <i>Python · C++ · MuJoCo · Reinforcement Learning · OpenCV</i>
               <br>
               <br>
               A reinforcement learning system modeling foosball dynamics. Trained Truncated Quantile Critics (TQC) agents in a custom MuJoCo environment.
@@ -137,8 +171,10 @@
       </div>
     </div>
     </div>
+    <div data-section="research-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
+    <div data-section="work-start" style="position: absolute; visibility: hidden;"></div>
     <h2 class="section-heading" id="work">Case Studies</h2>
     <hr>
     <br>
@@ -210,6 +246,7 @@
       </div>
     </div>
     </div>
+    <div data-section="work-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
 
@@ -217,6 +254,7 @@
       (function () {
         // active link state (unchanged)
         var links = {
+          timeline: document.getElementById('timeline-button'),
           research: document.getElementById('research-button'),
           work: document.getElementById('work-button'),
           profile: document.getElementById('profile-button')
@@ -229,18 +267,37 @@
         var observer = new IntersectionObserver(function(entries){
           entries.forEach(function(entry){
             if (entry.isIntersecting) {
-              var id = entry.target.getAttribute('id');
-              if (id === 'top') setActive(null);
-              else if (id && links[id]) setActive(id);
+              var sectionAttr = entry.target.getAttribute('data-section');
+              if (sectionAttr) {
+                var sectionName = sectionAttr.replace('-start', '').replace('-end', '');
+                if (sectionName && links[sectionName]) setActive(sectionName);
+              } else {
+                var id = entry.target.getAttribute('id');
+                if (id === 'top') setActive(null);
+                else if (id && links[id]) setActive(id);
+              }
             }
           });
         }, { root: null, rootMargin: "-45% 0px -45% 0px", threshold: 0 });
-        ['top','research','work','profile'].forEach(function(id){
+        ['top','timeline','research','work','profile'].forEach(function(id){
           var el = document.getElementById(id);
+          if (el) observer.observe(el);
+        });
+        // Also observe sentinel elements
+        ['timeline-start','timeline-end','research-start','research-end','work-start','work-end'].forEach(function(section){
+          var el = document.querySelector('[data-section="' + section + '"]');
           if (el) observer.observe(el);
         });
         var hash = (location.hash || '').replace('#','');
         if (hash && links[hash]) setActive(hash); else setActive(null);
+
+        // Listen for hash changes when clicking nav links
+        window.addEventListener('hashchange', function() {
+          var newHash = (location.hash || '').replace('#','');
+          if (newHash && links[newHash]) {
+            setActive(newHash);
+          }
+        });
 
       // --- Typing animation (single inline paragraph, no indent) ---
       var box = document.getElementById('lead-box');
@@ -295,11 +352,34 @@
 
       // Removed downscroll nudge feature per request
 
+      // Timeline reveal animation
+      (function() {
+        var items = document.querySelectorAll('.timeline-item');
+        if (items.length === 0) return;
+        
+        var itemObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry, index) {
+            if (entry.isIntersecting) {
+              setTimeout(function() {
+                entry.target.classList.add('visible');
+              }, index * 100); // Stagger animation
+              itemObserver.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+        
+        items.forEach(function(item) {
+          itemObserver.observe(item);
+        });
+      })();
+
       })();
     </script>
     <script src="background.js"></script>
     <script src="labels-hover-stars.js" defer></script>
-    <script src="sparkles.js" defer></script>
 
     <footer>
       <div class="footer__content">
