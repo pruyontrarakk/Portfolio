@@ -7,7 +7,7 @@
   --accent-color: #d494b1;
   --secondary-color: #b4aabc;
   --text-dark: #1f2937;
-  --text-light: #5a5562;
+  --text-light: #4a4452;
   --extra-light: #fdfcff;
   --max-width: 1200px;
   --surface: #f7f3fc;
@@ -135,8 +135,8 @@ footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right:
 }
 
 .description  { line-height: 1.5rem; color: var(--text-light); margin-bottom: 2rem; }
-.description1 { line-height: 1.5rem; color: #b4aabc; margin-bottom: 2rem; text-align: left; }
-.description2 { line-height: 1.5rem; color: #b4aabc; margin-bottom: 2rem; text-align: right; }
+.description1 { line-height: 1.5rem; color: #7a7489; margin-bottom: 2rem; text-align: left; }
+.description2 { line-height: 1.5rem; color: #7a7489; margin-bottom: 2rem; text-align: right; }
 /* Default italicized text color */
 .section-box i { color: var(--text-light); }
 /* Dark grey for technology keywords (first italic in description) - matches description hover color */
@@ -153,7 +153,8 @@ footer { background: #f7f3fc; margin-top: 3rem; position: fixed; left: 0; right:
 }
 .section-box:hover strong,
 .section-box a:hover strong {
-  font-weight: 700; /* bolder on hover */
+  font-weight: 800; /* bolder on hover */
+  font-size: 1.05em;
 }
 
 /* Nicer lead paragraph */
@@ -525,7 +526,7 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
     box-shadow: 0 8px 24px rgba(78,53,101,0.12);
     opacity: 0.98;
   }
-  .section-box:hover .title { color: var(--primary-color-dark); }
+  .section-box:hover .title { color: var(--primary-color-dark); font-weight: 450; }
   .section-box:hover .description1 { color: #5a5562; }
   .section-box:hover .image img { transform: scale(1.05); }
   /* Remove tilt on detail page inner elements */

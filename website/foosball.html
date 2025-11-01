@@ -22,11 +22,16 @@
     <nav>
       <div class="nav__content">
         <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
-        <label for="check" class="checkbox">
-          <i class="ri-menu-line"></i>
+        <label for="check" class="checkbox" aria-label="Toggle navigation">
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
+          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
           <li><a href="index.html#research" id="research-button">cs projects</a></li>
           <li><a href="index.html#work" id="work-button" >case studies</a></li>
         </ul>
@@ -45,13 +50,13 @@
           <br>
           <strong>Duration</strong>: September 2025 - Present
           <br>
-          <strong>Stack</strong>: Python, C++, MuJoCo, TQC, SAC, OpenCV, YOLOv11, NumPy, PyTorch
+          <strong>Stack</strong>: Python, C++, MuJoCo, TQC, SAC, OpenCV, YOLOv11, NumPy, PyTorch, GCP
           <br> 
         </p>
 
-        <h1>SWE Highlights</h1>
+        <h1>SWE Summary</h1>
         <ul>
-        <li><strong>Algorithm engineering:</strong> Implemented TQC (distributional critics with quantile truncation) and revived SAC (Soft Actor-Critic) from existing baseline codebase.</li>
+        <li><strong>Algorithm integration:</strong> Implemented TQC (distributional critics with quantile truncation) and revived SAC (Soft Actor-Critic) from existing baseline codebase.</li>
         <li><strong>Data pipeline:</strong> Collected checkerboard and gameplay frames; estimated intrinsics/extrinsics (K, rvec/tvec) with OpenCV; undistorted the gameplay video and extracted per-frame ball state (position/velocity) from our recordings.</li>
         <li><strong>GitHub:</strong> <a href="https://github.com/pruyontrarakk/FoosballSimulatorProject" target="_blank" rel="noopener noreferrer">https://github.com/pruyontrarakk/FoosballSimulatorProject</a></li>
         </ul>
@@ -59,34 +64,24 @@
 
         <h1 class="subtitle">Objective</h1>
         <p class="description">
-          This project explores reinforcement learning for continuous control within a custom foosball simulation built in MuJoCo.
+          This project explores reinforcement learning for continuous control within a foosball simulation built in MuJoCo (Advanced Physics Simulation).
           We trained agents using Truncated Quantile Critics (TQC) and benchmarked against Soft Actor-Critic (SAC) from an external codebase to study policy robustness.
           We want to build a MuJoCo foosball simulation grounded in real video, then train TQC agents that outperform a SAC baseline in interception rate and control stability.
         </p>
 
         <h1 class="subtitle">Why TQC?</h1>
         <p class="description">
-            Both SAC and TQC are continuous-control reinforcement learning algorithms. However, TQC builds on SAC by using quantile critics to reduce Q-value overestimation and improve stability in noisy, real-world-like environments, such as foosball.
-        </p>
-
-
-        <h1 class="subtitle">Timeline</h1>
-        <ul class="methods">
-          <li><strong>Weeks 1-2:</strong> Implement minimal MuJoCo foosball environment (ball + single rod per side). Set up video capture pipeline; collect initial ball trajectory dataset.</li>
-          <li><strong>Weeks 3-4:</strong> Begin training RL agents with continuous actions using TQC. Troubleshoot and refine proposal. Run SAC code from existing paper code (where available).</li>
-          <li><strong>Week 5 (Milestone 1):</strong> Deliver functional simulation environment, preliminary TQC model, and training results. Submit refined proposal.</li>
-          <li><strong>Weeks 6-7:</strong> Extend environment to multiple rods; calibrate ball physics. Continue experiments with TQC and domain randomization with extended environment.</li>
-          <li><strong>Week 8:</strong> Collect additional Lerner Hall data; evaluate trained agents against baselines from existing paper with TQC. Improve training stability.</li>
-          <li><strong>Week 9 (Milestone 2):</strong> Deliver robust continuous-control agents + extended environment. Present evaluation results (win rates, intercepts, sim-vs-real comparison). Demo video of trained agent.</li>
-          <li><strong>Weeks 10-11:</strong> Finalize experiments and polish deliverables. Record final demo videos (agent-vs-agent). Write final report and prepare presentation.</li>
-        </ul>
+            Both SAC and TQC are continuous-control reinforcement learning algorithms. 
+            However, TQC replaces scalar Q-value estimates with quantile distributions and discards the highest quantiles when computing targets, 
+            statistically filtering out overestimated samples to produce smoother and more conservative value predictions.
+            This is important because in foosball, the ball's movements are stochastic and the environment is noisy.
 
         <h1 class="subtitle">Implementation Progress</h1>
         <ul class="methods">
-            <li><strong>Baseline environment (external environment):</strong> Compiled and ran the public RoboFoosball codebase; no changes beyond configuration and training harness integration.</li>
-            <li><strong>SAC baseline (external environment):</strong> Re-trained from the baseline repo to establish control metrics.</li>
-            <li><strong>TQC training (external environment):</strong> Implemented TQC and trained on the baseline environment for parity.</li>
-            <li><strong>Data collection (for our own environment):</strong> Overhead videos on a physical table with varied play styles; initial calibration and state extraction pipeline stood up.</li>
+            <li><strong>Baseline environment (external environment):</strong> Compiled and ran the public RoboFoosball codebase to get MuJoCo environment.</li>
+            <li><strong>SAC baseline (external environment):</strong> Train from the baseline codebase environment to establish control metrics.</li>
+            <li><strong>TQC training (external environment):</strong> Implemented TQC and trained on the baseline codebase environment.</li>
+            <li><strong>Data collection (for our own environment):</strong> Overhead videos on a physical table with varied play styles; initial calibration and ball position/velocity extraction pipeline for foosball data.</li>
         </ul>
 
 
@@ -96,9 +91,9 @@
             <li><strong>TQC on baseline:</strong> Successfully trained on external codebase environment.</li>
             <li><strong>Calibration:</strong> RMS reprojection error 4.56 px; mean error 0.59 px, which is adequate for plane mapping.</li>
             <li><strong>Camera intrinsics matrix:</strong><br>
-            <code>K = [2665.6, 0.0, 1577.0<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;0.0, 2693.4, 2260.7<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;0.0, 0.0, 1.0]</code>
+            <pre style="display: inline-block; margin: 0.5rem 0; font-family: monospace; font-size: 0.9em;"><code>K = [2665.6,    0.0, 1577.0
+     0.0, 2693.4, 2260.7
+     0.0,    0.0,    1.0]</code></pre>
             </li>
         </ul>
 
@@ -106,10 +101,9 @@
         <h1 class="subtitle">Next Steps</h1>
       <ul class="methods">
         <li><strong>Build & validate our own MuJoCo environment:</strong> encode table geometry, friction/restitution; implement multi-rod control; add reset invariants.</li>
-        <li><strong>Finalize data:</strong> re-collect higher-contrast footage; lock calibration/homography; export clean trajectory CSVs; spot-check rollout realism.</li>
-        <li><strong>Train in our own environment:</strong> run matched TQC and SAC sweeps; report intercept rate, time-to-intercept, resets/1k steps, and action smoothness.</li>
+        <li><strong>Finalize data:</strong> re-collect higher-contrast footage; lock calibration/homography; utilize extracted ball position/velocity data for training.</li>
+        <li><strong>Train in our own environment:</strong> run matched TQC and SAC in our own environment with extracted ball position/velocity data; report quantitative metrics.</li>
       </ul>
-
 
 
 

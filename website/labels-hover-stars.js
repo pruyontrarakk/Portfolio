@@ -14,7 +14,7 @@
   function randomItem(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
   function randomStarsColored(){
     starCounter++;
-    var count = randomInt(1,3); // ensure at least one star
+    var count = randomInt(0,2); // ensure at least one star
     var out = '';
     for (var i=0;i<count;i++){
       var star = randomItem(STAR_SETS);

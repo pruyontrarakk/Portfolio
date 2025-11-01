@@ -21,11 +21,16 @@
     <nav>
       <div class="nav__content">
         <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
-        <label for="check" class="checkbox">
-          <i class="ri-menu-line"></i>
+        <label for="check" class="checkbox" aria-label="Toggle navigation">
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
+          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
           <li><a href="index.html#research" id="research-button">cs projects</a></li>
           <li><a href="index.html#work" id="work-button" >case studies</a></li>
         </ul>
@@ -48,7 +53,7 @@
         <br> 
       </p>
 
-      <h1>SWE Highlights</h1>
+      <h1>SWE Summary</h1>
         <ul class="methods" style="margin-top:0.5rem;">
           <li><strong>Scalable experiment framework:</strong> modular runners for RS, ES, MAP-Elites (+mortality), FI-2Pop, and FI-2Pop with MAP-Elites.</li>
           <li><strong>Performance:</strong> Python <code>multiprocessing</code>, batched rollouts (≈<strong>6.7×</strong> output speedup).</li>
@@ -60,9 +65,9 @@
         <h1 class="subtitle">Overview</h1>
           <p class="description">
             Algorithms typically try to minimize errors and failures. However, this research seeks to challenge this paradigm by investigating the
-            potential advantages of failure. We explore <strong>failure-preserving evolutionary algorithms</strong> in the
+            potential advantages of failure. We explore failure-preserving evolutionary algorithms in the
             context of the Lunar Lander game environment, where the purple lander is the agent. 
-            Variants of <strong>FI-2Pop</strong> in the Lunar Lander environment are tested whether preserving “failed”
+            Variants of FI-2Pop in the Lunar Lander environment are tested whether preserving “failed”
             individuals improves evolutionary search, revealing reward-hacking behaviors. 
           </p>
           <img src="assets/research2/lander.png" class="img-fluid" style="max-width: 400px; width: 100%; margin: .5rem 0;" alt="Lunar Lander" />
@@ -97,8 +102,8 @@
 
       <h1 class="subtitle">Key Contributions</h1>
       <ul class="methods">
-        <li>Added <strong>mortality</strong> to MAP-Elites; implemented <strong>heap-based parent selection</strong> for ES; built reproducible visualization pipelines.</li>
-  <li>Parallelized evaluations with Python <code>multiprocessing</code>, achieving approximately <strong>6.7×</strong> faster trial throughput.</li>
+        <li>Added mortality to MAP-Elites; implemented heap-based parent selection for ES; built reproducible visualization pipelines.</li>
+  <li>Parallelized evaluations with Python <code>multiprocessing</code>, achieving approximately 6.7× faster trial throughput.</li>
   <li>Validated RS/ES/MAP-Elites baselines against prior results to ensure correctness.</li>
       </ul>
 

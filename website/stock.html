@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    <title>StatusCo — Pru Yontrarak</title>
+    <title>Financial Stock Price Forecasting API — Pru Yontrarak</title>
 
     <style>
       .section__work {
@@ -37,11 +37,16 @@
     <nav>
       <div class="nav__content">
         <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
-        <label for="check" class="checkbox">
-          <i class="ri-menu-line" aria-hidden="true"></i>
+        <label for="check" class="checkbox" aria-label="Toggle navigation">
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
+          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
           <li><a href="index.html#research" id="research-button">cs projects</a></li>
           <li><a href="index.html#work" id="work-button">case studies</a></li>
         </ul>
@@ -49,16 +54,16 @@
     </nav>
 
     <main class="section__work">
-      <h1 class="title">StatusCo: A Financial Sentiment Analyzer API</h1>
+      <h1 class="title">Financial Stock Price Forecasting API</h1>
       <p class="description note">
         <strong>Position</strong>: Backend Engineer, Software Engineer, Project Manager<br>
         <strong>Type</strong>: Team project (in progress)<br>
         <strong>Duration</strong>: September 2025 - Present<br>
-        <strong>Stack</strong>: Java, Spring Boot, GitHub Actions, Postman<br>
-        <strong>Skills</strong>: API design, systems architecture, CI/CD </span>
+        <strong>Stack</strong>: Java, Python, Spring Boot, GitHub Actions, Postman<br>
+        <strong>Skills</strong>: API design, systems architecture, CI/CD, Machine Learning, Natural Language Processing </span>
       </p>
 
-      <h1>SWE Highlights</h1>
+      <h1>SWE Summary</h1>
         <ul class="methods">
         <li><strong>Service architecture:</strong> Java 21 + Spring Boot microservice with <code>StockDataService</code>, <code>NewsDataService</code>, <code>ForecastDataService</code>, and a <code>CompositeController</code> facade.</li>
         <li><strong>API design:</strong> Clear contracts for <code>/market/daily</code>, <code>/market/sentiment</code>, <code>/market/predict</code>, and planned <code>/market/combined</code>; JSON responses and CORS support.</li>
@@ -70,7 +75,7 @@
 
       <h1 class="subtitle">Objective</h1>
       <p class="description">
-        StatusCo is a Java-based
+        Our Financial Stock Price Forecasting API is a Java-based
         REST API that forecasts short-term stock movements by combining
         <em>quantitative</em> (historical prices) and <em>qualitative</em>
         (market sentiment) signals. The system ingests market data from
@@ -81,10 +86,10 @@
         and next-day combined prediction.
       </p>
 
-      <h1 class="subtitle">Why This API Product?</h1>
+      <h1 class="subtitle">Why This API?</h1>
       <p class="description">
         While components like sentiment APIs and stock price feeds already exist, a single developer-facing platform that merges price data and sentiment analytics into one system and produces predictive outputs rather than just raw scores is uncommon. 
-        StatusCo fills that gap by unifying both signals into a reproducible forecasting API with caching, standardized schemas, and modular endpoints for analytics and scalability.
+        Our Financial Stock Price Forecasting API fills that gap by unifying both signals into a reproducible forecasting API with caching, standardized schemas, and modular endpoints for analytics and scalability.
       </p>
 
       <h1 class="subtitle">Methods</h1>
