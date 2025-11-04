@@ -28,8 +28,10 @@
       /* Code elements in list items should flow naturally and wrap */
       ul li code { display: inline; white-space: normal; }
       code { background: rgba(0,0,0,0.05); padding: .1rem .3rem; border-radius: 4px; }
+      :root { --text:#222; --muted:#555; --line: rgba(0,0,0,.1); }
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
-      .kpi { border: 1px solid rgba(0,0,0,.1); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
+      .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
+      .kpi strong { display:block; color: var(--text); }
       .skills { color:#666; font-style: italic; margin-top:.25rem; }
     </style>
   </head>
@@ -63,14 +65,25 @@
         <strong>Skills</strong>: API design, systems architecture, CI/CD, Machine Learning, Natural Language Processing </span>
       </p>
 
-      <h1>SWE Summary</h1>
-        <ul class="methods">
-        <li><strong>Service architecture:</strong> Java 21 + Spring Boot microservice with <code>StockDataService</code>, <code>NewsDataService</code>, <code>ForecastDataService</code>, and a <code>CompositeController</code> facade.</li>
-        <li><strong>API design:</strong> Clear contracts for <code>/market/daily</code>, <code>/market/sentiment</code>, <code>/market/predict</code>, and planned <code>/market/combined</code>; JSON responses and CORS support.</li>
-        <li><strong>Caching & freshness:</strong> JSON cache and <code>?force=true</code> override; atomic reads/writes to prevent partial files.</li>
-        <li><strong>Testing & docs:</strong> Swagger, Postman, and curl; Maven build with unit tests, cache bypass, and parsing.</li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/pruyontrarakk/4156-P2KM" target="_blank" rel="noopener noreferrer">https://github.com/pruyontrarakk/4156-P2KM</a></li>
-        </ul>
+      <h1>Summary</h1>
+      <div class="kpis">
+        <div class="kpi">
+          <strong>Microservice architecture</strong>
+          StockDataService, NewsDataService, ForecastDataService with CompositeController.
+        </div>
+        <div class="kpi">
+          <strong>Multi-model pipeline</strong>
+          Combines quantitative (price) and qualitative (sentiment) models for forecasting.
+        </div>
+        <div class="kpi">
+          <strong>Cache & freshness</strong>
+          JSON cache with TTL validation: 24h for stock data, 6h for sentiment; atomic reads/writes.
+        </div>
+        <div class="kpi">
+          <strong>RESTful API</strong>
+          Endpoints for daily prices, sentiment analysis, and predictions with JSON responses.
+        </div>
+      </div>
 
 
       <h1 class="subtitle">Objective</h1>

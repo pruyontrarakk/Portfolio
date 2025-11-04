@@ -50,40 +50,43 @@
     </div>
 
     <div data-section="timeline-start" style="position: absolute; visibility: hidden;"></div>
-    <h2 class="section-heading" id="timeline">Timeline</h2>
-    <hr>
-    <div class="timeline-container">
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">M.S. in Computer Science, ML concentration</span> · <span class="timeline-org">Columbia University, Fu Foundation School of Engineering and Applied Science | New York, NY</span></div></div>
+    <section class="timeline-section">
+      <h2 class="section-heading" id="timeline">Timeline</h2>
+      <hr>
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">M.S. in Computer Science, ML concentration</span> · <span class="timeline-org">Columbia University, Fu Foundation School of Engineering and Applied Science | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present; Jan 2024 - May 2024</div><div><span class="timeline-title">Introduction to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">Sep 2021 - May 2025</div><div><span class="timeline-title">B.A. in Computer Science, Statistics Minor</span> · <span class="timeline-org">Barnard College, Columbia University | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">Sep 2023 - May 2025</div><div><span class="timeline-title">Product Manager</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate Research Assistant</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">May 2022 - Aug 2022</div><div><span class="timeline-title">UX Design Intern</span> · <span class="timeline-org">Wunderman Thompson (currently VML) | Bangkok, Thailand</span></div></div>
+        </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present; Jan 2024 - May 2024</div><div><span class="timeline-title">Intro to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">Sep 2021 - May 2025</div><div><span class="timeline-title">B.A. in Computer Science, Statistics Minor</span> · <span class="timeline-org">Barnard College, Columbia University | New York, NY</span></div></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">Sep 2023 - May 2025</div><div><span class="timeline-title">Product Manager</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate Research Assistant</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-content"><div class="timeline-date">May 2022 - Aug 2022</div><div><span class="timeline-title">UX Design Intern</span> · <span class="timeline-org">Wunderman Thompson (currently VML) | Bangkok, Thailand</span></div></div>
-      </div>
-    </div>
+    </section>
     <div data-section="timeline-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br>
     <div data-section="research-start" style="position: absolute; visibility: hidden;"></div>
-    <h2 class="section-heading" id="research">CS Projects</h2>
-    <hr>
-    <!-- Research section -->
-    <br>
-    <div class="research-grid">
+    <section class="cs-projects-section">
+      <h2 class="section-heading" id="research">CS Projects</h2>
+      <hr>
+      <!-- Research section -->
+      <br>
+      <div class="research-grid">
     <!-- StatusCo card -->
     <div class="section__container1 section-box">
       <div class="content">
@@ -106,6 +109,28 @@
       <div class="image"></div>
     </div>
 
+    <!-- Flight Optimization card -->
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="flight-optimization.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">Multi-City Optimized Flight Planner</p>
+            <hr><br>
+            <p class="description1">
+              <i>Python · FastAPI · Optimization</i>
+              <br>
+              <br>
+              Constraint-based flight planning API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
+              <br>
+              <br>
+              <strong>read more</strong>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="image"></div>
+    </div>
+
     <!-- Foosball RL card -->
     <div class="section__container1 section-box">
       <div class="content">
@@ -114,7 +139,7 @@
             <p class="title">Foosball Reinforcement Learning</p>
             <hr><br>
             <p class="description1">
-              <i>Python · C++ · MuJoCo · Reinforcement Learning · OpenCV</i>
+              <i>Python · C++ · MuJoCo · Reinforcement Learning · GCP · OpenCV</i>
               <br>
               <br>
               A reinforcement learning system modeling foosball dynamics. Trained Truncated Quantile Critics (TQC) agents in a custom MuJoCo environment.
@@ -157,7 +182,7 @@
               <i>Python · OpenAI Gymnasium API · Evolutionary Algorithms · Parallel Processing</i>
               <br>
               <br>
-              Tested FI-2Pop variants in the Lunar Lander environment to examine how preserving “failed” individuals affects search efficiency and reveals reward-hacking behaviors.
+              Tested FI-2Pop variants in the Lunar Lander environment to examine how preserving "failed" individuals affects search efficiency and reveals reward-hacking behaviors.
               <br>
               <br>
               <br>
@@ -167,16 +192,18 @@
         </a>
       </div>
     </div>
-    </div>
+      </div>
+    </section>
     <div data-section="research-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
     <div data-section="work-start" style="position: absolute; visibility: hidden;"></div>
-    <h2 class="section-heading" id="work">Case Studies</h2>
-    <hr>
-    <br>
-    <!-- Work section -->
-    <div class="case-studies-grid">
+    <section class="case-studies-section">
+      <h2 class="section-heading" id="work">Case Studies</h2>
+      <hr>
+      <br>
+      <!-- Work section -->
+      <div class="case-studies-grid">
     <div class="section__container1 section-box">
       <div class="content">
         <a href="shaft.html" class="rectangle_button">
@@ -242,7 +269,8 @@
         <img src="assets/wt/mainwt.png" alt="WT preview"/>
       </div>
     </div>
-    </div>
+      </div>
+    </section>
     <div data-section="work-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
@@ -315,7 +343,7 @@
           .trim();
 
         var i = 0;
-        var speed = 25;
+        var speed = 27;
 
         // Inline, blinking cursor right after the period
         var cursor = document.createElement('span');
