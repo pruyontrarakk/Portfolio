@@ -62,7 +62,8 @@ nav {
   padding: 0.9rem 1rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-nav .logo a { font-size: 1.5rem; font-weight: 600; color: #2d1f3d; transition: .3s; }
+nav .logo a { font-size: 1.5rem; font-weight: 600; color: #2d1f3d; transition: .3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+nav .logo a .name { font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: #1a1a1a; }
 nav .checkbox { display: none; }
 nav input { display: none; }
 nav .checkbox i { font-size: 2rem; color: #2d1f3d; cursor: pointer; }

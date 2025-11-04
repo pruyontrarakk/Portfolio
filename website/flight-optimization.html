@@ -16,10 +16,8 @@
         padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
         margin: 0 auto;
       }
-      .note { background: rgba(0,0,0,0.03); padding: .75rem 1rem; border-radius: 10px; }
-      h1.title { margin: .25rem 0 .5rem; }
-      h1.subtitle { margin: 1.25rem 0 .35rem; font-size: 1.35rem; }
-      p.description { color: var(--muted); }
+      .note { background: transparent; border: 1px solid var(--line); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
+      /* Match shared page typography (use global styles) */
       /* Bullets */
       ul.methods, ul.feature-list, ul.api-list, ul.next-steps, ul.cache-list, ul.algo-list, ul.meta-list, ul.roadmap-list {
         list-style-position: outside;
@@ -38,12 +36,16 @@
       .hr { height: 1px; background: var(--line); margin: 1rem 0; }
       .skills { color:#666; font-style: italic; margin-top:.25rem; }
       a.kicker { text-decoration: none; border-bottom: 1px solid currentColor; }
+      /* Prominent top-level buttons */
+      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
+      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
     </style>
   </head>
   <body>
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
+        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯<span class="name"> Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span><span></span><span></span>
@@ -68,6 +70,10 @@
         <strong>Skills</strong>: API design, caching, optimization, constraint modeling, BFS search, caching, UI
       </p>
 
+      <div class="cta-row">
+        <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">Live Website</a>
+      </div>
+
       <h1>Summary</h1>
       <div class="kpis">
         <div class="kpi">
@@ -82,7 +88,7 @@
           <strong>BFS reachability</strong>
           Supports both direct and indirect flights in real time (no offline pre-processing).
         </div>
-        <a href="#" class="kpi">
+        <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="kpi">
           <strong>Deployment</strong>
           FastAPI backend deployed with Uvicorn; React frontend served via static hosting.
         </a>
@@ -102,8 +108,8 @@
 
       <h1 class="subtitle">Algorithms</h1>
       <ul class="algo-list">
-        <li><strong>Greedy baseline:</strong> We tried greedy first but it didn’t work out because it’s a local minima and that may not work out for the rest of the flight planning legs.</li>
-        <li><strong>Top-K + Beam Search (current):</strong> “It chooses the cheapest <em>K</em> prices (already sorted by price); then it chooses if there is a tie by taking the earliest arrival time.”
+        <li><strong>Greedy baseline:</strong> Rejected due to local-minima behavior; produced suboptimal downstream legs that we not always feasible given user travel time constraint.</li>
+        <li><strong>Top-K nearest neighbors + Beam Search (current):</strong> Chooses the cheapest <em>K</em> legs (sorted by price) and breaks ties by earliest arrival time.
           <ul>
             <li><strong>K:</strong> number of cheapest candidate legs to consider at each step (per alias-expanded O/D).</li>
             <li><strong>BEAM:</strong> beam width (keeps BEAM best partial sequences per layer).</li>
@@ -121,16 +127,16 @@
 
       <h1 class="subtitle">Cache</h1>
       <ul class="cache-list">
-        <li>We cache the past 24 hour (timeline cache, 24 TTL) data currently per 1 request backend session.</li>
-        <li><strong>Optimization 1 to the caching:</strong> Since there are so many airports where there are no connections, and once we keep calling the API 3 times from consecutive dates, then we stop calling the connection and move on — approximately 30% speed up.</li>
-        <li>Populate data we fetch with the meta data (store basic diagnostics alongside prices).</li>
+        <li>Caches the past 24 hours of timeline data per backend session (TTL 24h). 24 hour is currently a placeholder; it will be replaced with dynamic TTL that matches external API.</li>
+        <li><strong>Optimization:</strong> Skip airports with no connections after 3 consecutive no‑connection days (~30% speedup).</li>
+        <li>Attaches basic diagnostics alongside prices in cached payloads.</li>
       </ul>
 
       <h1 class="subtitle">Reachability Gate</h1>
       <ul class="meta-list">
-        <li>We are not pre-processing the data, we are doing it in real time.</li>
-        <li>It is breadth first search. The data we get from the connection map (what airports have connections) supports indirect AND direct flights.</li>
-        <li>This is BFS because it goes through all the pairs to see if the connection is possible. Important because we want to support connection flights vs no connection (implement selection in future with front end).</li>
+        <li>No offline preprocessing, so the reachability is computed in real time.</li>
+        <li>Breadth-first search over a connection map supports both direct and multi-leg routes.</li>
+        <li>BFS explores airport pairs layer-by-layer to determine connectivity, enabling reliable detection of transfer paths.</li>
       </ul>
 
       <h1 class="subtitle">Key Features</h1>
@@ -140,7 +146,7 @@
         <li><strong>Interactive frontend:</strong> React UI to create, submit, and visualize candidate itineraries; tie-breakers surfaced (earliest arrival).</li>
       </ul>
 
-      <h1 class="subtitle">Roadmap</h1>
+      <h1 class="subtitle">Next Steps</h1>
       <ul class="roadmap-list">
         <li>Implement optimization preference in the future (e.g., price vs. time vs. stops).</li>
         <li>We need to figure out a smarter way to reduce the API call; we don’t want to rely on this API in the future (do web scraping to Google Flights).</li>

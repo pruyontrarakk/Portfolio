@@ -16,12 +16,24 @@
         padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
         margin: 0 auto;
       }
+      .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
+      :root { --text:#222; --muted:#555; --line: rgba(0,0,0,.1); }
+      .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
+      .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
+      .kpi strong { display:block; color: var(--text); }
+      .kpi .subtle { color:#666; font-weight: 500; }
+      a.kpi { text-decoration: none; display: block; color: inherit; transition: background-color 0.2s, border-color 0.2s; }
+      a.kpi:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.15); cursor: pointer; }
+      /* Prominent top-level GitHub button */
+      .cta-row { margin: .5rem 0 1rem; }
+      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
+      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
     </style>
   </head>
   <body>
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯</a></div>
+        <div class="logo" id="home-button"><a href="index.html#top">𐔌՞. .՞𐦯<span class="name"> Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span>
@@ -54,12 +66,22 @@
           <br> 
         </p>
 
-        <h1>SWE Summary</h1>
-        <ul>
-        <li><strong>Algorithm integration:</strong> Implemented TQC (distributional critics with quantile truncation) and revived SAC (Soft Actor-Critic) from existing baseline codebase.</li>
-        <li><strong>Data pipeline:</strong> Collected checkerboard and gameplay frames; estimated intrinsics/extrinsics (K, rvec/tvec) with OpenCV; undistorted the gameplay video and extracted per-frame ball state (position/velocity) from our recordings.</li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/pruyontrarakk/FoosballSimulatorProject" target="_blank" rel="noopener noreferrer">https://github.com/pruyontrarakk/FoosballSimulatorProject</a></li>
-        </ul>
+        <div class="cta-row">
+          <a href="https://github.com/pruyontrarakk/FoosballSimulatorProject" target="_blank" rel="noopener noreferrer" class="cta-btn">GitHub Repository</a>
+        </div>
+
+        <h1>Summary</h1>
+        <div class="kpis">
+          <div class="kpi">
+            <strong>Algorithm integration</strong>
+            Implemented TQC (distributional critics with quantile truncation) and revived SAC (Soft Actor-Critic) from existing baseline codebase.
+          </div>
+          <div class="kpi">
+            <strong>Data pipeline</strong>
+            Calibration + undistortion + ball-state extraction (OpenCV) from real gameplay footage.
+          </div>
+          
+        </div>
 
 
         <h1 class="subtitle">Objective</h1>
@@ -75,6 +97,13 @@
             However, TQC replaces scalar Q-value estimates with quantile distributions and discards the highest quantiles when computing targets, 
             statistically filtering out overestimated samples to produce smoother and more conservative value predictions.
             This is important because in foosball, the ball's movements are stochastic and the environment is noisy.
+
+        <h1 class="subtitle">Data Pipeline Details</h1>
+        <ul class="methods">
+            <li><strong>Calibration:</strong> Collected checkerboard frames; estimated camera intrinsics/extrinsics (<code>K</code>, <code>rvec</code>/<code>tvec</code>) with OpenCV.</li>
+            <li><strong>Undistortion:</strong> Applied lens undistortion to gameplay video using estimated parameters.</li>
+            <li><strong>Ball state extraction:</strong> Computed per‑frame ball position and velocity from recordings.</li>
+        </ul>
 
         <h1 class="subtitle">Implementation Progress</h1>
         <ul class="methods">
