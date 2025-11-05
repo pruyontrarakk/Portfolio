@@ -9,6 +9,13 @@
     "#b4aabc",
     "#6a5acd"
   ];
+  var isProDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isProDark) {
+    BUNNY_SETS = [];                       // no bunnies
+    STAR_SETS = ["•","✦"];                 // minimal marks
+    COLORS = ["#c7cfda","#9bb4ff","#8aa2c9"]; // neutral, low-sat
+  }
+
   var starCounter = 0; // track star generations
   function randomInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min; }
   function randomItem(arr){ return arr[Math.floor(Math.random()*arr.length)]; }

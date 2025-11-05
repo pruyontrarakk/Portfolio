@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;300;400;500&family=Inter:wght@100..900&display=swap");
+/* Ultra-thin nav/headline font for Professional mode */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap");
 
 :root {
   --primary-color: #4e3565;
@@ -122,13 +126,20 @@ footer {
 }
 
 /* Hero spacing under fixed nav */
-.section__container.hero { 
-  padding-top: calc(var(--nav-height) + 3rem); 
-  padding-bottom: 0; 
-  min-height: auto;
-  gap: 1rem;
-  align-items: start;
+/* HERO: fill viewport (minus fixed nav + footer) and center vertically */
+.section__container.hero{
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--nav-height) + 0.25rem) 1rem 1rem 1rem; /* smaller top padding */
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-areas: "content image";
+  gap: 1.5rem;
+  place-items: center;  /* vertical + horizontal centering */
 }
+
+
 .hero { padding-top: calc(var(--nav-height) + 3rem); padding-bottom: 0; }
 /* Hero content spacing */
 .hero .content { padding-top: 0; padding-bottom: 0; justify-content: flex-start; }
@@ -175,6 +186,24 @@ footer {
   font-size: 1.05em;
 }
 
+/* Smaller, crisper hero intro */
+#top .title{
+  font-size: clamp(1.25rem, 1rem + 0.9vw, 1.7rem);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+/* Intro paragraph size ↓ and width ↓ */
+#top .description.lead{
+  font-size: clamp(0.88rem, 0.74rem + 0.4vw, 0.98rem);
+  line-height: 1.55;
+  max-width: 52ch;      /* narrower block for minimal look */
+  letter-spacing: 0.01em;
+  margin-bottom: 0;     /* avoid pushing hero down */
+}
+
+
+
 /* Nicer lead paragraph */
 .description.lead {
   font-size: clamp(1rem, 0.8rem + 0.8vw, 1.35rem);
@@ -201,6 +230,18 @@ footer {
 #typed-desc {
   position: absolute; left: 0; top: 0;
   white-space: pre-wrap; line-height: 1.6; font-size: inherit;
+}
+
+/* No caret in professional mode */
+:root[data-theme="dark"] .typed-cursor { display: none !important; }
+
+:root[data-theme="dark"] .typing-box .sizer { display: none; }
+:root[data-theme="dark"] .typing-box .sizer-pro {
+  visibility: hidden;
+  display: block;
+  white-space: pre-wrap;
+  line-height: 1.6;
+  font-size: inherit;
 }
 
 /* Cards / boxes */
@@ -256,7 +297,8 @@ footer {
   margin-top: 0;
 }
 
-/* Remove manual <br> spacing after fixed nav on detail pages */
+/* Remove manual 
+br> spacing after fixed nav on detail pages */
 nav + br + br,
 nav + br + br + br,
 nav + br + br + br + br { display: none; }
@@ -726,4 +768,903 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 @keyframes sparkle-fade {
   0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
   100% { opacity: 0; transform: translate(-50%, -60%) scale(0.6); }
+}
+
+
+
+
+
+
+
+/* ==================== THEME TOGGLE ==================== */
+.theme-toggle {
+  margin-left: .5rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px;
+  border-radius: 999px; border: 1px solid rgba(0,0,0,.12);
+  background: rgba(247,243,252,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer; font-size: 1rem; line-height: 1;
+}
+.theme-toggle:hover { transform: translateY(-1px); }
+.theme-toggle:active { transform: translateY(0); }
+.theme-toggle .tt-icon { display: inline-block; }
+
+/* Mobile: keep it visible in the slideout */
+@media (max-width: 750px) {
+  .theme-toggle { position: relative; z-index: 99; }
+}
+
+/* ==================== DARK THEME VARIABLES ==================== */
+/* Apply theme via data attribute so default stays current (light). */
+:root[data-theme="dark"] {
+  --primary-color: #c6b6ff;
+  --primary-color-dark: #c6b6ff;
+  --accent-color: #ffb3d1;
+  --secondary-color: #6b6780;
+
+  --text-dark: #eae7f2;
+  --text-light: #cfcad9;
+
+  --extra-light: #0f0e12;
+  --surface: #1b1722;               /* cards */
+  --page-background: #131018;       /* page */
+  --shadow: 0 1px 3px rgba(0,0,0,0.35);
+}
+
+/* Components that had light hard-coded backgrounds/borders */
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body {
+  background: var(--page-background) !important;
+  background-color: var(--page-background) !important;
+}
+:root[data-theme="dark"] nav,
+:root[data-theme="dark"] footer {
+  background: rgba(22, 18, 28, 0.7);
+  border-color: rgba(255,255,255,0.06);
+}
+:root[data-theme="dark"] .footer__links a { color: var(--text-light); }
+:root[data-theme="dark"] .footer__links a:hover { color: var(--accent-color); }
+:root[data-theme="dark"] nav .logo a { color: var(--text-dark); }
+:root[data-theme="dark"] nav .logo a .name { color: var(--text-light); }
+:root[data-theme="dark"] .checkbox .hamburger span { background: var(--text-dark); }
+
+/* Headings/paragraphs inherit updated vars */
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .title1,
+:root[data-theme="dark"] .timeline-title,
+:root[data-theme="dark"] .section__work .title,
+:root[data-theme="dark"] h1, 
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3 { color: var(--text-dark); }
+
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .description1,
+:root[data-theme="dark"] .description2,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .timeline-org { color: var(--text-light); }
+
+/* cards, notes, dividers */
+:root[data-theme="dark"] .section-box,
+:root[data-theme="dark"] .note {
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+:root[data-theme="dark"] .section-heading + hr,
+:root[data-theme="dark"] .timeline-container::before,
+:root[data-theme="dark"] .timeline-item::before {
+  border-top-color: rgba(255,255,255,0.08);
+  background: var(--accent-color);
+}
+
+/* nav links */
+:root[data-theme="dark"] nav ul li a { color: var(--text-light); }
+:root[data-theme="dark"] nav ul li a:hover,
+:root[data-theme="dark"] nav ul li a.active {
+  color: var(--primary-color-dark);
+  border-bottom-color: var(--primary-color-dark);
+}
+
+/* hero image subtle lift still okay on dark */
+:root[data-theme="dark"] .section-box:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+
+/* typed caret visibility */
+:root[data-theme="dark"] .typed-cursor { color: var(--text-dark); }
+
+/* Optional: code/inline elements on case pages */
+:root[data-theme="dark"] code { background: rgba(255,255,255,0.08); }
+
+
+
+/* ==================== PROFESSIONAL DARK (override) ==================== */
+:root[data-theme="dark"] {
+  /* Neutral, low-saturation “product” palette */
+  --primary-color:        #9bb4ff;   /* link/active tint */
+  --primary-color-dark:   #9bb4ff;
+  --accent-color:         #7aa2ff;   /* subtle accent */
+  --secondary-color:      #2a2f3a;   /* chips / secondary surfaces */
+
+  --text-dark:            #f1f3f8;   /* headings on dark */
+  --text-light:           #c7cfda;   /* body on dark */
+
+  --page-background:      #0f1115;   /* page */
+  --surface:              #171a21;   /* cards */
+  --shadow:               0 8px 24px rgba(0,0,0,0.45);
+}
+
+/* Nav/footers: less pink, more neutral glass */
+:root[data-theme="dark"] nav,
+:root[data-theme="dark"] footer {
+  background: rgba(15,17,21,0.7);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Links: professional hover = color + underline */
+:root[data-theme="dark"] a { color: var(--text-light); }
+:root[data-theme="dark"] a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Nav links + active state */
+:root[data-theme="dark"] nav ul li a { color: var(--text-light); border-bottom-color: transparent; }
+:root[data-theme="dark"] nav ul li a:hover,
+:root[data-theme="dark"] nav ul li a.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* Cards/notes: tighter, crisper */
+:root[data-theme="dark"] .section-box,
+:root[data-theme="dark"] .note {
+  background: linear-gradient(180deg, rgba(23,26,33,1), rgba(20,23,29,1));
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: var(--shadow);
+}
+
+/* Typography contrast */
+:root[data-theme="dark"] h1, 
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .timeline-title,
+:root[data-theme="dark"] .section__work .title { 
+  color: var(--text-dark);
+  letter-spacing: 0.01em;
+}
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .description1,
+:root[data-theme="dark"] .description2,
+:root[data-theme="dark"] .timeline-org,
+:root[data-theme="dark"] .section__work p { 
+  color: var(--text-light);
+}
+
+/* Dividers/timelines */
+:root[data-theme="dark"] .section-heading + hr { border-top: 1px solid rgba(255,255,255,0.08); }
+:root[data-theme="dark"] .timeline-container::before { background: rgba(140,170,255,0.7); }
+:root[data-theme="dark"] .timeline-item::before { background: rgba(140,170,255,0.7); }
+
+/* Buttons (like GitHub CTA) inherit neutrals */
+:root[data-theme="dark"] .cta-btn {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-dark);
+}
+:root[data-theme="dark"] .cta-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Theme toggle: neutral chip */
+:root[data-theme="dark"] .theme-toggle {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(18,20,25,0.7);
+}
+
+/* Code chips on case pages */
+:root[data-theme="dark"] code { background: rgba(255,255,255,0.08); }
+
+/* Hero header color alignment */
+:root[data-theme="dark"] #top .title { color: var(--text-dark); }
+
+/* Professional hover: reduce lift & saturation */
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-theme="dark"] .section-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.55);
+  }
+}
+
+
+/* ===== Professional DARK: ultra-thin headings ===== */
+:root[data-theme="dark"] {
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-heading: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; /* has Thin (100) */
+}
+
+/* Make headings extremely skinny */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .section-heading,
+:root[data-theme="dark"] nav .logo a {
+  font-family: var(--font-heading);
+  font-weight: 100;                 /* ultra-thin */
+  letter-spacing: 0.02em;           /* tiny tracking for legibility */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keep body readable but slimmer than default */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .timeline-org {
+  font-family: var(--font-body);
+  font-weight: 300;                 /* light body for a crisp look */
+  line-height: 1.65;
+}
+
+/* Don’t “bolden” on hover in pro mode */
+:root[data-theme="dark"] .section-box:hover .title,
+:root[data-theme="dark"] .section-box:hover .description1,
+:root[data-theme="dark"] .section-box:hover strong {
+  font-weight: inherit;
+}
+:root[data-theme="dark"] .section-box strong {
+  font-weight: 400;                 /* steady emphasis, not chunky */
+}
+
+/* Ensure hero + timeline titles stay skinny */
+:root[data-theme="dark"] #top .title,
+:root[data-theme="dark"] .timeline-title {
+  font-weight: 100;
+}
+
+/* Optional: slightly smaller heading line-height for that sleek PM look */
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .section-heading {
+  line-height: 1.15;
+}
+:root[data-theme="dark"] .section__work .title { font-weight: 100; }
+
+
+
+/* Hide hero H1 in Professional (dark) mode */
+:root[data-theme="dark"] #top .title {
+  display: none;
+}
+
+/* Pull the intro up a bit since H1 is gone */
+:root[data-theme="dark"] .hero .content {
+  padding-top: 0.25rem;
+}
+
+
+
+/* ===== Professional mode: skinny, uppercase, spaced ===== */
+:root[data-theme="dark"] {
+  --font-heading: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Apply to nav items and section headings only (screenshot style) */
+:root[data-theme="dark"] nav .logo a,
+:root[data-theme="dark"] nav ul li a,
+:root[data-theme="dark"] .section-heading,
+:root[data-theme="dark"] #top .title,
+:root[data-theme="dark"] .timeline-title {
+  font-family: var(--font-heading);
+  font-weight: 100;                 /* ultra-thin */
+  letter-spacing: 0.16em;           /* wide tracking like the image */
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body copy = Inter (readable), slightly thicker */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .description1,
+:root[data-theme="dark"] .description2 {
+  font-family: var(--font-body);   /* Inter */
+  font-weight: 150;
+  letter-spacing: 0.05em;
+}
+
+
+/* 
+:root[data-theme="dark"] #typed-desc,
+:root[data-theme="dark"] #lead-box {
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+} */
+
+
+/* Footer matches header in Professional mode */
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .footer__content,
+:root[data-theme="dark"] .footer__content div,
+:root[data-theme="dark"] .footer__links a {
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 100;           /* ultra-thin */
+  letter-spacing: 0.16em;     /* spaced like the header */
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+:root[data-theme="dark"] .footer__links a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* Smaller hero image in Professional mode */
+:root:not([data-theme="dark"]) #top .image img {
+  width: clamp(11rem, 18vw, 15rem);
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+
+
+/* Swap fonts for the two lines inside each timeline item in Pro mode */
+/* Line 1 (degree/role): use body font, medium weight */
+:root[data-theme="dark"] .timeline-title {
+  font-family: var(--font-body);   /* Inter (body) */
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--text-dark);
+}
+
+/* Line 2 (organization | location): use heading font, thin & spaced */
+:root[data-theme="dark"] .timeline-org {
+  font-family: var(--font-heading); /* IBM Plex Sans (heading) */
+  font-weight: 200;                  /* skinny but readable */
+  letter-spacing: 0.12em;            /* elegant tracking */
+  text-transform: uppercase;         /* matches your header vibe */
+  color: var(--text-light);
+}
+
+
+
+/* Keep intro vertically centered and slightly lifted */
+.section__container.hero .content{
+  align-self: center;
+  justify-content: center;
+  transform: translateY(-1.5vh);   /* moves text up a touch so it aligns with photo */
+}
+
+@media (max-width: 750px){
+  .section__container.hero{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "content"
+      "image";
+    min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+    padding: calc(var(--nav-height) + 0.5rem) 1rem 1rem 1rem;
+    gap: 1rem;
+  }
+  .section__container.hero .content{
+    transform: translateY(-1vh); /* smaller nudge on mobile */
+  }
+  #top .image img{ width: clamp(10rem, 44vw, 13rem); }
+}
+
+/* ===== PRO DARK: hero layout + typography fixes ===== */
+:root[data-theme="dark"] .section__container.hero {
+  min-height: calc(100vh - var(--nav-height));
+  align-items: center;
+  /* wider text column, slightly smaller photo column */
+  grid-template-columns: minmax(64ch, 78ch) minmax(220px, 24vw);
+  gap: clamp(2rem, 4vw, 5rem);
+}
+
+/* Make the lead intro smaller but NOT skinny */
+:root[data-theme="dark"] .hero .description.lead {
+  font-size: clamp(0.9rem, 0.82rem + 0.35vw, 1.05rem);
+  line-height: 1.65;
+  font-weight: 400;      /* ← thicker than before */
+  letter-spacing: 0.005em;
+  max-width: 60ch;       /* keep lines an ideal length */
+}
+
+:root[data-theme="dark"] .hero .content {
+  height: 10%;
+  width: 70%;
+}
+
+/* Make photo smaller and consistent */
+:root[data-theme="dark"] .hero .image img {
+  width: clamp(13rem, 22vw, 20rem);
+  height: auto;
+}
+
+/* Headings stay thin; body text slightly thicker in pro mode */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .description {
+  font-weight: 350;  /* slightly up from 300 so it won’t look wafer-thin */
+}
+
+@media (min-width: 751px){
+  :root[data-theme="dark"] .hero .content{
+    transform: translateY(10vh);   
+    transform: translateX(7vh); 
+
+  }
+}
+
+
+/* PRO MODE (dark): remove hero photo and center the text column */
+:root[data-theme="dark"] .hero .image {
+  display: none !important;
+}
+
+:root[data-theme="dark"] .section__container.hero {
+  grid-template-columns: 1fr;     /* single column */
+  justify-items: center;          /* center horizontally */
+  align-items: center;            /* center vertically within hero */
+  min-height: calc(100vh - var(--nav-height) - var(--footer-height));
+}
+
+
+/* PRO MODE (dark): intro uses the header/footer font */
+:root[data-theme="dark"] #lead-box,
+:root[data-theme="dark"] #typed-desc,
+:root[data-theme="dark"] .hero .description.lead {
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;          /* readable thin; not 100 */
+  letter-spacing: 0.02em;    /* subtle tracking */
+  text-transform: none;      /* paragraphs should stay sentence case */
+  color: var(--text-light);
+  max-width: 64ch;
+  font-size: clamp(0.92rem, 0.35vw + 0.9rem, 1.06rem);
+  line-height: 1.65;
+  text-align: left;          /* or center if you prefer the hero centered look */
+}
+
+/* If any older rules forced IBM Plex/Inter on the lead, override them */
+:root[data-theme="dark"] .typing-box .sizer,
+:root[data-theme="dark"] #typed-desc {
+  font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 3 !important;
+}
+
+
+/* PRO mode: nudge hero text box up and a bit right */
+@media (min-width: 751px){
+  :root[data-theme="dark"] .section__container.hero .content{
+    transform: translate(7vh, -10vh) !important; /* X, Y */
+  }
+}
+
+
+/* Make hero truly full screen (nav accounted, footer is overlay) */
+.section__container.hero{
+  min-height: calc(100vh - var(--nav-height)) !important;
+  padding-bottom: var(--footer-height) !important; /* clears fixed footer */
+}
+
+/* Kill extra spacing that can expose the next section */
+.section__container.hero { margin-bottom: 0 !important; }
+.section__container.hero .description.lead { margin-bottom: 0 !important; }
+
+/* Ensure the timeline doesn’t pull up */
+.timeline-section { margin-top: 0 !important; padding-top: 0 !important; }
+.section-heading { margin-top: 0.25rem !important; }  /* tiny breathing room */
+.section-heading + hr { margin-top: 0 !important; }
+
+
+/* --- Higher contrast for PRO (dark) hero + body --- */
+:root[data-theme="dark"] {
+  /* Darken page slightly and brighten text */
+  --page-background: #0c0e12;
+  --surface: #141821;
+  --text-dark: #ffffff;
+  --text-light: #d8dee9; /* brighter than before */
+  --primary-color: #a6baff; /* keep link tint readable */
+}
+
+/* Make hero copy brighter and sharper */
+:root[data-theme="dark"] .hero .description.lead,
+:root[data-theme="dark"] #typed-desc,
+:root[data-theme="dark"] .section__container.hero .content p {
+  color: #e9edf4 !important;       /* near-white for strong contrast */
+  font-weight: 40 !important;      /* not skinny; improves legibility */
+  text-shadow: 0 0 1px rgba(0,0,0,.25); /* subtle crispness on glassy bg */
+}
+
+/* Headings in hero: keep thin look but raise contrast */
+:root[data-theme="dark"] #top .title,
+:root[data-theme="dark"] .timeline-title {
+  color: #ffffff !important;
+}
+
+/* If your background is too light in the hero, add a soft overlay */
+:root[data-theme="dark"] #top.section__container.hero {
+  position: relative;
+}
+:root[data-theme="dark"] #top.section__container.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.12));
+  pointer-events: none;
+  z-index: 0;
+}
+:root[data-theme="dark"] #top.section__container.hero .content,
+:root[data-theme="dark"] #top.section__container.hero .image {
+  position: relative; z-index: 1;
+}
+
+/* Links and footer copy—boost contrast */
+:root[data-theme="dark"] a { color: #e4e9f5; }
+:root[data-theme="dark"] a:hover { color: #b8cbff; text-decoration: underline; }
+
+:root[data-theme="dark"] footer,
+:root[data-theme="dark"] .footer__content,
+:root[data-theme="dark"] .footer__links a {
+  color: #dfe6f3 !important;
+}
+
+/* Optional: make the global body text brighter as well */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .timeline-org {
+  color: #dfe6f3 !important;
+}
+
+
+/* Vibe: NOIR */
+:root[data-theme="dark"][data-vibe="noir"]{
+  --page-background:#0a0b0f; --surface:#11131a;
+  --text-dark:#ffffff; --text-light:#e6ebf5;
+  --primary-color:#a8bdff; --accent-color:#7aa2ff;
+  --shadow:0 10px 28px rgba(0,0,0,.55);
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --font-heading:"Montserrat","Helvetica Neue",Arial,sans-serif;
+}
+:root[data-theme="dark"][data-vibe="noir"] .hero .description.lead{
+  color:#f0f3f9 !important; font-weight:420 !important; letter-spacing:.01em;
+}
+:root[data-theme="dark"][data-vibe="noir"] #top .title{ color:#fff !important; }
+:root[data-theme="dark"][data-vibe="noir"] .section-box,
+:root[data-theme="dark"][data-vibe="noir"] .note{
+  background:linear-gradient(180deg,#161922,#12161d); border:1px solid rgba(255,255,255,.08);
+}
+
+
+/* Vibe: QUARTZ */
+:root[data-theme="dark"][data-vibe="quartz"]{
+  --page-background:#0e0c14; --surface:rgba(28,22,41,.7);
+  --text-dark:#f6f3ff; --text-light:#d9d4e6;
+  --primary-color:#b7c6ff; --accent-color:#caa8ff;
+  --shadow:0 12px 36px rgba(115,92,170,.25);
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --font-heading:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+}
+:root[data-theme="dark"][data-vibe="quartz"] nav,
+:root[data-theme="dark"][data-vibe="quartz"] footer{
+  background:rgba(22,18,34,.55); backdrop-filter:blur(12px);
+}
+:root[data-theme="dark"][data-vibe="quartz"] .hero .description.lead{
+  color:#efeaff !important; text-shadow:0 0 1px rgba(0,0,0,.25);
+}
+
+
+/* Vibe: EDITORIAL */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap");
+:root[data-theme="dark"][data-vibe="editorial"]{
+  --page-background:#0f1114; --surface:#161a20;
+  --text-dark:#f7f7fb; --text-light:#d6dbe6;
+  --primary-color:#9ec2ff; --accent-color:#80a4ff;
+  --font-heading:"Playfair Display",Georgia,serif;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+:root[data-theme="dark"][data-vibe="editorial"] h1,h2,h3,.title,.section-heading{
+  letter-spacing:.01em; font-weight:500;
+}
+:root[data-theme="dark"][data-vibe="editorial"] .hero .description.lead{
+  font-weight:420 !important; color:#eef2f8 !important;
+}
+
+
+/* Vibe: TECH-MONO */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap");
+:root[data-theme="dark"][data-vibe="techmono"]{
+  --page-background:#0b0d10; --surface:#12151a;
+  --text-dark:#eaf1fb; --text-light:#cfe0f3;
+  --primary-color:#8fb9ff; --accent-color:#6aa8ff;
+  --font-heading:"JetBrains Mono",ui-monospace,Menlo,Monaco,monospace;
+  --font-body:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+:root[data-theme="dark"][data-vibe="techmono"] h1,h2,h3,.title,.section-heading{
+  text-transform:none; letter-spacing:.02em; font-weight:500;
+}
+
+
+/* Vibe: SOFT-PASTEL */
+:root[data-theme="dark"][data-vibe="pastel"]{
+  --page-background:#101118; --surface:#171922;
+  --text-dark:#f8fbff; --text-light:#e8eefb;
+  --primary-color:#c6d6ff; --accent-color:#ffc8e6;
+  --shadow:0 10px 28px rgba(0,0,0,.4);
+  --font-heading:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --font-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+}
+:root[data-theme="dark"][data-vibe="pastel"] .hero .description.lead{ color:#f3f7ff !important; }
+
+
+
+/* ============ LIGHT VIBES (non-dark) ============ */
+/* 1) Vibe: linen — warm, editorial */
+:root:not([data-theme="dark"])[data-vibe="linen"]{
+  --page-background:#FAF7F2;
+  --surface:#FFFFFF;
+  --primary-color:#5A4A3F;
+  --primary-color-dark:#5A4A3F;
+  --accent-color:#C4875A;
+  --secondary-color:#EDE6DD;
+
+  --text-dark:#1F1B16;
+  --text-light:#5C5248;
+
+  --shadow:0 6px 20px rgba(90,74,63,0.08);
+}
+
+/* 2) Vibe: sky — neutral cool with soft blues */
+:root:not([data-theme="dark"])[data-vibe="sky"]{
+  --page-background:#F6F9FF;
+  --surface:#FFFFFF;
+  --primary-color:#5C73D1;
+  --primary-color-dark:#4E62BA;
+  --accent-color:#7BA8FF;
+  --secondary-color:#E9F0FF;
+
+  --text-dark:#111827;
+  --text-light:#4B5563;
+
+  --shadow:0 8px 24px rgba(92,115,209,0.10);
+}
+
+/* 3) Vibe: sage — calm, product-y greens */
+:root:not([data-theme="dark"])[data-vibe="sage"]{
+  --page-background:#F5FBF7;
+  --surface:#FFFFFF;
+  --primary-color:#4D8A6B;
+  --primary-color-dark:#3E6E55;
+  --accent-color:#7DBA98;
+  --secondary-color:#E6F2EB;
+
+  --text-dark:#0F172A;
+  --text-light:#46565A;
+
+  --shadow:0 8px 24px rgba(61,110,85,0.10);
+}
+
+/* Make header/footer typography match the vibe (light mode) */
+:root:not([data-theme="dark"])[data-vibe] nav,
+:root:not([data-theme="dark"])[data-vibe] footer{
+  background: rgba(255,255,255,0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Cards and dividers adapt to vibe */
+:root:not([data-theme="dark"])[data-vibe] .section-box,
+:root:not([data-theme="dark"])[data-vibe] .note{
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Use header/footer font for the intro block (your hero paragraph) */
+:root:not([data-theme="dark"])[data-vibe] #lead-box,
+:root:not([data-theme="dark"])[data-vibe] #typed-desc{
+  font-family: var(--font-heading);      /* your header font */
+  font-weight: 400;                      /* not skinny */
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+}
+
+/* Slightly stronger contrast for hero paragraph in light vibes */
+:root:not([data-theme="dark"])[data-vibe] .hero .description.lead{
+  color: var(--text-dark);
+}
+
+/* Optional: make the hero photo a touch softer on light vibes */
+:root:not([data-theme="dark"])[data-vibe] .hero .image img{
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* === DARK THEME CONTRAST BOOST (mirror light look but darker text) === */
+:root[data-theme="dark"] {
+  /* keep your light palette */
+  --primary-color: #4e3565;
+  --primary-color-dark: #4e3565;
+  --accent-color: #d494b1;
+  --secondary-color: #b4aabc;
+
+  /* darker text tones for higher contrast */
+  --text-dark: #121317;   /* headings, titles */
+  --text-light: #2a2e36;  /* body, descriptions */
+
+  --extra-light: #fdfcff;
+  --surface: #f7f3fc;
+  --page-background: #fcfafe;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* background + chrome match light */
+:root[data-theme="dark"] html,
+:root[data-theme="dark"] body {
+  background: var(--page-background) !important;
+  background-color: var(--page-background) !important;
+}
+
+:root[data-theme="dark"] nav,
+:root[data-theme="dark"] footer {
+  background: rgba(247, 243, 252, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* text colors applied consistently */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .section-heading,
+:root[data-theme="dark"] .timeline-title,
+:root[data-theme="dark"] nav .logo a {
+  color: var(--text-dark);
+}
+
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .description1,
+:root[data-theme="dark"] .description2,
+:root[data-theme="dark"] .section__work p,
+:root[data-theme="dark"] .timeline-org,
+:root[data-theme="dark"] nav ul li a,
+:root[data-theme="dark"] .footer__links a {
+  color: var(--text-light);
+}
+
+/* hero intro paragraph gets darkest readable text */
+:root[data-theme="dark"] #top .description.lead,
+:root[data-theme="dark"] .hero .description.lead {
+  color: #17181d;
+}
+
+/* timeline subtle line still visible on light bg */
+:root[data-theme="dark"] .timeline-container::before,
+:root[data-theme="dark"] .timeline-item::before {
+  background: var(--accent-color);
+}
+
+/* cards keep light look, but with a touch more shadow */
+:root[data-theme="dark"] .section-box,
+:root[data-theme="dark"] .note {
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* links readable, with clear hover */
+:root[data-theme="dark"] a { color: #1d2030; }
+:root[data-theme="dark"] a:hover {
+  color: var(--primary-color-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ===== Fix washed out text in Pro Dark w/ Light palette ===== */
+:root[data-theme="dark"] {
+  /* keep light look */
+  --page-background: #fcfafe;
+  --surface: #f7f3fc;
+  --primary-color: #4e3565;
+  --accent-color:  #d494b1;
+
+  /* DARKEN TEXT FOR CONTRAST */
+  --text-dark:  #12141a;   /* titles */
+  --text-light: #232834;   /* body */
+}
+
+/* Global text colors */
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] .title,
+:root[data-theme="dark"] .section-heading {
+  color: var(--text-dark) !important;
+}
+:root[data-theme="dark"] .description,
+:root[data-theme="dark"] .description1,
+:root[data-theme="dark"] .description2,
+:root[data-theme="dark"] .section__work p {
+  color: var(--text-light) !important;
+}
+
+/* HERO INTRO (the paragraph under “Hi, I’m Pru”) */
+:root[data-theme="dark"] #top .description.lead,
+:root[data-theme="dark"] .hero .description.lead,
+:root[data-theme="dark"] #typed-desc {
+  color: #151923 !important;   /* darker body text */
+  font-weight: 400 !important; /* no wafer-thin */
+}
+
+/* TIMELINE: dates, titles, org lines */
+:root[data-theme="dark"] .timeline-date {
+  color: #b46484 !important;               /* accent but readable */
+  font-weight: 600 !important;
+}
+:root[data-theme="dark"] .timeline-title {
+  color: #141820 !important;               /* main line */
+  font-weight: 600 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+}
+:root[data-theme="dark"] .timeline-org {
+  color: #232834 !important;               /* second line */
+  font-weight: 800 !important;
+  letter-spacing: 0.04em !important;       /* subtle tracking */
+  text-transform: none !important;         /* remove washed-out uppercase */
+}
+
+/* Ensure the vertical line + ticks stay visible */
+:root[data-theme="dark"] .timeline-container::before,
+:root[data-theme="dark"] .timeline-item::before {
+  background: var(--accent-color) !important;
+}
+
+/* If your reveal animation is causing “invisible until visible”, 
+   either keep it OR uncomment the block below to disable it. */
+/*
+:root[data-theme="dark"] .timeline-item { 
+  opacity: 1 !important; 
+  transform: none !important; 
+}
+*/
+
+
+/* Kill the gray hero box */
+#top,
+#top.section__container.hero,
+#top .content,
+#top .image {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* In case a 'section-box' leaked onto the hero */
+#top.section-box { 
+  background: transparent !important; 
+  box-shadow: none !important; 
+  border: 0 !important; 
+}
+
+/* Keep the page itself the light background */
+html, body {
+  background: var(--page-background) !important; /* #fcfafe in your palette */
+}
+
+/* (Optional) If any wrapper around hero added a fill */
+.section__container.hero {
+  background-color: transparent !important;
 }

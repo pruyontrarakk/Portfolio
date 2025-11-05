@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Apply saved theme ASAP to avoid flash
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme'); // 'dark' | 'light' | null
+          if (saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } // default = light (your current style)
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="style.css" />
+
+    <style>
+  /* Kill any background/box on the hero, including vibes/themes/pseudos */
+  #top,
+  #top * { 
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  #top::before,
+  #top::after { content: none !important; background: transparent !important; }
+
+  /* If a vibe applies backgrounds to all section containers, override them */
+  html[data-vibe] .section__container.hero { background: transparent !important; }
+
+  /* Typing box bits sometimes get a fill in resets */
+  #lead-box,
+  #typed-desc,
+  #lead-box .sizer,
+  #lead-box .sizer-pro { background: transparent !important; }
+
+  /* Keep the page background the light linen */
+  html, body { background: var(--page-background) !important; }
+</style>
+
     <title>Pru Yontrarak Portfolio</title>
   </head>
   <body>
@@ -24,7 +60,11 @@
           <li><a href="./#research" id="research-button">cs projects</a></li>
           <li><a href="./#work" id="work-button">case studies</a></li>
         </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+          <span class="tt-icon" data-sun="☀︎" data-moon="🌙">🌙</span>
+        </button>
       </div>
+
       <hr>
     </nav>
 
@@ -40,6 +80,16 @@
             My current and past projects span building reliable backend services and algorithmic pipelines, defining scope and metrics, and prototyping research-informed interfaces. 
         
           </span>
+
+          <span class="sizer-pro" aria-hidden="true" style="display:none;">
+            Pru Yontrarak is a master’s student in Computer Science at Columbia University, concentrating in machine learning.
+            Bridging product intuition with engineering rigor, she works across backend systems, algorithmic optimization, and interface prototyping to turn ambiguity into measurable outcomes.
+            Her recent projects span cost-aware multi-city travel planning, reinforcement-learning simulations, and market data services, with a focus on reliability, scope definition, and metrics.
+            She has contributed to the Accessible & Accelerated Robotics Lab (A²R) and Soros Lab’s Summer Research Institute, served as a Product Manager at Spectator Publishing Company,
+            and previously worked as a UX Design Intern at Wunderman Thompson in Bangkok.
+          </span>
+
+
           <span id="typed-desc"></span>
         </div>
       </div>
@@ -324,45 +374,120 @@
           }
         });
 
-      // --- Typing animation (single inline paragraph, no indent) ---
-      var box = document.getElementById('lead-box');
-      var typedTarget = document.getElementById('typed-desc');
+    // --- Typing with hard cancel + theme reaction ---
+    var box = document.getElementById('lead-box');
+    var typedTarget = document.getElementById('typed-desc');
 
-      if (box && typedTarget) {
-        // 1) Grab the HTML to type
-        var raw = box.querySelector('.sizer').innerHTML;
+    var isTyping = false;
+    var typingTimer = null;
 
-        // 2) Normalize whitespace so no leading indent sneaks in
-        //    - collapse any newline + surrounding spaces to a single space
-        //    - collapse inter-tag spaces (">   <" -> "><")
-        //    - collapse runs of spaces to one
-        var htmlToType = raw
-          .replace(/\s*\n\s*/g, ' ')
-          .replace(/>\s+</g, '><')
-          .replace(/\s{2,}/g, ' ')
-          .trim();
-
-        var i = 0;
-        var speed = 27;
-
-        // Inline, blinking cursor right after the period
-        var cursor = document.createElement('span');
-        cursor.className = 'typed-cursor';
-        cursor.textContent = '|';
-        typedTarget.style.display = 'inline';
-
-        function tick() {
-          if (i <= htmlToType.length) {
-            typedTarget.innerHTML = htmlToType.slice(0, i) + cursor.outerHTML;
-            i++;
-            setTimeout(tick, speed);
-          } else {
-            // typing finished: remove the cursor so it doesn't linger
-            typedTarget.innerHTML = htmlToType;
-          }
-        }
-        tick();
+    function cancelTyping() {
+      isTyping = false;
+      if (typingTimer) {
+        clearTimeout(typingTimer);
+        typingTimer = null;
       }
+      if (typedTarget) {
+        typedTarget.innerHTML = '';
+      }
+    }
+
+
+    var typingTimer = null;
+    var isTyping = false;
+
+    function cancelTyping() {
+      if (typingTimer) {
+        clearTimeout(typingTimer);
+        typingTimer = null;
+      }
+      isTyping = false;
+      if (!typedTarget) return;
+      // Strip any cursor remnants
+      var tmp = typedTarget.cloneNode(false);
+      typedTarget.parentNode.replaceChild(tmp, typedTarget);
+      typedTarget = tmp;
+    }
+
+    function currentThemeIsProDark() {
+      return document.documentElement.getAttribute('data-theme') === 'dark';
+    }
+
+function renderLead() {
+  if (!box || !typedTarget) return;
+
+  // stop any in-flight typing immediately
+  cancelTyping();
+
+  var isProDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+  // Choose source template based on theme
+  var srcEl = box.querySelector(isProDark ? '.sizer-pro' : '.sizer');
+  if (!srcEl) return;
+
+  var raw = srcEl.innerHTML;
+  var htmlToType = raw
+    .replace(/\s*\n\s*/g, ' ')
+    .replace(/>\s+</g, '><')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  // Professional (dark): no typing, render static
+  if (isProDark) {
+    typedTarget.style.display = 'inline';
+    typedTarget.innerHTML = htmlToType;
+    return;
+  }
+
+  // Light mode: type it out
+  var i = 0;
+  var speed = 27;
+  isTyping = true;
+
+  (function tick() {
+    // If theme flips mid-typing, re-render for the new mode immediately
+    if (!isTyping) return;
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+      renderLead();
+      return;
+    }
+    if (i <= htmlToType.length) {
+      typedTarget.innerHTML = htmlToType.slice(0, i) + '<span class="typed-cursor">|</span>';
+      i++;
+      typingTimer = setTimeout(tick, speed);
+    } else {
+      typedTarget.innerHTML = htmlToType;
+      isTyping = false;
+      typingTimer = null;
+    }
+  })();
+}
+
+
+    // initial render
+    renderLead();
+
+    // Theme toggle button: re-render right after theme flips
+    var themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        // cancel immediately and re-render on next tick
+        cancelTyping();
+        setTimeout(renderLead, 0);
+      });
+    }
+
+    // ALSO observe data-theme attribute changes from any source
+    var mo = new MutationObserver(function (muts) {
+      for (var i = 0; i < muts.length; i++) {
+        if (muts[i].type === 'attributes' && muts[i].attributeName === 'data-theme') {
+          cancelTyping();
+          renderLead();
+          break;
+        }
+      }
+    });
+    mo.observe(document.documentElement, { attributes: true });
 
       // Close mobile menu when navigation link is clicked
       var navLinks = document.querySelectorAll('nav ul li a');
@@ -416,5 +541,34 @@
         </div>
       </div>
     </footer>
+
+    <script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+    function setTheme(next) {
+      if (next === 'dark') root.setAttribute('data-theme', 'dark');
+      else root.removeAttribute('data-theme'); // back to light defaults
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      // update aria + icon
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
+      var icon = btn.querySelector('.tt-icon');
+      if (icon) icon.textContent = next === 'dark' ? icon.dataset.sun : icon.dataset.moon;
+    }
+
+    // Init from storage (head script already applied attribute; just sync UI)
+    setTheme(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+
+    btn.addEventListener('click', function () {
+      setTheme(isDark() ? 'light' : 'dark');
+      cancelTyping();
+renderLead();
+    });
+  })();
+</script>
+
   </body>
 </html>

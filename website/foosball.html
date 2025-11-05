@@ -4,7 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script>
+      // Apply saved theme ASAP to avoid flash
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme'); // 'dark' | 'light' | null
+          if (saved === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } // default = light (your current style)
+        } catch (e) {}
+      })();
+    </script>
     <link rel="stylesheet" href="style.css" />
     <title>Reinforcement Learning for Foosball - Pru Yontrarak</title>
 
@@ -47,6 +57,9 @@
           <li><a href="index.html#research" id="research-button">cs projects</a></li>
           <li><a href="index.html#work" id="work-button" >case studies</a></li>
         </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+          <span class="tt-icon" data-sun="☀︎" data-moon="🌙">🌙</span>
+        </button>
       </div>
     </nav>
 
@@ -155,5 +168,31 @@
       if (link) link.classList.add('active');
     })();
   </script>
+  <script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    function isDark() { return root.getAttribute('data-theme') === 'dark'; }
+    function setTheme(next) {
+      if (next === 'dark') root.setAttribute('data-theme', 'dark');
+      else root.removeAttribute('data-theme'); // back to light defaults
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      // update aria + icon
+      btn.setAttribute('aria-pressed', String(next === 'dark'));
+      var icon = btn.querySelector('.tt-icon');
+      if (icon) icon.textContent = next === 'dark' ? icon.dataset.sun : icon.dataset.moon;
+    }
+
+    // Init from storage (head script already applied attribute; just sync UI)
+    setTheme(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+
+    btn.addEventListener('click', function () {
+      setTheme(isDark() ? 'light' : 'dark');
+    });
+  })();
+</script>
+
   </body>
   </html>
