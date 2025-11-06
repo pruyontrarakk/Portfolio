@@ -276,15 +276,16 @@ nav + br + br + br + br { display: none; }
 /* Section backgrounds for visual separation */
 .intro-section {
   background-color: var(--page-background);
-  padding: 1.25rem 1rem 1.5rem 1rem;
+  padding: 0.25rem 1rem 1.5rem 1rem;
   margin: 0;
-  margin-top: calc(var(--nav-height) - 1.5rem);
+  margin-top: calc(var(--nav-height) - 2rem);
   width: 100%;
 }
 
 @media (min-width: 768px) {
   .intro-section {
     margin-top: calc(var(--nav-height) + 2rem);
+    padding: 1.25rem 1rem 1.5rem 1rem;
   }
 }
 
