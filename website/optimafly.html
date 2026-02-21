@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    <title>Optimafly: A Multi-City Optimized Flight Planner — Pru Yontrarak</title>
+    <title>Optimafly, A Multi-City Optimized Flight Planner, Pru Yontrarak</title>
 
     <style>
       /* Match case study pages layout */
@@ -21,7 +21,7 @@
       .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
       .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
       .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
-      .iteration-block { border: 1px solid rgba(0,0,0,.1); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+      .iteration-block { padding: 1rem 1.25rem; margin-bottom: 1rem; }
       .iteration-block h3 { margin: 0 0 .5rem 0; font-size: 1.1rem; }
       .iteration-block p { margin: 0 0 .5rem 0; }
       .iteration-block p:last-child { margin-bottom: 0; }
@@ -31,6 +31,19 @@
       .process-list li::before { content: counter(process-step); position: absolute; left: 0; top: 0; width: 1.75rem; height: 1.75rem; border-radius: 50%; background: rgba(0,0,0,0.08); color: #222; font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center; }
       .process-list li strong { display: block; margin-bottom: .25rem; }
       .process-list li .process-desc { margin: 0; color: #444; }
+      .flight-res-row { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.5rem; }
+      .flight-res-row:last-of-type { margin-bottom: 0; }
+      .flight-res-row .flight-res-img { flex: 0 0 75%; max-width: 75%; }
+      .flight-res-row .flight-res-img img { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 8px; }
+      .flight-res-row .flight-res-caption { flex: 1; min-width: 0; }
+      .flight-res-row .flight-res-caption .description { margin: 0; font-size: 0.95rem; }
+      .fight-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+      .fight-res-grid img { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 8px; }
+      @media (max-width: 768px) {
+        .flight-res-row { flex-direction: column; }
+        .flight-res-row .flight-res-img { flex: none; max-width: 100%; }
+      }
+      @media (max-width: 600px) { .fight-res-grid { grid-template-columns: 1fr; } }
     </style>
   </head>
   <body>
@@ -52,23 +65,23 @@
     </nav>
 
     <div class="section__work">
-      <h1 class="title">Optimafly: A Multi-City Optimized Flight Planner</h1>
+      <h1 class="title">Optimafly. A Multi-City Optimized Flight Planner</h1>
       <div class="case-study-hero">
         <div class="case-study-hero__image">
-          <div class="case-study-hero__image-placeholder" aria-hidden="true"></div>
+          <img src="assets/flight/mainoptima.png" alt="Optimafly multi-city flight planner" />
         </div>
         <div class="case-study-hero__bottom">
           <div class="case-study-hero__info">
             <p class="description note">
-              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Product Head + Full-Stack Developer</span></span>
-              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">September 2025 - Present</span></span>
-              <span class="hero-meta-item"><strong class="hero-meta-label">Tools:</strong><span class="hero-meta-value">HTML/CSS, React (iterated directly in code)</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position</strong> <span class="hero-meta-value">Product Head + Full-Stack Developer</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration</strong> <span class="hero-meta-value">September 2025 - Present</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Tools</strong> <span class="hero-meta-value">HTML/CSS, React (iterated directly in code)</span></span>
             </p>
           </div>
           <div class="case-study-hero__overview">
             <h1 class="subtitle">Overview</h1>
             <p class="description">
-              Existing flight tools assume fixed destinations or single round-trip routes, so travelers who want to explore multiple cities on a budget and within a loose time window end up planning manually, juggling many tabs, comparing prices, and checking feasibility. OptimaFly is a multi-city flight planner that reframes the problem: users define their flexibility (when, how long, which cities matter), and the system returns ranked, cost-minimized itineraries that fit. This case study focuses on the design process and the product goal we set out to solve: helping users spend less time planning and more time deciding, which meant making that input model feel natural and the results easy to scan and act on.
+              Existing flight tools assume fixed destinations or single round-trip routes, so travelers who want to explore multiple cities on a budget and within a loose time window end up planning manually, juggling many tabs, comparing prices, and checking feasibility. OptimaFly is a multi-city flight planner that reframes the problem. Users define their flexibility (when, how long, which cities matter), and the system returns ranked, cost-minimized itineraries that fit. This case study focuses on the design process and the product goal we set out to solve, helping users spend less time planning and more time deciding, which meant making that input model feel natural and the results easy to scan and act on.
             </p>
             <div class="cta-row">
               <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">Live Website</a>
@@ -79,12 +92,12 @@
 
       <h1 class="subtitle">Product Goal</h1>
       <p class="description">
-        The goal of OptimaFly was to help users spend less time planning and more time deciding. From a UX perspective, that meant:
+        The goal of OptimaFly was to help users spend less time planning and more time deciding. From a UX perspective, that meant
       </p>
       <ul class="list">
-        <li><strong>Making trip setup intuitive even with multiple constraints</strong> — Users can specify time windows, must-see vs. optional cities, and min/max stay days; the interface had to make these inputs clear without feeling like a form.</li>
-        <li><strong>Supporting flexible destinations and time windows without overwhelming users</strong> — The product lets users choose a set of multiple cities and a date range instead of a single fixed itinerary. The design challenge was to surface that flexibility so it felt helpful, not overwhelming.</li>
-        <li><strong>Presenting ranked itinerary results in a way that made tradeoffs easy to scan and compare</strong> — Results are ordered by cost and feasibility; the UI needed to surface key tradeoffs (price, dates, number of legs) so users could quickly choose among options.</li>
+        <li><strong>Making trip setup intuitive even with multiple constraints</strong> Users can specify time windows, must-see vs. optional cities, and min/max stay days; the interface had to make these inputs clear without feeling like a form.</li>
+        <li><strong>Supporting flexible destinations and time windows without overwhelming users</strong> The product lets users choose a set of multiple cities and a date range instead of a single fixed itinerary. The design challenge was to surface that flexibility so it felt helpful, not overwhelming.</li>
+        <li><strong>Presenting ranked itinerary results in a way that made tradeoffs easy to scan and compare</strong> Results are ordered by cost and feasibility; the UI needed to surface key tradeoffs (price, dates, number of legs) so users could quickly choose among options.</li>
       </ul>
 
       <h1 class="subtitle">Process</h1>
@@ -113,42 +126,72 @@
 
       <h1 class="subtitle">Design Approach</h1>
       <p class="description">
-        Design was iterated directly in code with React and HTML/CSS—no separate Figma phase—so that layout, copy, and interaction could evolve in lockstep with the backend API and optimization logic. Focus was on a single primary flow: set constraints → run search → scan results and compare. Reducing steps and clarifying labels (e.g., “must visit” vs. “optional”) helped keep trip setup intuitive; result cards were structured to highlight total cost, dates, and leg count so tradeoffs were scannable at a glance.
+        Design was iterated directly in code with React and HTML/CSS, no separate Figma phase, so that layout, copy, and interaction could evolve in lockstep with the backend API and optimization logic. Focus was on a single primary flow, set constraints, run search, scan results and compare. Reducing steps and clarifying labels (e.g., “must visit” vs. “optional”) helped keep trip setup intuitive; result cards were structured to highlight total cost, dates, and leg count so tradeoffs were scannable at a glance.
+      </p>
+
+      <h1 class="subtitle">Personas & user research</h1>
+      <p class="description">
+        We conducted 10 user interviews to observe how people entered trip constraints, interpreted results, and compared itinerary options. The persona we focused on is the <strong>student traveler</strong>. Students want to experience the world but are limited by budget, since many are not working yet, and constrained by time, such as school breaks. The design iterations below were shaped by this context and by what we learned in those interviews.
       </p>
 
       <h1 class="subtitle">Design Iterations</h1>
       <p class="description" style="margin-bottom: 1rem;">
-        Key iterations addressed flow confidence, results readability, and engagement:
+        These iterations were driven by user interviews and testing, so the product better matches what users asked for and how they behaved. Key iterations addressed results readability and engagement.
       </p>
 
       <div class="iteration-block">
-        <h3>Iteration 1: Interaction cues and feedback</h3>
-        <p class="label">Issue</p>
-        <p class="description">Minor UI details—unclear hover states, inconsistent button feedback, and limited guidance around infeasible date selections—reduced user confidence as they moved through the flow.</p>
-        <p class="label">Change</p>
-        <p class="description">I refined interaction cues across the interface: improved hover and selection states, greyed out unavailable actions, and added clearer feedback when users chose date ranges or constraints that could not produce feasible itineraries.</p>
-        <p class="label">Why</p>
-        <p class="description">This made the product feel more predictable and responsive, and helped users understand what actions were available and when their inputs needed adjustment.</p>
-      </div>
-
-      <div class="iteration-block">
-        <h3>Iteration 2: Improving results readability</h3>
+        <h3>Iteration 1. Improving results readability</h3>
         <p class="label">Issue</p>
         <p class="description">Users could generate itineraries, but the results were not always easy to compare quickly.</p>
         <p class="label">Change</p>
-        <p class="description">I redesigned the results layout to improve information hierarchy and make key details (e.g., timing and cost tradeoffs) easier to scan.</p>
+        <p class="description">I redesigned the results layout to improve information hierarchy and make key details (e.g., timing and cost tradeoffs) easier to scan. Below, each screenshot is paired with the design choices behind it.</p>
+        <div class="flight-res-row">
+          <div class="flight-res-img">
+            <img src="assets/flight/res1.png" alt="Result list with labels Best price, Alternative, Next cheapest, Different route" />
+          </div>
+          <div class="flight-res-caption">
+            <p class="description"><strong>Image on the left.</strong> I added a short label next to each result number, e.g. “Best price”, “Alternative”, “Next cheapest”, “Different route”, so it’s clear at a glance which option is cheapest and which are alternatives. “Different route” is used when the user has two or more destinations, so they can see another path that might be more appealing despite a slightly higher cost.</p>
+          </div>
+        </div>
+        <div class="flight-res-row">
+          <div class="flight-res-img">
+            <img src="assets/flight/res2.png" alt="Expanded result with Compared to best and layover duration" />
+          </div>
+          <div class="flight-res-caption">
+            <p class="description"><strong>Image on the left.</strong> When a user expands a result card, I added a “Compared to best” line (e.g. “+1h 5m more layover”) so they can quickly see what makes that option different from the cheapest one. I also surfaced the layover duration in this first-level expansion.</p>
+          </div>
+        </div>
+        <p class="description" style="margin-top: 1rem;"><strong>Both images below.</strong> Users in the interviews wanted to know exact details right away. For these screens, I focused on displaying the important details that are more specific so they could get that at a glance, like how many nights they’re staying, the airline they’ll be taking, where the layover is and how long it is, and clear times throughout, so the user isn’t left confused.</p>
+        <div class="fight-res-grid" aria-label="Result screens showing specific details, nights, airline, layover, times">
+          <img src="assets/flight/res3.png" alt="Result screen with nights, airline, and layover details" />
+          <img src="assets/flight/res4.png" alt="Result screen with specific times and trip details" />
+        </div>
         <p class="label">Why</p>
         <p class="description">Users were able to compare ranked options more efficiently and make decisions with less back-and-forth.</p>
       </div>
 
       <div class="iteration-block">
-        <h3>Iteration 3: Recommendations for all users</h3>
+        <h3>Iteration 2. Recommendation system for signed-in users</h3>
+        <p class="label">Issue</p>
+        <p class="description">Signed-in users had no way to get recommendations tailored to them or to save and revisit suggestions.</p>
+        <p class="label">Change</p>
+        <p class="description">I added a recommendation system for users who sign in, so they get personalized suggestions and can build and manage their destination list.</p>
+        <p class="label">Why</p>
+        <p class="description">Signed-in users can now see recommendations that fit their context and return to ideas they’ve saved, which makes the product more useful for repeat use.</p>
+      </div>
+
+      <div class="iteration-block">
+        <h3>Iteration 3. Recommendations for all users</h3>
         <p class="label">Issue</p>
         <p class="description">Without a way to surface suggestions to everyone, the product felt less exploratory for visitors who had not signed in.</p>
+        <p class="label">Additional research</p>
+        <p class="description">I referenced patterns from Booking.com, Expedia, and similar products when designing recommendations and result presentation.</p>
         <p class="label">Change</p>
         <p class="description">I added recommendations based on current top locations so that every user gets suggestions whether they have an account or not.</p>
+        <p class="description"><img src="assets/flight/pop_travel_des.png" alt="Popular destinations with hover to add" class="img-fluid" style="max-width: 100%; border-radius: 8px; margin: 0.75rem 0;" /></p>
+        <p class="description">When a user hovers over a specific destination, a + sign shows up over the image, which has a slightly darker tint to indicate hover. If you click on it, the destination gets added to your list of destinations on top. This influences users to try out popular destinations and see if they work well with their route and fit within their budget.</p>
         <p class="label">Why</p>
-        <p class="description">This makes the product more interactive and inclusive: the audience can explore popular routes and get ideas without signing in, which keeps the experience engaging from the first visit.</p>
+        <p class="description">This makes the product more interactive and inclusive. The audience can explore popular routes and get ideas without signing in, which keeps the experience engaging from the first visit.</p>
       </div>
 
     </div>
