@@ -7,10 +7,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary-color: #4e3565;
-  --primary-color-dark: #4e3565;
-  --accent-color: #d494b1;
-  --secondary-color: #b4aabc;
+  --primary-color: #4a3162;
+  --primary-color-dark: #4a3162;
+  --accent-color: #c97a9a;
+  --secondary-color: #a78bb8;
   --text-dark: #1f2937;
   --text-light: #4a4452;
   --extra-light: #fdfcff;
@@ -67,21 +67,21 @@ nav {
   padding: 0.9rem 1rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-nav .logo a { font-size: 1.5rem; font-weight: 600; color: #2d1f3d; transition: .3s; display: inline-flex; align-items: center; gap: 0.5rem; }
+nav .logo a { font-size: 1.5rem; font-weight: 600; color: #2e2140; transition: .3s; display: inline-flex; align-items: center; gap: 0.5rem; }
 nav .logo a .name { font-family: var(--font-body); font-size: 1rem; font-weight: 500; color: #1a1a1a; }
 nav .checkbox { display: none; }
 nav input { display: none; }
-nav .checkbox i { font-size: 2rem; color: #2d1f3d; cursor: pointer; }
+nav .checkbox i { font-size: 2rem; color: #2e2140; cursor: pointer; }
 
 /* Hamburger (mobile) */
 .checkbox .hamburger { display: inline-flex; flex-direction: column; gap: 4px; padding: 6px; border-radius: 8px; }
-.checkbox .hamburger span { display: block; width: 22px; height: 2px; background: #2d1f3d; border-radius: 2px; }
+.checkbox .hamburger span { display: block; width: 22px; height: 2px; background: #2e2140; border-radius: 2px; }
 
 nav hr { display: none; }
 nav ul { display: flex; align-items: center; gap: 1rem; list-style: none; transition: left .3s; }
 nav ul li a { padding: .5rem 1rem; font-weight: 500; color: #1a1a1a; transition: color .3s, border-color .3s; border-bottom: 2px solid transparent; }
-nav ul li a:hover { color: #2d1f3d; }
-nav ul li a.active { color: #2d1f3d; border-bottom-color: #2d1f3d; }
+nav ul li a:hover { color: #2e2140; }
+nav ul li a.active { color: #2e2140; border-bottom-color: #2e2140; }
 
 /* Footer */
 footer {
@@ -271,7 +271,7 @@ nav + br + br + br + br { display: none; }
 .section__container1 .image img { margin-left: 0 !important; }
 
 /* Anchor scroll offset so first card isn't hidden under fixed nav */
-#research, #work { scroll-margin-top: calc(var(--nav-height) + 16px); }
+#csprojects, #casestudies { scroll-margin-top: calc(var(--nav-height) + 16px); }
 
 /* Section backgrounds for visual separation */
 .intro-section {
@@ -379,7 +379,7 @@ nav + br + br + br + br { display: none; }
   background: #fff; 
   color: var(--primary-color-dark); 
   border-color: var(--primary-color-dark); 
-  box-shadow: 0 2px 10px rgba(78,53,101,0.12); 
+  box-shadow: 0 2px 10px rgba(74,49,98,0.18); 
 }
 .btn--accent { 
   background: var(--accent-color); 
@@ -389,7 +389,7 @@ nav + br + br + br + br { display: none; }
   background: #fff; 
   color: var(--accent-color); 
   border-color: var(--accent-color); 
-  box-shadow: 0 2px 10px rgba(212,148,177,0.18); 
+  box-shadow: 0 2px 10px rgba(201,122,154,0.22); 
 }
 
 @media (max-width: 750px) {
@@ -564,13 +564,13 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   font-family: var(--font-heading);
   font-size: clamp(3.5rem, 10vw, 9rem);
   line-height: 1;
-  color: rgba(78,53,101,0.18);
+  color: rgba(74,49,98,0.26);
   letter-spacing: 0.03em;
   animation: design-float 12s linear infinite;
 }
 .design-banner .design-text.alt {
   left: -60%;
-  color: rgba(184,146,255,0.20);
+  color: rgba(150,110,220,0.28);
   filter: blur(.3px);
   animation-duration: 16s;
   animation-delay: 4s;
@@ -742,7 +742,7 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   }
   .section-box:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(78,53,101,0.12);
+    box-shadow: 0 8px 24px rgba(74,49,98,0.2);
     opacity: 0.98;
   }
   .section-box:hover .title { color: var(--primary-color-dark); font-weight: 450; }
@@ -857,8 +857,8 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   pointer-events: none;
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(184,146,255,0.95) 60%, rgba(78,53,101,0) 70%);
-  filter: drop-shadow(0 0 6px rgba(184,146,255,0.9));
+  background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(150,110,220,0.95) 60%, rgba(74,49,98,0) 70%);
+  filter: drop-shadow(0 0 6px rgba(150,110,220,0.9));
   transform: translate(-50%, -50%) scale(1);
   animation: sparkle-fade 2.2s ease-out forwards;
   z-index: 2147483646; /* above content but below modals if any */

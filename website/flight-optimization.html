@@ -24,6 +24,7 @@
         padding-left: 1.25rem;
         margin: .25rem 0 .75rem 0;
       }
+      ul.algo-list ul { padding-left: 2rem; margin-left: 0.5rem; margin-top: .25rem; }
       ul li { margin-bottom: .35rem; }
       ul li code { display: inline; white-space: normal; }
       code { background: rgba(0,0,0,0.05); padding: .1rem .3rem; border-radius: 4px; }
@@ -54,8 +55,8 @@
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
-          <li><a href="index.html#research" id="research-button">cs projects</a></li>
-          <li><a href="index.html#work" id="work-button">case studies</a></li>
+          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
         </ul>
       </div>
     </nav>
@@ -66,8 +67,8 @@
         <strong>Position</strong>: Backend Engineer, Frontend Engineer, Product Lead<br>
         <strong>Type</strong>: Personal project<br>
         <strong>Duration</strong>: Sep 2025 - Present<br>
-        <strong>Stack</strong>: <em>Backend</em> — Python · FastAPI · Uvicorn <em>Frontend</em> — React<br>
-        <strong>Skills</strong>: API design, caching, optimization, constraint modeling, BFS search, UX/UI design
+        <strong>Stack</strong>: <em>Backend</em> — Python · FastAPI · Uvicorn · SQL <em>Frontend</em> — React<br>
+        <strong>Skills</strong>: API design, caching, optimization, constraint modeling, UX/UI design, machine learning (ML), database
       </p>
 
       <div class="cta-row">
@@ -85,8 +86,8 @@
           Per-session TTL to avoid refetching identical legs within a day.
         </div>
         <div class="kpi">
-          <strong>BFS reachability</strong>
-          Supports both direct and indirect flights in real time (no offline pre-processing).
+          <strong>User data &amp; recommendations</strong>
+          PostgreSQL stores user interactions for analytics; feeds into an ML recommendation system.
         </div>
         <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="kpi">
           <strong>Deployment</strong>
@@ -117,14 +118,6 @@
         </li>
       </ul>
 
-      <h1 class="subtitle">Endpoints</h1>
-      <ul class="api-list">
-        <li><code>POST /optimize_beam</code> — current optimizer (Top-K + Beam).</li>
-        <li><code>POST /optimize_v0</code> — greedy (no longer used).</li>
-        <li><code>GET /city-groups</code> — given a city name, returns airport codes (handles aliases / metro areas).</li>
-        <li><code>GET /airport-codes</code> — API data is based on city; parse data and get the airport codes that match the city.</li>
-      </ul>
-
       <h1 class="subtitle">Cache</h1>
       <ul class="cache-list">
         <li>Caches the past 24 hours of timeline data per backend session (TTL 24h). 24 hour is currently a placeholder; it will be replaced with dynamic TTL that matches external API.</li>
@@ -144,6 +137,7 @@
         <li><strong>Heuristic optimization:</strong> Graph-based solver that generates feasible, low-cost itineraries under user constraints.</li>
         <li><strong>Structured API:</strong> JSON inputs for windows, stay durations, and must/optional city sets; ranked plans with simple diagnostics.</li>
         <li><strong>Interactive frontend:</strong> React UI to create, submit, and visualize candidate itineraries; tie-breakers surfaced (earliest arrival).</li>
+        <li><strong>Personalized recommendation system:</strong> ML-based recommendations driven by stored user interaction data and deduplicated features.</li>
       </ul>
 
       <h1 class="subtitle">Next Steps</h1>
@@ -151,7 +145,6 @@
         <li>Implement optimization preference in the future (e.g., price vs. time vs. stops).</li>
         <li>We need to figure out a smarter way to reduce the API call; we don’t want to rely on this API in the future (do web scraping to Google Flights).</li>
         <li>Want the airline website to be integrated so that you can click on it and buy the tickets on the official airline website or Expedia.</li>
-        <li>Add a feature that lets users choose between two locations, and the system selects the optimal one.</li>
         <li>Harden error handling, caching, and performance for larger searches and heavier usage.</li>
       </ul>
     </main>

@@ -21,8 +21,8 @@
         <input type="checkbox" name="check" id="check" />
         <ul>
           <li><a href="./#timeline" id="timeline-button">timeline</a></li>
-          <li><a href="./#research" id="research-button">cs projects</a></li>
-          <li><a href="./#work" id="work-button">case studies</a></li>
+          <li><a href="./#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="./#casestudies" id="work-button">case studies</a></li>
         </ul>
       </div>
       <hr>
@@ -79,10 +79,10 @@
           <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">M.S. in Computer Science, ML concentration</span> · <span class="timeline-org">Columbia University, Fu Foundation School of Engineering and Applied Science | New York, NY</span></div></div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present; Jan 2024 - May 2024</div><div><span class="timeline-title">Introduction to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
+          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Dec 2025; Jan 2024 - May 2024</div><div><span class="timeline-title">Introduction to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
+          <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate CS Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content"><div class="timeline-date">Sep 2021 - May 2025</div><div><span class="timeline-title">B.A. in Computer Science, Statistics Minor</span> · <span class="timeline-org">Barnard College, Columbia University | New York, NY</span></div></div>
@@ -91,7 +91,10 @@
           <div class="timeline-content"><div class="timeline-date">Sep 2023 - May 2025</div><div><span class="timeline-title">Product Manager</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate Research Assistant</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
+          <div class="timeline-content"><div class="timeline-date">Feb 2022 - Aug 2023</div><div><span class="timeline-title">Product Designer</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate CS Research Assistant</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
         </div>
         <div class="timeline-item">
           <div class="timeline-content"><div class="timeline-date">May 2022 - Aug 2022</div><div><span class="timeline-title">UX Design Intern</span> · <span class="timeline-org">Wunderman Thompson (currently VML) | Bangkok, Thailand</span></div></div>
@@ -101,14 +104,56 @@
     <div data-section="timeline-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br>
-    <div data-section="research-start" style="position: absolute; visibility: hidden;"></div>
+    <div data-section="csprojects-start" style="position: absolute; visibility: hidden;"></div>
     <section class="cs-projects-section">
-      <h2 class="section-heading" id="research">CS Projects</h2>
+      <h2 class="section-heading" id="csprojects">CS Projects</h2>
       <hr>
       <!-- Research section -->
       <br>
       <div class="research-grid">
-    <!-- StatusCo card -->
+    <!-- Flight Optimization card -->
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="flight-optimization.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">Multi-City Optimized Flight Planner</p>
+            <hr><br>
+            <p class="description1">
+              <i>Python · FastAPI · Optimization · ML · Database</i>
+              <br>
+              <br>
+              Constraint-based flight planning API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
+              <br>
+              <br>
+              <strong>read more</strong>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="image"></div>
+    </div>
+
+    <!-- Trajectory Optimization Research @ A²R Lab card -->
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="research1.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">Trajectory Optimization Research @ A²R Lab</p>
+            <hr><br>
+            <p class="description1">
+            <i>Python · CUDA · C++ · Robotics Simulation · Parallel Optimization</i>
+              <br>
+              <br>
+              Investigates how constraint-handling methods impact PDDP's feasibility, convergence, and speed on robotic control tasks using a Python + CUDA implementation. <br><br>
+              <br>
+              <strong>read more</strong>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Financial Stock Price Forecasting API card -->
     <div class="section__container1 section-box">
       <div class="content">
         <a href="stock.html" class="rectangle_button">
@@ -120,28 +165,6 @@
               <br>
               <br>
               API that combines real-time stock data with news sentiment analysis, using prediction models to generate market price forecasts.
-              <br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="image"></div>
-    </div>
-
-    <!-- Flight Optimization card -->
-    <div class="section__container1 section-box">
-      <div class="content">
-        <a href="flight-optimization.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">Multi-City Optimized Flight Planner</p>
-            <hr><br>
-            <p class="description1">
-              <i>Python · FastAPI · Optimization</i>
-              <br>
-              <br>
-              Constraint-based flight planning API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
               <br>
               <br>
               <strong>read more</strong>
@@ -176,25 +199,6 @@
 
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="research1.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">Trajectory Optimization Research @ A²R Lab</p>
-            <hr><br>
-            <p class="description1">
-            <i>Python · CUDA · C++ · Robotics Simulation · Parallel Optimization</i>
-              <br>
-              <br>
-              Investigates how constraint-handling methods impact PDDP's feasibility, convergence, and speed on robotic control tasks using a Python + CUDA implementation. <br><br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-    </div>
-
-    <div class="section__container1 section-box">
-      <div class="content">
         <a href="research2.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Exploiting Failure in Evolution Research @ Soros Lab, SRI</p>
@@ -215,12 +219,12 @@
     </div>
       </div>
     </section>
-    <div data-section="research-end" style="position: absolute; visibility: hidden;"></div>
+    <div data-section="csprojects-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
-    <div data-section="work-start" style="position: absolute; visibility: hidden;"></div>
+    <div data-section="casestudies-start" style="position: absolute; visibility: hidden;"></div>
     <section class="case-studies-section">
-      <h2 class="section-heading" id="work">Case Studies</h2>
+      <h2 class="section-heading" id="casestudies">Case Studies</h2>
       <hr>
       <br>
       <!-- Work section -->
@@ -292,7 +296,7 @@
     </div>
       </div>
     </section>
-    <div data-section="work-end" style="position: absolute; visibility: hidden;"></div>
+    <div data-section="casestudies-end" style="position: absolute; visibility: hidden;"></div>
 
     <br><br><br><br>
 
@@ -301,8 +305,8 @@
         // active link state (unchanged)
         var links = {
           timeline: document.getElementById('timeline-button'),
-          research: document.getElementById('research-button'),
-          work: document.getElementById('work-button'),
+          csprojects: document.getElementById('research-button'),
+          casestudies: document.getElementById('work-button'),
           profile: document.getElementById('profile-button')
         };
         function setActive(id) {
@@ -325,12 +329,12 @@
             }
           });
         }, { root: null, rootMargin: "-45% 0px -45% 0px", threshold: 0 });
-        ['top','timeline','research','work','profile'].forEach(function(id){
+        ['top','timeline','csprojects','casestudies','profile'].forEach(function(id){
           var el = document.getElementById(id);
           if (el) observer.observe(el);
         });
         // Also observe sentinel elements
-        ['timeline-start','timeline-end','research-start','research-end','work-start','work-end'].forEach(function(section){
+        ['timeline-start','timeline-end','csprojects-start','csprojects-end','casestudies-start','casestudies-end'].forEach(function(section){
           var el = document.querySelector('[data-section="' + section + '"]');
           if (el) observer.observe(el);
         });
@@ -429,7 +433,6 @@
 
     <footer>
       <div class="footer__content">
-        <div>© Pru Yontrarak</div>
         <div class="footer__links">
           <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
