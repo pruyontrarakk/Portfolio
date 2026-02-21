@@ -9,11 +9,12 @@
     <title>Pru Yontrarak Portfolio - Research 2</title>
 
     <style>
-      /* Slightly larger margins for research pages only */
+      /* Match CS project pages layout (no hero image) */
       .section__work {
         width: 90vw;
         max-width: 1200px;
         padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
       :root { --text:#222; --muted:#555; --line: rgba(0,0,0,.1); }
@@ -51,19 +52,26 @@
 
     <div class="section__work">
       <h1 class="title">Exploiting Failure in Evolution</h1>
+      <div class="case-study-hero case-study-hero--no-image">
+        <div class="case-study-hero__bottom">
+          <div class="case-study-hero__info">
+            <p class="description note">
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Undergraduate Researcher under <a href="https://cs.barnard.edu/profiles/lisa-soros">Professor Lisa Soros</a></span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Institute:</strong><span class="hero-meta-value">Soros Lab, Summer Research Institute</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">May 2024 - May 2025</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Tools:</strong><span class="hero-meta-value">Python (NumPy, multiprocessing, heapq), Matplotlib/Seaborn, OpenAI Gymnasium, Git</span></span>
+            </p>
+          </div>
+          <div class="case-study-hero__overview">
+            <h1 class="subtitle">Overview</h1>
+            <p class="description">
+              Algorithms typically try to minimize errors and failures. However, this research seeks to challenge this paradigm by investigating the potential advantages of failure. We explore failure-preserving evolutionary algorithms in the context of the Lunar Lander game environment, where the purple lander is the agent. Variants of FI-2Pop in the Lunar Lander environment are tested whether preserving "failed" individuals improves evolutionary search, revealing reward-hacking behaviors.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <p class="description note">
-        <span class="label">Position</span>: Undergraduate Researcher under <a href="https://cs.barnard.edu/profiles/lisa-soros">Professor Lisa Soros</a>
-        <br>
-        <span class="label">Institute</span>: Soros Lab, Summer Research Institute
-        <br>
-        <span class="label">Duration</span>: May 2024 - May 2025 
-        <br>
-        <span class="label">Tools</span>: Python (NumPy, multiprocessing, heapq), Matplotlib/Seaborn, OpenAI Gymnasium, Git
-        <br> 
-      </p>
-
-      <h1>Summary</h1>
+      <h1 class="subtitle">Summary</h1>
         <div class="kpis">
           <div class="kpi">
             <strong>Scalable experiment framework</strong>
@@ -81,15 +89,7 @@
 
 
 
-        <h1 class="subtitle">Overview</h1>
-          <p class="description">
-            Algorithms typically try to minimize errors and failures. However, this research seeks to challenge this paradigm by investigating the
-            potential advantages of failure. We explore failure-preserving evolutionary algorithms in the
-            context of the Lunar Lander game environment, where the purple lander is the agent. 
-            Variants of FI-2Pop in the Lunar Lander environment are tested whether preserving “failed”
-            individuals improves evolutionary search, revealing reward-hacking behaviors. 
-          </p>
-          <img src="assets/research2/lander.png" class="img-fluid" style="max-width: 400px; width: 100%; margin: .5rem 0;" alt="Lunar Lander" />
+        <p style="margin: 1rem 0;"><img src="assets/research2/lander.png" class="img-fluid" style="max-width: 400px; width: 100%;" alt="Lunar Lander" /></p>
 
         
 

@@ -9,11 +9,11 @@
     <title>Reinforcement Learning for Foosball - Pru Yontrarak</title>
 
     <style>
-      /* Slightly larger margins for research pages only */
+      /* Match case study pages layout */
       .section__work {
         width: 90vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -21,11 +21,7 @@
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
       .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
       .kpi strong { display:block; color: var(--text); }
-      .kpi .subtle { color:#666; font-weight: 500; }
-      a.kpi { text-decoration: none; display: block; color: inherit; transition: background-color 0.2s, border-color 0.2s; }
-      a.kpi:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.15); cursor: pointer; }
-      /* Prominent top-level GitHub button */
-      .cta-row { margin: .5rem 0 1rem; }
+      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
       .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
       .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
     </style>
@@ -53,43 +49,49 @@
     
 
     <div class="section__work">
-
-        <h1 class="title">Reinforcement Learning for Foosball</h1>
-        <p class="description note">
-          <strong>Position</strong>: Backend Engineer, Software Engineer, Project Manager
-          <br>
-          <strong>Type</strong>: Team Project
-          <br>
-          <strong>Duration</strong>: September - December 2025
-          <br>
-          <strong>Stack</strong>: Python, C++, MuJoCo, TQC, SAC, OpenCV, YOLOv11, NumPy, PyTorch, GCP
-          <br> 
-        </p>
-
-        <div class="cta-row">
-          <a href="https://github.com/pruyontrarakk/FoosballSimulatorProject" target="_blank" rel="noopener noreferrer" class="cta-btn">GitHub Repository</a>
-        </div>
-
-        <h1>Summary</h1>
-        <div class="kpis">
-          <div class="kpi">
-            <strong>Algorithm integration</strong>
-            Implemented TQC (distributional critics with quantile truncation) and revived SAC (Soft Actor-Critic) from existing baseline codebase.
+      <h1 class="title">Reinforcement Learning for Foosball</h1>
+      <div class="case-study-hero case-study-hero--no-image">
+        <div class="case-study-hero__bottom">
+          <div class="case-study-hero__info">
+            <p class="description note">
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Backend Engineer, Software Engineer, Project Manager</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Type:</strong><span class="hero-meta-value">Team Project</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">September - December 2025</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Stack:</strong><span class="hero-meta-value">Python, C++, MuJoCo, TQC, SAC, OpenCV, NumPy, PyTorch, GCP</span></span>
+            </p>
           </div>
-          <div class="kpi">
-            <strong>Data pipeline</strong>
-            Calibration + undistortion + ball-state extraction (OpenCV) from real gameplay footage.
+          <div class="case-study-hero__overview">
+            <h1 class="subtitle">Overview</h1>
+            <p class="description">
+              This project explores reinforcement learning for continuous control within a foosball simulation built in MuJoCo. We trained agents using Truncated Quantile Critics (TQC) and benchmarked against Soft Actor-Critic (SAC) to study policy robustness. Our goal was to build a MuJoCo foosball simulation grounded in real video, then train TQC agents that outperform a SAC baseline in interception rate and control stability.
+            </p>
+            <div class="cta-row">
+              <a href="https://github.com/pruyontrarakk/FoosballSimulatorProject" target="_blank" rel="noopener noreferrer" class="cta-btn">GitHub Repository</a>
+              <a href="assets/foosball/Foosball_RL_Research_Paper.pdf" target="_blank" rel="noopener noreferrer" class="cta-btn">Research Paper (PDF)</a>
+            </div>
           </div>
-          
         </div>
+      </div>
 
-
-        <h1 class="subtitle">Objective</h1>
-        <p class="description">
-          This project explores reinforcement learning for continuous control within a foosball simulation built in MuJoCo (Advanced Physics Simulation).
-          We trained agents using Truncated Quantile Critics (TQC) and benchmarked against Soft Actor-Critic (SAC) from an external codebase to study policy robustness.
-          We want to build a MuJoCo foosball simulation grounded in real video, then train TQC agents that outperform a SAC baseline in interception rate and control stability.
-        </p>
+      <h1 class="subtitle">Summary</h1>
+      <div class="kpis">
+        <div class="kpi">
+          <strong>Algorithm integration</strong>
+          Implemented TQC and revived SAC from the baseline; trained and compared both on the foosball environment.
+        </div>
+        <div class="kpi">
+          <strong>Vision & trajectory pipeline</strong>
+          OpenCV + ArUco calibration and ball tracking for (x,y,t) trajectories from real gameplay as ground truth for the sim.
+        </div>
+        <div class="kpi">
+          <strong>Custom MuJoCo environment</strong>
+          Table from CAD, rods with sliding/rotation, ball in plane; tuned mass, friction, and damping to match real trajectories.
+        </div>
+        <div class="kpi">
+          <strong>Reward design & training</strong>
+          Shaped rewards and termination rules; compared SAC vs TQC (stability, goal rate, episode length); full metrics in the paper.
+        </div>
+      </div>
 
         <h1 class="subtitle">Why TQC?</h1>
         <p class="description">
@@ -105,43 +107,62 @@
             <li><strong>Ball state extraction:</strong> Computed per‑frame ball position and velocity from recordings.</li>
         </ul>
 
-        <h1 class="subtitle">Implementation Progress</h1>
+        <h1 class="subtitle">Ball Trajectory from OpenCV</h1>
+        <p class="description">
+          We extracted ball trajectories from overhead gameplay video to obtain ground-truth (x,y,t) data for validating and tuning the simulator.
+        </p>
+        <figure style="margin: 0.4rem 0;">
+          <img src="assets/foosball/computervisionball.gif" class="img-fluid" alt="OpenCV ball tracking: red ball detected and tracked frame-by-frame on foosball table" style="max-width: 30%; border-radius: 10px; margin: 0 auto; display: block;" />
+        </figure>
         <ul class="methods">
-            <li><strong>Baseline environment (external environment):</strong> Compiled and ran the public RoboFoosball codebase to get MuJoCo environment.</li>
-            <li><strong>SAC baseline (external environment):</strong> Train from the baseline codebase environment to establish control metrics on GCP.</li>
-            <li><strong>TQC training (external environment):</strong> Implemented TQC and trained on the baseline codebase environment on GCP.</li>
-            <li><strong>Data collection (for our own environment):</strong> Overhead videos on a physical table with varied play styles; initial calibration and ball position/velocity extraction pipeline for foosball data.</li>
+            <li><strong>Monocular calibration:</strong> Implemented calibration using OpenCV with ArUco to detect the table corners and establish the playing-plane coordinate frame.</li>
+            <li><strong>Ball tracking:</strong> Tracked the red ball frame-by-frame using color + contour detection to get (x,y,t) trajectories.</li>
+            <li><strong>Ground truth for sim:</strong> Used this trajectory dataset as ground truth for tuning the simulator’s dynamics.</li>
         </ul>
 
-
-        <h1 class="subtitle">Preliminary Results</h1>
+        <h1 class="subtitle">Simulation Environment</h1>
+        <p class="description">
+          We built a custom MuJoCo environment to match our physical table and support training TQC and SAC agents. The simulation is calibrated so that ball dynamics and rod control transfer meaningfully from sim to real.
+        </p>
+        <figure style="margin: 0.4rem 0;">
+          <img src="assets/foosball/mujoco.gif" class="img-fluid" alt="MuJoCo foosball simulation: table with rods, players, and ball in motion" style="max-width: 30%; border-radius: 10px; margin: 0 auto; display: block;" />
+        </figure>
         <ul class="methods">
-            <li><strong>SAC baseline:</strong> Successfully trained on external codebase environment.</li>
-            <li><strong>TQC on baseline:</strong> Successfully trained on external codebase environment.</li>
-            <li><strong>Calibration:</strong> RMS reprojection error 4.56 px; mean error 0.59 px, which is adequate for plane mapping.</li>
-            <li><strong>Camera intrinsics matrix:</strong><br>
-            <pre style="display: inline-block; margin: 0.5rem 0; font-family: monospace; font-size: 0.9em;"><code>K = [2665.6,    0.0, 1577.0
-     0.0, 2693.4, 2260.7
-     0.0,    0.0,    1.0]</code></pre>
-            </li>
+            <li><strong>Custom MuJoCo environment:</strong> Built with a CAD model for the table; calibrated simulation to match table dimensions and coordinate frame.</li>
+            <li><strong>Rod and ball modeling:</strong> Modeled each rod with sliding + rotational joints; ball moves freely in the plane with contact against players and walls.</li>
+            <li><strong>Physics tuning:</strong> Tuned ball mass, friction, and damping so simulated passes and rebounds have similar speed and travel distance to real trajectories.</li>
         </ul>
 
+        <h1 class="subtitle">Reward & Episode Termination</h1>
+        <p class="description">
+          We found that without shaping, the sparse “goal only” signal wasn’t enough to learn reasonable play in our time budget.
+        </p>
+        <ul class="methods">
+            <li><strong>Reward (per step):</strong> Progress weight (ball moving toward goal), distance weight (ball closer to goal), speed weight (keeping the ball moving).</li>
+            <li><strong>Penalty (per step):</strong> Large control inputs (0.001 × squared action magnitude per step for violent rod rotation); stalling (time penalty −0.1).</li>
+            <li><strong>Terminal events:</strong> Goal scored (+10000, or −10000 for self-goal); ball stuck (slower than 0.15 in y-axis per frame for 40 steps); max episode time (3000 steps).</li>
+        </ul>
 
-        <h1 class="subtitle">Next Steps</h1>
-      <ul class="methods">
-        <li><strong>Build & validate our own MuJoCo environment:</strong> encode table geometry, friction/restitution; implement multi-rod control; add reset invariants.</li>
-        <li><strong>Finalize data:</strong> re-collect higher-contrast footage; lock calibration/homography; utilize extracted ball position/velocity data for training.</li>
-        <li><strong>Train in our own environment:</strong> run matched TQC and SAC in our own environment with extracted ball position/velocity data; report quantitative metrics.</li>
-      </ul>
+        <h1 class="subtitle">Results</h1>
+        <ul class="methods">
+            <li><strong>SAC:</strong> Converges to a stable return plateau and a much higher goal rate; episode length collapses to very short episodes (often tens of steps), so episodes end quickly.</li>
+            <li><strong>TQC:</strong> Reaches higher return peaks at times but is less stable; maintains much longer episodes (often thousands of steps), keeping the ball in play longer but converting to goals less often than SAC.</li>
+            <li><strong>Takeaway:</strong> SAC gives stable, consistent, goal-heavy play; TQC can achieve higher returns but is more sensitive to reward/termination design and tends toward longer rallies or timeouts rather than quick goals. Full learning curves and metrics are in the paper.</li>
+        </ul>
 
-
+        <h1 class="subtitle">Course</h1>
+        <p class="description">
+          This project was completed for Computational Aspects of Robotics at Columbia University. The paper below was our final paper, completed as a group.
+        </p>
+        <div class="cta-row">
+          <a href="assets/foosball/Foosball_RL_Research_Paper.pdf" target="_blank" rel="noopener noreferrer" class="cta-btn">Research Paper (PDF)</a>
+        </div>
 
     </div>
 
     
     <footer>
       <div class="footer__content">
-        <div>© Pru Yontrarak</div>
         <div class="footer__links">
           <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>

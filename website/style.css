@@ -237,7 +237,7 @@ footer {
 .section__work li {
   font-family: var(--font-body);
   line-height: 1.6;
-  color: var(--text-light);
+  color: #1a1a1a;
   overflow-wrap: break-word;
   word-break: break-word;
 }
@@ -247,7 +247,7 @@ footer {
   overflow-wrap: break-word;
   word-break: break-all; /* More aggressive breaking for URLs and code */
 }
-.section__work .title { color: var(--text-dark); }
+.section__work .title { color: #1a1a1a; }
 
 /* Ensure content blocks inside case pages start at top-left, not centered */
 .section__work .content {
@@ -272,6 +272,109 @@ nav + br + br + br + br { display: none; }
 
 /* Anchor scroll offset so first card isn't hidden under fixed nav */
 #csprojects, #casestudies { scroll-margin-top: calc(var(--nav-height) + 16px); }
+
+/* Case study hero: image on top (2/3 width), then small info (left) + overview (right) */
+.case-study-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.case-study-hero__image {
+  width: 66.666%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+.case-study-hero__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.case-study-hero__image-placeholder {
+  width: 100%;
+  min-height: 220px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  border: 1px dashed rgba(78, 53, 101, 0.2);
+}
+.case-study-hero__bottom {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) 1fr;
+  gap: 2.5rem 6.5rem;
+  align-items: start;
+}
+@media (max-width: 640px) {
+  .case-study-hero__bottom {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+.case-study-hero__info {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  padding-top: 1.5rem;
+}
+.case-study-hero__info > *:first-child {
+  margin-top: 0;
+}
+.case-study-hero__info .note {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  flex: 0 0 auto;
+  margin: 0;
+  line-height: 1.6;
+}
+.case-study-hero__info .note .hero-meta-item {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.case-study-hero__info .note .hero-meta-item:last-child {
+  margin-bottom: 0;
+}
+.case-study-hero__info .note .hero-meta-label {
+  font-weight: bold;
+  font-style: italic;
+  display: block;
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+.case-study-hero__info .note .hero-meta-value {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+.case-study-hero__info .note strong {
+  display: inline;
+}
+.case-study-hero__overview {
+  min-width: 0;
+  padding-top: 1.5rem;
+}
+/* CS project pages (no hero image): align Overview to top right */
+.case-study-hero--no-image .case-study-hero__overview {
+  padding-top: 0;
+}
+.case-study-hero__overview .subtitle {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.case-study-hero__overview .description {
+  margin-bottom: 0;
+}
 
 /* Section backgrounds for visual separation */
 .intro-section {
@@ -535,9 +638,15 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
   margin-bottom: 1rem;
   width: 100%; /* ensure full-width inside flex parents like .content */
 }
+.section__work .note {
+  color: #1a1a1a;
+}
 .note .label {
   font-weight: 600;
   color: var(--text-dark);
+}
+.section__work .note .label {
+  color: #1a1a1a;
 }
 
 /* ===== Case Page: unified vertical rhythm ===== */
@@ -545,9 +654,9 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 .section__work > br { display: none; }
 
 /* Headings and paragraphs spacing */
-.section__work h1.title { margin-bottom: 1rem; }
-.section__work .subtitle { margin-top: 1.5rem; margin-bottom: 0.5rem; }
-.section__work .description { margin-bottom: 1rem; }
+.section__work .subtitle { margin-top: 2.5rem; margin-bottom: 0.5rem; color: var(--primary-color-dark); font-size: 1.55rem; }
+.section__work .case-study-hero__overview .subtitle { margin-top: 0; }
+.section__work .description { margin-bottom: 1rem; color: #1a1a1a; }
 
 /* Images spacing */
 .section__work img,
@@ -701,14 +810,16 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 }
 
 /* Case page utilities for structured content (e.g., Goals & Constraints) */
-.section__work h2 { font-size: 1.6rem; color: var(--text-dark); margin-top: 1.25rem; margin-bottom: 0.5rem; }
-.section__work h3 { font-size: 1.1rem; color: var(--text-dark); margin: 0.5rem 0; }
+.section__work h2 { font-size: 1.5rem; color: var(--primary-color-dark); margin-top: 2.25rem; margin-bottom: 0.5rem; }
+.section__work h3 { font-size: 1.1rem; color: var(--primary-color-dark); margin: 1rem 0 0.25rem 0; }
 .section__work h1.title {
   font-family: var(--font-heading);
-  color: var(--primary-color-dark);
+  color: #1a1a1a;
   font-weight: 600;
   letter-spacing: 0;
   line-height: 1.15;
+  margin-top: 2rem;
+  margin-bottom: 2.25rem;
 }
 .section__work .grid-2 {
   display: grid;

@@ -9,11 +9,11 @@
     <title>Pru Yontrarak Portfolio - Research 1</title>
 
     <style>
-      /* Slightly larger margins for research pages only */
+      /* Match CS project pages layout (no hero image) */
       .section__work {
         width: 90vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -48,36 +48,37 @@
     
 
     <div class="section__work">
-
-        <h1 class="title">Trajectory Optimization in PDDP</h1>
-        <p class="description note">
-          <strong>Position</strong>: Graduate Researcher under <a href="https://brianplancher.com/">Professor Brian Plancher</a>
-          <br>
-          <strong>Institute</strong>: <a href="https://a2r-lab.org/">The Accessible and Accelerated Robotics Lab (A²R Lab)</a>
-          <br>
-          <strong>Duration</strong>: January 2025 - Present 
-          <br>
-          <strong>Tools</strong>: Python, CUDA, CursorAI
-          <br> 
-        </p>
-
-        <h1>Summary</h1>
-        <div class="kpis">
-          <div class="kpi">
-            <strong>System integration</strong>
-            Extended the lab's PDDP codebase with a modular <em>Augmented Lagrangian</em> constraint-handling component in Python/CUDA.
+      <h1 class="title">Trajectory Optimization in PDDP</h1>
+      <div class="case-study-hero case-study-hero--no-image">
+        <div class="case-study-hero__bottom">
+          <div class="case-study-hero__info">
+            <p class="description note">
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Graduate Researcher under <a href="https://brianplancher.com/">Professor Brian Plancher</a></span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Institute:</strong><span class="hero-meta-value"><a href="https://a2r-lab.org/">The Accessible and Accelerated Robotics Lab (A²R Lab)</a></span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">January 2025 - Present</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Tools:</strong><span class="hero-meta-value">Python, CUDA, CursorAI</span></span>
+            </p>
           </div>
-          <div class="kpi">
-            <strong>Maintainability</strong>
-            Refactored experiment scripts and added documentation for reuse.
+          <div class="case-study-hero__overview">
+            <h1 class="subtitle">Overview</h1>
+            <p class="description">
+              Robotic trajectory optimizers often fail under hard constraints (e.g., joint limits, obstacles). This project strengthens Parallel DDP (PDDP) by evaluating constraint-handling methods to improve feasibility, stability, and speed on CPU/GPU. We implement these methods on both a pendulum and a 7-joint IIWA robot to map and understand findings, using Python as a reference to compare against and validate the CUDA implementation.
+            </p>
           </div>
         </div>
-        
-        
-        <h1 class="subtitle">Background</h1>
-        <p class="description">
-            Robotic trajectory optimizers often fail under hard constraints (e.g., joint limits, obstacles). This project strengthens Parallel DDP (PDDP) by evaluating constraint-handling methods to improve feasibility, stability, and speed on CPU/GPU.
-          </p>
+      </div>
+
+      <h1 class="subtitle">Summary</h1>
+      <div class="kpis">
+        <div class="kpi">
+          <strong>System integration</strong>
+          Extended the lab's PDDP codebase with a modular <em>Augmented Lagrangian</em> constraint-handling component in Python/CUDA.
+        </div>
+        <div class="kpi">
+          <strong>Maintainability</strong>
+          Refactored experiment scripts and added documentation for reuse.
+        </div>
+      </div>
 
         <h1 class="subtitle">Methods</h1>
         <ul class="methods">

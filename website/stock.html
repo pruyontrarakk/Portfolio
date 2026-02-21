@@ -12,7 +12,7 @@
       .section__work {
         width: 90vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1rem 2rem 1rem;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -33,7 +33,7 @@
       .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
       .kpi strong { display:block; color: var(--text); }
       /* Prominent top-level GitHub button */
-      .cta-row { margin: .5rem 0 1rem; }
+      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
       .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
       .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
       .skills { color:#666; font-style: italic; margin-top:.25rem; }
@@ -61,19 +61,30 @@
 
     <main class="section__work">
       <h1 class="title">Financial Stock Price Forecasting API</h1>
-      <p class="description note">
-        <strong>Position</strong>: Backend Engineer, Software Engineer, Project Manager<br>
-        <strong>Type</strong>: Team Project<br>
-        <strong>Duration</strong>: September - December 2025<br>
-        <strong>Stack</strong>: Java, Python, Spring Boot, GitHub Actions, Postman<br>
-        <strong>Skills</strong>: API design, systems architecture, CI/CD, Machine Learning, Natural Language Processing </span>
-      </p>
-
-      <div class="cta-row">
-        <a href="https://github.com/pruyontrarakk/4156-P2KM" target="_blank" rel="noopener noreferrer" class="cta-btn">GitHub Repository</a>
+      <div class="case-study-hero case-study-hero--no-image">
+        <div class="case-study-hero__bottom">
+          <div class="case-study-hero__info">
+            <p class="description note">
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Backend Engineer, Software Engineer, Project Manager</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Type:</strong><span class="hero-meta-value">Team Project</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">September - December 2025</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Stack:</strong><span class="hero-meta-value">Java, Python, Spring Boot, GitHub Actions, Postman</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Skills:</strong><span class="hero-meta-value">API design, systems architecture, CI/CD, Machine Learning, Natural Language Processing</span></span>
+            </p>
+          </div>
+          <div class="case-study-hero__overview">
+            <h1 class="subtitle">Overview</h1>
+            <p class="description">
+              Our Financial Stock Price Forecasting API is a Java-based REST API that forecasts short-term stock movements by combining <em>quantitative</em> (historical prices) and <em>qualitative</em> (market sentiment) signals. The system ingests market data from Alpha Vantage and news sentiment from Hugging Face transformers, producing confidence-adjusted predictions via three model pipelines—stock, sentiment, and combined fusion. We deploy API endpoints for X-day price, X-day sentiment, and next-day combined prediction.
+            </p>
+            <div class="cta-row">
+              <a href="https://github.com/pruyontrarakk/4156-P2KM" target="_blank" rel="noopener noreferrer" class="cta-btn">GitHub Repository</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h1>Summary</h1>
+      <h1 class="subtitle">Summary</h1>
       <div class="kpis">
         <div class="kpi">
           <strong>Microservice architecture</strong>
@@ -92,20 +103,6 @@
           Endpoints for daily prices, sentiment analysis, and predictions with JSON responses
         </div>
       </div>
-
-
-      <h1 class="subtitle">Objective</h1>
-      <p class="description">
-        Our Financial Stock Price Forecasting API is a Java-based
-        REST API that forecasts short-term stock movements by combining
-        <em>quantitative</em> (historical prices) and <em>qualitative</em>
-        (market sentiment) signals. The system ingests market data from
-        Alpha Vantage and news sentiment from
-        Hugging Face transformers, producing confidence-adjusted
-        predictions via three model pipelines—stock, sentiment, and combined
-        fusion. We will deploy API endpoints for X-day price, X-day sentiment,
-        and next-day combined prediction.
-      </p>
 
       <h1 class="subtitle">Why This API?</h1>
       <p class="description">

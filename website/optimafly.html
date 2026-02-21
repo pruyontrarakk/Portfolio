@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Optimafly: A Multi-City Optimized Flight Planner — Pru Yontrarak</title>
+
+    <style>
+      /* Match case study pages layout */
+      .section__work {
+        width: 90vw;
+        max-width: 1200px;
+        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+      }
+      .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
+      .list { list-style-position: outside; padding-left: 1.25rem; margin: .25rem 0 .75rem 0; }
+      .list li { margin-bottom: .35rem; }
+      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
+      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
+      .iteration-block { border: 1px solid rgba(0,0,0,.1); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+      .iteration-block h3 { margin: 0 0 .5rem 0; font-size: 1.1rem; }
+      .iteration-block p { margin: 0 0 .5rem 0; }
+      .iteration-block p:last-child { margin-bottom: 0; }
+      .iteration-block .label { font-size: .85rem; color: #555; text-transform: uppercase; letter-spacing: .03em; margin-bottom: .25rem; }
+      .process-list { list-style: none; padding-left: 0; margin: 1rem 0; counter-reset: process-step; }
+      .process-list li { position: relative; padding-left: 2.5rem; margin-bottom: 1.25rem; counter-increment: process-step; }
+      .process-list li::before { content: counter(process-step); position: absolute; left: 0; top: 0; width: 1.75rem; height: 1.75rem; border-radius: 50%; background: rgba(0,0,0,0.08); color: #222; font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center; }
+      .process-list li strong { display: block; margin-bottom: .25rem; }
+      .process-list li .process-desc { margin: 0; color: #444; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo" id="home-button"><a href="index.html#top"><span class="name"> Pru Yontrarak</span></a></div>
+        <label for="check" class="checkbox" aria-label="Toggle navigation">
+          <span class="hamburger" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="section__work">
+      <h1 class="title">Optimafly: A Multi-City Optimized Flight Planner</h1>
+      <div class="case-study-hero">
+        <div class="case-study-hero__image">
+          <div class="case-study-hero__image-placeholder" aria-hidden="true"></div>
+        </div>
+        <div class="case-study-hero__bottom">
+          <div class="case-study-hero__info">
+            <p class="description note">
+              <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Product Head + Full-Stack Developer</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">September 2025 - Present</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Tools:</strong><span class="hero-meta-value">HTML/CSS, React (iterated directly in code)</span></span>
+            </p>
+          </div>
+          <div class="case-study-hero__overview">
+            <h1 class="subtitle">Overview</h1>
+            <p class="description">
+              Existing flight tools assume fixed destinations or single round-trip routes, so travelers who want to explore multiple cities on a budget and within a loose time window end up planning manually, juggling many tabs, comparing prices, and checking feasibility. OptimaFly is a multi-city flight planner that reframes the problem: users define their flexibility (when, how long, which cities matter), and the system returns ranked, cost-minimized itineraries that fit. This case study focuses on the design process and the product goal we set out to solve: helping users spend less time planning and more time deciding, which meant making that input model feel natural and the results easy to scan and act on.
+            </p>
+            <div class="cta-row">
+              <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">Live Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="subtitle">Product Goal</h1>
+      <p class="description">
+        The goal of OptimaFly was to help users spend less time planning and more time deciding. From a UX perspective, that meant:
+      </p>
+      <ul class="list">
+        <li><strong>Making trip setup intuitive even with multiple constraints</strong> — Users can specify time windows, must-see vs. optional cities, and min/max stay days; the interface had to make these inputs clear without feeling like a form.</li>
+        <li><strong>Supporting flexible destinations and time windows without overwhelming users</strong> — The product lets users choose a set of multiple cities and a date range instead of a single fixed itinerary. The design challenge was to surface that flexibility so it felt helpful, not overwhelming.</li>
+        <li><strong>Presenting ranked itinerary results in a way that made tradeoffs easy to scan and compare</strong> — Results are ordered by cost and feasibility; the UI needed to surface key tradeoffs (price, dates, number of legs) so users could quickly choose among options.</li>
+      </ul>
+
+      <h1 class="subtitle">Process</h1>
+      <ol class="process-list">
+        <li>
+          <strong>Build a working first version</strong>
+          <p class="process-desc description">I built an initial full-stack version of OptimaFly to validate the core optimization workflow in a real product environment.</p>
+        </li>
+        <li>
+          <strong>Test the first iteration early</strong>
+          <p class="process-desc description">I ran usability testing with 10 student users to observe how they entered trip constraints, interpreted results, and compared itinerary options.</p>
+        </li>
+        <li>
+          <strong>Identify patterns and pain points</strong>
+          <p class="process-desc description">I synthesized recurring issues into user personas and behavior patterns, including differences in how users prioritized cost vs. convenience.</p>
+        </li>
+        <li>
+          <strong>Redesign key UI flows</strong>
+          <p class="process-desc description">Based on testing, I revised input patterns, information hierarchy, and results layout to reduce confusion and improve scannability.</p>
+        </li>
+        <li>
+          <strong>Implement and refine</strong>
+          <p class="process-desc description">I shipped the updated interface directly in the product and continued improving responsiveness through backend optimization work.</p>
+        </li>
+      </ol>
+
+      <h1 class="subtitle">Design Approach</h1>
+      <p class="description">
+        Design was iterated directly in code with React and HTML/CSS—no separate Figma phase—so that layout, copy, and interaction could evolve in lockstep with the backend API and optimization logic. Focus was on a single primary flow: set constraints → run search → scan results and compare. Reducing steps and clarifying labels (e.g., “must visit” vs. “optional”) helped keep trip setup intuitive; result cards were structured to highlight total cost, dates, and leg count so tradeoffs were scannable at a glance.
+      </p>
+
+      <h1 class="subtitle">Design Iterations</h1>
+      <p class="description" style="margin-bottom: 1rem;">
+        Key iterations addressed flow confidence, results readability, and engagement:
+      </p>
+
+      <div class="iteration-block">
+        <h3>Iteration 1: Interaction cues and feedback</h3>
+        <p class="label">Issue</p>
+        <p class="description">Minor UI details—unclear hover states, inconsistent button feedback, and limited guidance around infeasible date selections—reduced user confidence as they moved through the flow.</p>
+        <p class="label">Change</p>
+        <p class="description">I refined interaction cues across the interface: improved hover and selection states, greyed out unavailable actions, and added clearer feedback when users chose date ranges or constraints that could not produce feasible itineraries.</p>
+        <p class="label">Why</p>
+        <p class="description">This made the product feel more predictable and responsive, and helped users understand what actions were available and when their inputs needed adjustment.</p>
+      </div>
+
+      <div class="iteration-block">
+        <h3>Iteration 2: Improving results readability</h3>
+        <p class="label">Issue</p>
+        <p class="description">Users could generate itineraries, but the results were not always easy to compare quickly.</p>
+        <p class="label">Change</p>
+        <p class="description">I redesigned the results layout to improve information hierarchy and make key details (e.g., timing and cost tradeoffs) easier to scan.</p>
+        <p class="label">Why</p>
+        <p class="description">Users were able to compare ranked options more efficiently and make decisions with less back-and-forth.</p>
+      </div>
+
+      <div class="iteration-block">
+        <h3>Iteration 3: Recommendations for all users</h3>
+        <p class="label">Issue</p>
+        <p class="description">Without a way to surface suggestions to everyone, the product felt less exploratory for visitors who had not signed in.</p>
+        <p class="label">Change</p>
+        <p class="description">I added recommendations based on current top locations so that every user gets suggestions whether they have an account or not.</p>
+        <p class="label">Why</p>
+        <p class="description">This makes the product more interactive and inclusive: the audience can explore popular routes and get ideas without signing in, which keeps the experience engaging from the first visit.</p>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="footer__content">
+        <div class="footer__links">
+          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:ppy2104@columbia.edu">Email</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function(){
+        var link = document.getElementById('work-button');
+        if (link) link.classList.add('active');
+      })();
+    </script>
+  </body>
+</html>
