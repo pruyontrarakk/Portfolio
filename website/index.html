@@ -10,7 +10,7 @@
   <body class="home-page">
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="./#top"><span class="name"> Pru Yontrarak</span></a></div>
+        <div class="logo" id="home-button"><a href="index.html"><span class="name"> Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span>
@@ -56,20 +56,25 @@
         <div class="content">
           <div class="intro-block intro-block--hero">
             <h1 class="hero-statement">
-              <span class="hero-line hero-serif">Pru Yontrarak is a</span>
+              <span class="hero-line hero-serif">Pru Yontrarak <span class="hero-connective">is a</span></span>
               <span class="hero-line hero-line--mixed">
-                <span class="hero-script hero-script--oval">full stack</span><span class="hero-serif"> engineer</span>
+                <span class="hero-serif">product </span><span class="hero-serif hero-emphasis">designer</span>
               </span>
               <span class="hero-line hero-line--role-second">
-                <span class="hero-connective">and </span><span class="hero-serif">product </span><span class="hero-script hero-script--underline">designer</span><span class="hero-serif">.</span>
+                <span class="hero-connective">and </span><span class="hero-serif hero-emphasis">full stack</span><span class="hero-serif"> engineer</span><span class="hero-serif">.</span>
               </span>
             </h1>
             <p class="hero-subnote">M.S. Computer Science @ Columbia</p>
           </div>
         </div>
         <div class="image hero-trace-figure">
-          <img src="assets/common/home-lily-traced.svg" alt="Traced lily illustration" />
+          <img class="hero-floral-trace" src="assets/common/home-peony-traced.svg" alt="Peony line illustration" />
         </div>
+      </div>
+      <div class="contact-links contact-links--hero" role="navigation" aria-label="Contact links">
+        <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:ppy2104@columbia.edu">Email</a>
       </div>
     </section>
 
@@ -319,20 +324,29 @@
         });
       });
 
+      // Logo: always return to the full home hero (scroll top); hash-only nav is unreliable with sticky hero
+      var homeBtn = document.getElementById('home-button');
+      if (homeBtn && document.body.classList.contains('home-page')) {
+        var homeLink = homeBtn.querySelector('a');
+        if (homeLink) {
+          homeLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (window.location.hash) {
+              history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            setActive(null);
+            if (menuCheckbox && menuCheckbox.checked) {
+              menuCheckbox.checked = false;
+            }
+          });
+        }
+      }
+
       // Removed downscroll nudge feature per request
 
       })();
     </script>
     <script src="background.js"></script>
-
-    <footer>
-      <div class="footer__content">
-        <div class="footer__links">
-          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:ppy2104@columbia.edu">Email</a>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>

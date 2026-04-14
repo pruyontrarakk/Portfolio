@@ -64,7 +64,7 @@ def main() -> None:
     paths.sort(key=lambda s: s.count("L"), reverse=True)
     svg_inner = "\n            ".join(paths[:110])
     svg = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {new_w} {new_h}" width="{new_w}" height="{new_h}" fill="none" aria-hidden="true">
-  <g stroke="#4a3162" stroke-width="0.58" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#2d3e40" stroke-width="0.58" stroke-linecap="round" stroke-linejoin="round">
             {svg_inner}
   </g>
 </svg>

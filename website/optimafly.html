@@ -69,21 +69,30 @@
         box-sizing: border-box;
       }
       .ofly-story-chunk .ofly-pull {
-        margin: 0.85rem 0 0;
-        padding: 0.85rem 0 0;
-        border-top: 1px solid var(--border-subtle);
+        margin-top: clamp(1.1rem, 2.5vw, 1.65rem);
+        margin-bottom: clamp(1.1rem, 2.5vw, 1.65rem);
+        margin-left: auto;
+        margin-right: 0;
+        width: 75%;
+        max-width: none;
+        padding: clamp(1.35rem, 3vw, 2rem) clamp(1.15rem, 2.8vw, 1.5rem);
+        box-sizing: border-box;
+        text-align: left;
+        background: var(--surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        box-shadow: var(--shadow);
         font-style: italic;
         color: var(--text-light);
-        max-width: 68ch;
       }
       .flight-res-row { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.5rem; }
       .flight-res-row:last-of-type { margin-bottom: 0; }
       .flight-res-row .flight-res-img { flex: 0 0 75%; max-width: 75%; }
-      .flight-res-row .flight-res-img img { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 8px; }
+      .flight-res-row .flight-res-img img { width: 100%; height: 260px; object-fit: cover; display: block; }
       .flight-res-row .flight-res-caption { flex: 1; min-width: 0; }
-      .flight-res-row .flight-res-caption .description { margin: 0; font-size: 0.95rem; }
+      .flight-res-row .flight-res-caption .description { margin: 0; }
       .fight-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
-      .fight-res-grid img { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 8px; }
+      .fight-res-grid img { width: 100%; height: 260px; object-fit: cover; display: block; }
       .ofly-problem-copy {
         max-width: 78ch;
         font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.28rem);
@@ -132,12 +141,17 @@
         gap: clamp(0.8rem, 2vw, 1.2rem);
         margin-top: 0.5rem;
       }
-      .ofly-events-row video {
+      .ofly-events-item {
+        min-width: 0;
+      }
+      .ofly-events-item video {
         width: 100%;
         height: auto;
         display: block;
-        border: 1px solid var(--border-subtle);
         background: #000;
+      }
+      .ofly-events-item__caption {
+        margin: clamp(0.65rem, 1.5vw, 0.9rem) 0 0;
       }
       @media (max-width: 920px) {
         .ofly-events-row {
@@ -155,7 +169,6 @@
         width: 100%;
         height: auto;
         display: block;
-        border: 1px solid var(--border-subtle);
         background: #fff;
         box-sizing: border-box;
       }
@@ -164,10 +177,6 @@
       }
       .ofly-onboarding-item__caption {
         margin: clamp(0.65rem, 1.5vw, 0.9rem) 0 0;
-        font-size: clamp(0.88rem, 1.4vw, 0.98rem);
-        line-height: 1.5;
-        font-style: italic;
-        color: var(--text-light);
       }
       @media (max-width: 920px) {
         .ofly-onboarding-row {
@@ -198,9 +207,6 @@
         max-width: none;
         margin: clamp(0.9rem, 2.2vw, 1.2rem) 0 0;
         text-align: left;
-        font-style: italic;
-        font-size: clamp(0.88rem, 1.4vw, 0.98rem);
-        line-height: 1.58;
       }
       .ofly-iteration-figure__caption.description {
         margin-bottom: 0;
@@ -269,7 +275,7 @@
         font-style: italic;
         font-weight: 500;
         letter-spacing: 0.01em;
-        color: rgb(201, 122, 154);
+        color: var(--accent-color);
       }
 
       /*
@@ -307,7 +313,7 @@
         width: 2.1rem;
         height: 2.1rem;
         border-radius: 50%;
-        border: 1px solid rgb(201, 122, 154);
+        border: 1px solid var(--accent-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -347,7 +353,7 @@
         grid-template-columns: 1fr;
         gap: 0.85rem;
         padding: clamp(1.1rem, 2.8vw, 1.65rem) clamp(1rem, 3vw, 1.85rem);
-        border: 1px solid var(--border-subtle);
+        border: 1px solid var(--page-background);
         border-radius: 0;
         background: #fff;
         box-sizing: border-box;
@@ -431,7 +437,7 @@
   <body>
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="index.html#top"><span class="name"> Pru Yontrarak</span></a></div>
+        <div class="logo" id="home-button"><a href="index.html"><span class="name"> Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span><span></span><span></span>
@@ -632,31 +638,27 @@
             Once someone has searched and compared flights, the flow doesn’t reset. It keeps track of the destinations they gravitate toward, the dates they’ve said they’re free, and what they shared in the onboarding questionnaire—then surfaces places (and events while they’re there) that match that picture, so recommendations feel tied to their real constraints and tastes, not a generic browse list.
           </p>
           <div class="ofly-events-row">
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="assets/flight/discover_events1.mp4" type="video/mp4" />
-            </video>
-            <video autoplay muted loop playsinline preload="metadata">
-              <source src="assets/flight/discover_events2.mp4" type="video/mp4" />
-            </video>
+            <div class="ofly-events-item">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="assets/flight/discover_events1.mp4" type="video/mp4" />
+              </video>
+              <p class="ofly-events-item__caption">
+                Hearting places so you can save the event/destination for later.
+              </p>
+            </div>
+            <div class="ofly-events-item">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="assets/flight/discover_events2.mp4" type="video/mp4" />
+              </video>
+              <p class="ofly-events-item__caption">
+                Clicking to search for the event or adding it to run optimized flight planning.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
-
-
-
-    <footer>
-      <div class="footer__content">
-        <div class="footer__links">
-          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:ppy2104@columbia.edu">Email</a>
-        </div>
-      </div>
-    </footer>
-
-    <script>
+    </div><script>
       (function(){
         var link = document.getElementById('work-button');
         if (link) link.classList.add('active');
