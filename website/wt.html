@@ -11,9 +11,9 @@
     <style>
       /* Match research pages layout exactly */
       .section__work {
-        width: 90vw;
+        width: 86vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        padding: calc(var(--nav-height) + 1rem) var(--section-pad-x) 2rem var(--section-pad-x);
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
     </style>
@@ -31,9 +31,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
           <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
-          <li><a href="index.html#casestudies" id="work-button" >case studies</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -57,27 +57,33 @@
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
+            <div class="work-split">
+            <div class="work-split__body">
             <p class="description">
               Through this project, my team and I ideated through a mobile app for an office building in Thailand.
               The building consists of two main parts: the food courts, and the office rooms. Through one efficient,
               minimalistic mobile app, various pain points of these two sections of the building can be addressed. The
               idea of this platform being for a “smart building” revolves around a requirement of technological advances
               in these office buildings. The low fidelity wireframe and high fidelity wireframe for this
-              platform is shown below.
+                           platform is shown below.
             </p>
+            </div>
+            </div>
           </div>
         </div>
       </div>
-      <h1 class="subtitle">Research</h1>
-      <p class="description">
+
+      <div class="work-split"><h2 class="subtitle work-split__title">Research</h2><div class="work-split__body">
+<p class="description">
         As the app targets those who work in office buildings, we <strong>conducted user interviews </strong> on those who work in
         technologically advanced, corporate buildings. Through conducting interviews, we were able to <strong>understand first-hand
         how office workers feel </strong> about their environment. These interviews enabled us to better <strong> tailor this new platform in
         order to address various risen pain points</strong>.
       </p>
-      <h1 class="subtitle">Pain Points</h1>
-      <p class="description">
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Pain Points</h2><div class="work-split__body">
+<p class="description">
         We found that some of the pain points of being in an office building include:
         <br><br>
         - lack of quiet environment that allows for concentration
@@ -88,8 +94,10 @@
         <br>
         - insufficient lunch breaks
       </p>
-      <h1 class="subtitle">Design Opportunities</h1>
-      <p class="description">
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Design Opportunities</h2><div class="work-split__body">
+<p class="description">
         - <strong>Environmental Comfort Control</strong>: The app should precise environmental control recommendations
         for indoor spaces based on real-time weather data, encompassing temperature, humidity,
         atmospheric pressure, and air quality indicators. Users should have the option to manually adjust a
@@ -111,14 +119,16 @@
         deliver meals to their office location. The app also would provude secure access to unlock the
         compartment containing their food upon arrival.
       </p>
-      <h1 class="subtitle">Low Fidelity Wireframe</h1>
-      <img src="assets/wt/lofi1.png" class="img-fluid"/>
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Low Fidelity Wireframe</h2><div class="work-split__body">
+<img src="assets/wt/lofi1.png" class="img-fluid"/>
       <img src="assets/wt/lofi2.png" class="img-fluid"/>
       <img src="assets/wt/lofi3.png" class="img-fluid"/>
+</div></div>
 
-      
-      <h1 class="subtitle">High Fidelity Wireframe</h1>
-      <p class="description">
+<div class="work-split"><h2 class="subtitle work-split__title">High Fidelity Wireframe</h2><div class="work-split__body">
+<p class="description">
         Rather than the aesthetics and user interface, I focused on the user's experience going from
         one stage of the app to the next. <br><br>
         This portion features, in order by row, <br> (1) the home page with a calendar feature to see what rooms the user has access to,
@@ -132,8 +142,10 @@
       <img src="assets/wt/hifi4.png" class="img-fluid"/>
       <img src="assets/wt/hifi5.png" class="img-fluid"/>
       <img src="assets/wt/hifi6.png" class="img-fluid"/>
-      <h1 class="subtitle">6 - Reflection</h1>
-      <p class="description">
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">6 - Reflection</h2><div class="work-split__body">
+<p class="description">
         Wunderman Thompson was my first UX design internship and it provided me with an understanding the role and
         scope of UX within a large company. I fostered meaningful collaboration with the associates and my mentors,
         consistently seeking their insights and guidance.
@@ -143,7 +155,11 @@
         of attending to minute details and the art of tailoring design choices to enhance the user experience. I am so grateful
         for my experience interning at Wunderman Thompson.
       </p>
+</div></div>
+
     </div>
+
+
 
     
 

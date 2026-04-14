@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="style.css" />
-    <title>Optimafly: A Multi-City Optimized Flight Planner — Pru Yontrarak</title>
+    <title>Optimafly: A Multi-City Optimized Flight Planner · Pru Yontrarak</title>
 
     <style>
       :root { --text:#222; --muted:#555; --line: rgba(0,0,0,.1); }
       .section__work {
-        width: 90vw;
+        width: 86vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        padding: calc(var(--nav-height) + 1rem) var(--section-pad-x) 2rem var(--section-pad-x);
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid var(--line); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -32,15 +32,10 @@
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
       .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
       .kpi strong { display:block; color: var(--text); }
-      a.kpi { text-decoration: none; display: block; color: inherit; transition: background-color 0.2s, border-color 0.2s; }
-      a.kpi:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.15); cursor: pointer; }
+      a.kpi { text-decoration: none; display: block; color: inherit; cursor: pointer; }
       .hr { height: 1px; background: var(--line); margin: 1rem 0; }
       .skills { color:#666; font-style: italic; margin-top:.25rem; }
       a.kicker { text-decoration: none; border-bottom: 1px solid currentColor; }
-      /* Prominent top-level buttons */
-      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
-      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
-      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
     </style>
   </head>
   <body>
@@ -54,9 +49,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
-          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
           <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
+          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -70,24 +65,26 @@
               <span class="hero-meta-item"><strong class="hero-meta-label">Position:</strong><span class="hero-meta-value">Backend Engineer, Frontend Engineer, Product Lead</span></span>
               <span class="hero-meta-item"><strong class="hero-meta-label">Type:</strong><span class="hero-meta-value">Personal project</span></span>
               <span class="hero-meta-item"><strong class="hero-meta-label">Duration:</strong><span class="hero-meta-value">Sep 2025 - Present</span></span>
-              <span class="hero-meta-item"><strong class="hero-meta-label">Stack:</strong><span class="hero-meta-value"><em>Backend</em> — Python · FastAPI · Uvicorn · SQL <em>Frontend</em> — React</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Stack:</strong><span class="hero-meta-value"><em>Backend</em>: Python · FastAPI · Uvicorn · SQL. <em>Frontend</em>: React</span></span>
               <span class="hero-meta-item"><strong class="hero-meta-label">Skills:</strong><span class="hero-meta-value">API design, caching, optimization, constraint modeling, UX/UI design, machine learning (ML), database</span></span>
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
-            <p class="description">
-              Construct flexible, cost-minimized itineraries given travel windows, stay durations, and required or optional destinations. Treat the itinerary as a constraint-optimization task so the system finds the most cost-efficient multi-city plan that fits the schedule and is the lowest-cost option.
-            </p>
-            <div class="cta-row">
-              <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">Live Website</a>
+            <div class="work-split">
+              <div class="work-split__body">
+                <p class="description">
+                  Construct flexible, cost-minimized itineraries given travel windows, stay durations, and required or optional destinations. Treat the itinerary as a constraint-optimization task so the system finds the most cost-efficient multi-city plan that fits the schedule and is the lowest-cost option.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <h1 class="subtitle">Summary</h1>
-      <div class="kpis">
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Summary</h2>
+        <div class="work-split__body">
+          <div class="kpis">
         <div class="kpi">
           <strong>≈30% speed up</strong>
           Optimization: skip dead-end airport queries after 3 consecutive no-connection days.
@@ -104,53 +101,79 @@
           <strong>Deployment</strong>
           FastAPI backend deployed with Uvicorn; React frontend served via static hosting.
         </a>
+          </div>
+        </div>
       </div>
 
-      <h1 class="subtitle">Why This Project?</h1>
-      <p class="description">
-        We want to travel and gain as many new experiences as possible on tight budgets and narrow windows. Current tools assume fixed destinations or single routes, which breaks down when the goal is flexible exploration across multiple cities. This project fixes that by letting you specify time windows; must vs. optional cities; and min/max stay days so the system searches and builds a plan that actually fits your constraints.
-      </p>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Why This Project?</h2>
+        <div class="work-split__body">
+          <p class="description">
+            We want to travel and gain as many new experiences as possible on tight budgets and narrow windows. Current tools assume fixed destinations or single routes, which breaks down when the goal is flexible exploration across multiple cities. This project fixes that by letting you specify time windows; must vs. optional cities; and min/max stay days so the system searches and builds a plan that actually fits your constraints.
+          </p>
+        </div>
+      </div>
 
-      <h1 class="subtitle">Algorithms</h1>
-      <ul class="algo-list">
-        <li><strong>Greedy baseline:</strong> Rejected due to local-minima behavior; produced suboptimal downstream legs that we not always feasible given user travel time constraint.</li>
-        <li><strong>Top-K nearest neighbors + Beam Search (current):</strong> Chooses the cheapest <em>K</em> legs (sorted by price) and breaks ties by earliest arrival time.
-          <ul>
-            <li><strong>K:</strong> number of cheapest candidate legs to consider at each step (per alias-expanded O/D).</li>
-            <li><strong>BEAM:</strong> beam width (keeps BEAM best partial sequences per layer).</li>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Algorithms</h2>
+        <div class="work-split__body">
+          <ul class="algo-list">
+            <li><strong>Greedy baseline:</strong> Rejected due to local-minima behavior; produced suboptimal downstream legs that we not always feasible given user travel time constraint.</li>
+            <li><strong>Top-K nearest neighbors + Beam Search (current):</strong> Chooses the cheapest <em>K</em> legs (sorted by price) and breaks ties by earliest arrival time.
+              <ul>
+                <li><strong>K:</strong> number of cheapest candidate legs to consider at each step (per alias-expanded O/D).</li>
+                <li><strong>BEAM:</strong> beam width (keeps BEAM best partial sequences per layer).</li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+      </div>
 
-      <h1 class="subtitle">Cache</h1>
-      <ul class="cache-list">
-        <li>Caches the past 24 hours of timeline data per backend session (TTL 24h). 24 hour is currently a placeholder; it will be replaced with dynamic TTL that matches external API.</li>
-        <li><strong>Optimization:</strong> Skip airports with no connections after 3 consecutive no‑connection days (~30% speedup).</li>
-        <li>Attaches basic diagnostics alongside prices in cached payloads.</li>
-      </ul>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Cache</h2>
+        <div class="work-split__body">
+          <ul class="cache-list">
+            <li>Caches the past 24 hours of timeline data per backend session (TTL 24h). 24 hour is currently a placeholder; it will be replaced with dynamic TTL that matches external API.</li>
+            <li><strong>Optimization:</strong> Skip airports with no connections after 3 consecutive no‑connection days (~30% speedup).</li>
+            <li>Attaches basic diagnostics alongside prices in cached payloads.</li>
+          </ul>
+        </div>
+      </div>
 
-      <h1 class="subtitle">Reachability Gate</h1>
-      <ul class="meta-list">
-        <li>No offline preprocessing, so the reachability is computed in real time.</li>
-        <li>Breadth-first search over a connection map supports both direct and multi-leg routes.</li>
-        <li>BFS explores airport pairs layer-by-layer to determine connectivity, enabling reliable detection of transfer paths.</li>
-      </ul>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Reachability Gate</h2>
+        <div class="work-split__body">
+          <ul class="meta-list">
+            <li>No offline preprocessing, so the reachability is computed in real time.</li>
+            <li>Breadth-first search over a connection map supports both direct and multi-leg routes.</li>
+            <li>BFS explores airport pairs layer-by-layer to determine connectivity, enabling reliable detection of transfer paths.</li>
+          </ul>
+        </div>
+      </div>
 
-      <h1 class="subtitle">Key Features</h1>
-      <ul class="feature-list">
-        <li><strong>Heuristic optimization:</strong> Graph-based solver that generates feasible, low-cost itineraries under user constraints.</li>
-        <li><strong>Structured API:</strong> JSON inputs for windows, stay durations, and must/optional city sets; ranked plans with simple diagnostics.</li>
-        <li><strong>Interactive frontend:</strong> React UI to create, submit, and visualize candidate itineraries; tie-breakers surfaced (earliest arrival).</li>
-        <li><strong>Personalized recommendation system:</strong> ML-based recommendations driven by stored user interaction data and deduplicated features.</li>
-      </ul>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Key Features</h2>
+        <div class="work-split__body">
+          <ul class="feature-list">
+            <li><strong>Heuristic optimization:</strong> Graph-based solver that generates feasible, low-cost itineraries under user constraints.</li>
+            <li><strong>Structured API:</strong> JSON inputs for windows, stay durations, and must/optional city sets; ranked plans with simple diagnostics.</li>
+            <li><strong>Interactive frontend:</strong> React UI to create, submit, and visualize candidate itineraries; tie-breakers surfaced (earliest arrival).</li>
+            <li><strong>Personalized recommendation system:</strong> ML-based recommendations driven by stored user interaction data and deduplicated features.</li>
+          </ul>
+        </div>
+      </div>
 
-      <h1 class="subtitle">Next Steps</h1>
-      <ul class="roadmap-list">
-        <li>Implement optimization preference in the future (e.g., price vs. time vs. stops).</li>
-        <li>We need to figure out a smarter way to reduce the API call; we don’t want to rely on this API in the future (do web scraping to Google Flights).</li>
-        <li>Want the airline website to be integrated so that you can click on it and buy the tickets on the official airline website or Expedia.</li>
-        <li>Harden error handling, caching, and performance for larger searches and heavier usage.</li>
-      </ul>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Next Steps</h2>
+        <div class="work-split__body">
+          <ul class="roadmap-list">
+            <li>Implement optimization preference in the future (e.g., price vs. time vs. stops).</li>
+            <li>We need to figure out a smarter way to reduce the API call; we don’t want to rely on this API in the future (do web scraping to Google Flights).</li>
+            <li>Want the airline website to be integrated so that you can click on it and buy the tickets on the official airline website or Expedia.</li>
+            <li>Harden error handling, caching, and performance for larger searches and heavier usage.</li>
+          </ul>
+        </div>
+      </div>
     </main>
 
     <footer>

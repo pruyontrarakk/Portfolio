@@ -9,13 +9,50 @@
     <title>Pru Yontrarak Portfolio</title>
 
     <style>
-      /* Match research pages layout exactly */
-      .section__work {
-        width: 90vw;
-        max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+      /* Layout + hero: .spectator-case-page / .case-study-hero--spectator in style.css (OptimaFly-aligned) */
+      .spectator-case-page {
+        --case-hero-bleed-bg: #ffffff;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
+      .podcast-prototype-block {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+      }
+      .podcast-prototype-block__media {
+        flex: 0 0 auto;
+        width: min(16.5rem, 82vw);
+        max-width: min(16.5rem, 82vw);
+      }
+      .podcast-prototype-block__media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      }
+      .podcast-prototype-block__caption {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        text-align: left;
+      }
+      @media (max-width: 720px) {
+        .podcast-prototype-block {
+          flex-direction: column;
+          align-items: center;
+        }
+        .podcast-prototype-block__media {
+          margin: 0 auto;
+        }
+        .podcast-prototype-block__caption {
+          width: 100%;
+          max-width: 62ch;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
     </style>
   </head>
   <body>
@@ -31,9 +68,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
           <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
-          <li><a href="index.html#casestudies" id="work-button" >case studies</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -41,12 +78,14 @@
     
 
 
-    <div class="section__work">
-      <h1 class="title">Columbia Daily Spectator App Design (Podcast Section) </h1>
-      <div class="case-study-hero">
-        <div class="case-study-hero__image">
-          <img src="assets/podcast/mainpodcast.png" alt="Columbia Daily Spectator Podcast section preview"/>
+    <div class="section__work spectator-case-page">
+      <div class="case-study-hero case-study-hero--spectator">
+        <div class="case-study-hero__bleed">
+          <div class="case-study-hero__image">
+            <img src="assets/podcast/mainpodcast-transparent.png" alt="Columbia Daily Spectator Podcast section preview"/>
+          </div>
         </div>
+        <h1 class="title">Columbia Daily Spectator <span class="title__tagline">App Design; Podcast Section</span></h1>
         <div class="case-study-hero__bottom">
           <div class="case-study-hero__info">
             <p class="description note">
@@ -57,36 +96,49 @@
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
-            <p class="description">
+            <p class="case-qa__intro">
               In this project, the Product Design team is transforming the existing Columbia Daily Spectator website into a mobile app.
-              For this iteration, I managed the design and delivery of the Podcasts section—defining MVP scope, aligning editorial teams, and
-              adapting the experience for small screens—while adding research-driven features to reduce friction and improve listen-through.
+              For this iteration, I managed the design and delivery of the Podcasts section, defining MVP scope, aligning editorial teams, and
+              adapting the experience for small screens, while adding research-driven features to reduce friction and improve listen-through.
             </p>
           </div>
         </div>
+        <section class="case-study-hero__prompt" aria-label="Research question">
+          <div class="case-qa case-qa--prompt-only">
+            <p class="case-qa__framing">We wanted to answer this question:</p>
+            <p class="case-qa__question case-qa__question--quoted">&ldquo;How do we ship a podcasts section of a news app that feels <em>native</em> on mobile while keeping consistent design with existing website?&rdquo;</p>
+          </div>
+        </section>
       </div>
 
-      <h1 class="subtitle">Goals</h1>
-      <ul class="list">
-        <li>Design a mobile interface that allows users to discover and play podcasts seamlessly within the app.</li>
-        <li>Maintain brand consistency with the Spectator website while optimizing for small-screen navigation.</li>
-        <li>Increase podcast listen-through and retention by reducing redirect friction to external platforms (Spotify).</li>
+      <div class="work-split"><h2 class="subtitle work-split__title">Goals</h2><div class="work-split__body">
+      <ul class="spectator-gc__list spectator-gc__list--goals shaft-bubble-list" aria-label="Goals">
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">01</span>
+          <span class="spectator-gc__text">Design a mobile interface that allows users to discover and play podcasts seamlessly within the app.</span>
+        </li>
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">02</span>
+          <span class="spectator-gc__text">Maintain brand consistency with the Spectator website while optimizing for small-screen navigation.</span>
+        </li>
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">03</span>
+          <span class="spectator-gc__text">Increase podcast listen-through and retention by reducing redirect friction to external platforms (Spotify).</span>
+        </li>
       </ul>
-      </li>
+</div></div>
 
-
-
-      <h1 class="subtitle">Current Website Design</h1>
-      <p class="description">
+<div class="work-split"><h2 class="subtitle work-split__title">Current Website Design</h2><div class="work-split__body">
+<p class="description">
         The current podcast section first shows a featured podcast. The website has five sections in the navigation bar:
         the first four are podcast sections and the last is a special edition page. Clicking on the sections with arrows
         leads to the two screens shown to the right.
 </p>
       <img src="assets/podcast/webspec.png" class="img-fluid"/>
-      <h1 class="subtitle">Research</h1>
-      
-      <p class="description">
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Research</h2><div class="work-split__body">
+<p class="description">
         To shape the podcast experience, we ran a <strong>competitive analysis</strong> of Spotify, The New York Times, and Apple Podcasts and paired it with quick user interviews. 
         A clear pattern showed up across all three: a persistent, bottom mini-player that keeps listeners in context. 
         Our interviews also confirmed that redirecting to external apps was not prefered. 
@@ -94,50 +146,54 @@
       </p>
       
       <img src="assets/podcast/podcast_research.png" class="img-fluid"/>
-      <h1 class="subtitle">Design Opportunities</h1>
-      <p class="description">
-        - <strong>Homepage</strong>: This page showcases a featured podcast at the very top, along with by four organized 
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Design Opportunities</h2><div class="work-split__body">
+<p class="description">
+        <strong>Homepage</strong>: This page showcases a featured podcast at the very top, along with by four organized 
         sections, offering users convenient podcast selection. Additionally, given our previously established Spotify page, 
         an accessible button can be provided for users to seamlessly transition to the Spotify platform.
         <br><br>
-        - <strong>Section Pages</strong>: Each section page has an informative section description at the top, followed by 
+        <strong>Section Pages</strong>: Each section page has an informative section description at the top, followed by 
         a list of podcasts. To enhance user experience and minimize scrolling, a "Next" button facilitates navigation to more podcasts.
         <br><br>
-        - <strong>Transcript / Audio Page</strong>: A notable feature we aim to provide is the ability to enjoy podcasts
+        <strong>Transcript / Audio Page</strong>: A notable feature we aim to provide is the ability to enjoy podcasts
          directly within the app, addressing the current limitation restricted to Spotify. This page incorporates a play 
          button at the top, initiating podcast playback. Furthermore, a sticky pop-up interface at the bottom allows users 
          to pause, play, skip forward, and rewind.
          <br><br>
-         - <strong>Search Page</strong>: Users can conveniently use the the search button to easily find a particular podcast.
+         <strong>Search Page</strong>: Users can conveniently use the the search button to easily find a particular podcast.
       </p>
+</div></div>
 
-      <h1 class="subtitle">Scope & Responsibilities</h1>
-      <ul class="list">
-        <li>Defined MVP scope balancing playback complexity against time and dev bandwidth.</li>
-        <li>Led prioritization sessions with design and editorial teams; managed backlog via Trello.</li>
-        <li>Wrote acceptance criteria for key user flows and defined qualitative success indicators.</li>
-        <li>Facilitated weekly check-ins between teams and sprint retrospectives to maintain alignment.</li>
-      </ul>
-
-
-      <h1 class="subtitle">Wireframe</h1>
-      <img src="assets/podcast/podcastwf1.png" class="img-fluid"/>
+<div class="work-split"><h2 class="subtitle work-split__title">Wireframe</h2><div class="work-split__body">
+<img src="assets/podcast/podcastwf1.png" class="img-fluid"/>
       <img src="assets/podcast/podcastwf2.png" class="img-fluid"/>
-      <h1 class="subtitle">5 - Prototype</h1>
-      <div class="media-row">
-        <div class="media">
-          <img src="assets/podcast/podcast2.gif" class="img-fluid">
-        </div>
-        <div class="text">
+</div></div>
 
-        <p class="description">
+<div class="work-split"><h2 class="subtitle work-split__title">Prototype</h2><div class="work-split__body">
+      <div class="podcast-prototype-block">
+        <div class="podcast-prototype-block__media">
+          <img
+            src="assets/podcast/podcast2.gif"
+            alt="Animated prototype: Spectator app podcast home, section list, episode detail with mini-player"
+            width="682"
+            height="1360"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <p class="description podcast-prototype-block__caption">
           This is the prototype of the final design. The home page highlights a rotating featured episode and links to the four section pages.
           Each section page presents a short description followed by a list of episodes. Selecting an episode opens the transcript/audio page
           with in-app playback and a mini-player for controls. Save and share actions are available at the top right.
         </p>
-
-        </div>
       </div>
+</div></div>
+
+    </div>
+
+
 
 
 
@@ -158,5 +214,11 @@
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        var link = document.getElementById("work-button");
+        if (link) link.classList.add("active");
+      })();
+    </script>
   </body>
 </html>

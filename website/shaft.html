@@ -9,11 +9,9 @@
     <title>Pru Yontrarak Portfolio</title>
 
     <style>
-      /* Match research pages layout exactly */
-      .section__work {
-        width: 90vw;
-        max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+      /* Layout + hero: .spectator-case-page / .case-study-hero--spectator in style.css (OptimaFly-aligned) */
+      .spectator-case-page {
+        --case-hero-bleed-bg: #ffffff;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
     </style>
@@ -31,9 +29,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
           <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
-          <li><a href="index.html#casestudies" id="work-button" >case studies</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -41,12 +39,14 @@
     
 
 
-    <div class="section__work">
-      <h1 class="title">theShaft Feature Design</h1>
-      <div class="case-study-hero">
-        <div class="case-study-hero__image">
-          <img src="assets/shaft/mainshaft.png" alt="theShaft feature preview"/>
+    <div class="section__work spectator-case-page">
+      <div class="case-study-hero case-study-hero--spectator">
+        <div class="case-study-hero__bleed">
+          <div class="case-study-hero__image">
+            <img src="assets/shaft/mainshaft-transparent.png" alt="theShaft feature preview"/>
+          </div>
         </div>
+        <h1 class="title">theShaft <span class="title__tagline">Feature Design</span></h1>
         <div class="case-study-hero__bottom">
           <div class="case-study-hero__info">
             <p class="description note">
@@ -57,9 +57,8 @@
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
-            <p class="description">
-              In this project, our team is dedicated to redesign the individual dorm pages for theShaft. The purpose of this
+            <p class="case-qa__intro">
+              In this project, our team is dedicated to redesign the individual dorm pages for the Shaft. The purpose of this
               website is to assist students in gaining a comprehensive understanding of the campus housing options at Columbia
               University. Our primary objective is to integrate a 360 room tour feature that would offer immersive and comprehensive
               viewing of the campus dorms, providing students with invaluable information to make informed housing decisions. Please
@@ -67,46 +66,29 @@
             </p>
           </div>
         </div>
+        <section class="case-study-hero__prompt" aria-label="Research question">
+          <div class="case-qa case-qa--prompt-only">
+            <p class="case-qa__framing">We wanted to answer this question:</p>
+            <p class="case-qa__question case-qa__question--quoted">&ldquo;How might dorm pages give students a well-informed look at each room and help them choose housing that best suits their needs?&rdquo;</p>
+          </div>
+        </section>
       </div>
 
-      <h1 class="subtitle">Goals & Constraints</h1>
-      <div class="grid-2">
-        <div>
-          <h3>Goals</h3>
-          <ul class="list">
-            <li>Increase “useful view” rate (users report they can judge a room) without slowing page load.</li>
-            <li>Keep creation costs within non-profit student-org budget.</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Constraints</h3>
-          <ul class="list">
-            <li>Budget insufficient for campus-wide 360 capture and hosting.</li>
-            <li>Legacy template with fixed layout specifics.</li>
-            <li>Volunteer production bandwidth; content must be easy to add and maintain.</li>
-          </ul>
-        </div>
-      </div>
+      <div class="work-split"><h2 class="subtitle work-split__title">Goals & Constraints</h2><div class="work-split__body">
+        <p class="description">
+          <strong>Goals.</strong> We wanted to increase the “useful view” rate, so users could tell whether they could judge a room from the page, without slowing page load. We also needed to keep creation costs within a non-profit student-organization budget.
+        </p>
+        <p class="description">
+          <strong>Constraints.</strong> Budget was not sufficient for campus-wide 360 capture and hosting. The product had to work inside a legacy template with fixed layout specifics. With volunteer production bandwidth, content also had to stay easy to add and maintain.
+        </p>
+</div></div>
 
-
-      <h1 class="subtitle">Current Design</h1>
-      <p class="description">
-        Two main things to highlight on the current page are (1) the first image that is on the screen is too big for
-        one's screen and (2) the information on the side bar sticks to the page.
+<div class="work-split"><h2 class="subtitle work-split__title">Research</h2><div class="work-split__body">
+<p class="description">
+        The pain point this research addresses is <strong>inadequate view of room</strong>: students still could not get a clear enough sense of what a dorm looked like from the site, beyond static photos or cramped layouts.
       </p>
-      <img src="assets/shaft/shaft2.png" class="img-fluid"/>
-      <img src="assets/shaft/shaft1.png" class="img-fluid"/>
-
-      <h1 class="subtitle">Pain Points</h1>
+      <img src="assets/shaft/shaft2.png" class="img-fluid" alt="Existing dorm page showing limited room context on the site"/>
       <p class="description">
-        We recognized that some of the pain points of the current website included: <br><br>
-        - Inadequate view of room <br>
-        - Incorrect layout sizing <br>
-        - Outdated reviews <br>
-      </p>
-      <h1 class="subtitle">Research</h1>
-      <p class="description">
-        In our research, we mainly focused on the first pain point.  <br><br>
         To gain a better understanding of how to approach the redesign, we conducted a <strong> comparative analysis </strong>of other universities'
         dorm websites to explore how they allowed students to view their prospective dorms. Some examples include photos with
         panoramic views, real-life floor plans, videos, and interactive room tours.
@@ -119,33 +101,40 @@
         gain valuable insights into the students' interaction patterns with other online platforms, thereby informing our
         decision-making process regarding feature inclusion and exclusion.
         <br><br>
-        The <strong> main conclusions </strong> are as follows:<br><br>
-        - Users prefer simplistic design features that are intuitive; less is more <br>
-        - Users would rather see their room in a separate, full screen tab if utilizing the 360 room tour or video<br>
-        - Users prefer if we stick to one type of multimedia<br>
-        - Managing board decided that although 360 room tour would be most ideal for the students, the current budget does not support it
+        The <strong>main conclusions</strong> are as follows:
       </p>
-
-
-      <h1 class="subtitle">Scope & Responsibilities</h1>
-      <ul class="list">
-        <li>Defined MVP against budget/time constraints; coordinated with design and media teams.</li>
-        <li>Wrote acceptance criteria and success metrics.</li>
-        <li>Ran user interviews; synthesized findings into the decisions above.</li>
+      <ul class="spectator-gc__list spectator-gc__list--goals shaft-bubble-list" aria-label="Research conclusions">
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">01</span>
+          <span class="spectator-gc__text">Users prefer simplistic design features that are intuitive; less is more</span>
+        </li>
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">02</span>
+          <span class="spectator-gc__text">Users would rather see their room in a separate, full screen tab if utilizing the 360 room tour or video</span>
+        </li>
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">03</span>
+          <span class="spectator-gc__text">Users prefer if we stick to one type of multimedia</span>
+        </li>
+        <li>
+          <span class="spectator-gc__marker spectator-gc__marker--goal" aria-hidden="true">04</span>
+          <span class="spectator-gc__text">Managing board decided that although 360 room tour would be most ideal for the students, the current budget does not support it</span>
+        </li>
       </ul>
+</div></div>
 
-
-
-      <h1 class="subtitle">Design Opportunities</h1>
-      <p class="description">
-        - <strong>Video Room Tour</strong>: Students can play a video of their choice of dorm in a separate, full screen tab to explore
+<div class="work-split"><h2 class="subtitle work-split__title">Design Opportunities</h2><div class="work-split__body">
+<p class="description">
+        <strong>Video Room Tour</strong>: Students can play a video of their choice of dorm in a separate, full screen tab to explore
         spaces that photos cannot otherwise depict. The full screen tab will have a small drop down menu for users to
         choose which room they would like to see. <br><br>
-        - <strong>Layout Resizing</strong>: We will re-do some of the layout so that students can now see entire photos or features without having
+        <strong>Layout Resizing</strong>: We will re-do some of the layout so that students can now see entire photos or features without having
         to scroll. This would help the readability and comprehension of the website.
       </p>
-      <h1 class="subtitle">Mockup Design</h1>
-      <p class="description">
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Mockup Design</h2><div class="work-split__body">
+<p class="description">
         As this project has already been worked on in the past, my team and I altered the existing prototype to include
         a new page with a video room tour as shown in the preliminary prototype. We are still exploring more prototype ideas.
       </p>
@@ -154,8 +143,11 @@
         <img src="assets/shaft/shaft5.png" class="img-fluid"/>
         <img src="assets/shaft/shaft6.png" class="img-fluid"/>
       </div>
+</div></div>
 
     </div>
+
+
 
 
 
@@ -176,5 +168,11 @@
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        var link = document.getElementById("work-button");
+        if (link) link.classList.add("active");
+      })();
+    </script>
   </body>
 </html>

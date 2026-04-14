@@ -11,26 +11,71 @@
     <style>
       /* Match case study pages layout */
       .section__work {
-        width: 90vw;
+        width: 86vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        padding: calc(var(--nav-height) + 1rem) var(--section-pad-x) 2rem var(--section-pad-x);
+        overflow-x: clip;
+      }
+      /* Hero band: full viewport width; no cream strip above pink; nav offset lives inside bleed */
+      .section__work.ofly-page {
+        overflow-x: visible;
+        padding-top: 0;
+        /* Hero band behind transparent PNG — use page background (no tint) */
+        --case-hero-bleed-bg: #ffffff;
+      }
+      /* More air between case-study subsections (this page only) */
+      .section__work > .work-split {
+        margin-bottom: clamp(2.35rem, 5vw, 4.5rem);
+      }
+      .section__work > .work-split:last-child {
+        margin-bottom: 0;
+      }
+      .section__work > .work-split:first-of-type {
+        margin-top: clamp(1.25rem, 3vw, 2.25rem);
+      }
+      .section__work > .case-study-hero + .work-split {
+        margin-top: clamp(1.25rem, 3vw, 2.25rem);
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
-      .list { list-style-position: outside; padding-left: 1.25rem; margin: .25rem 0 .75rem 0; }
-      .list li { margin-bottom: .35rem; }
-      .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
-      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
-      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
-      .iteration-block { padding: 1rem 1.25rem; margin-bottom: 1rem; }
-      .iteration-block h3 { margin: 0 0 .5rem 0; font-size: 1.1rem; }
-      .iteration-block p { margin: 0 0 .5rem 0; }
-      .iteration-block p:last-child { margin-bottom: 0; }
-      .iteration-block .label { font-size: .85rem; color: #555; text-transform: uppercase; letter-spacing: .03em; margin-bottom: .25rem; }
-      .process-list { list-style: none; padding-left: 0; margin: 1rem 0; counter-reset: process-step; }
-      .process-list li { position: relative; padding-left: 2.5rem; margin-bottom: 1.25rem; counter-increment: process-step; }
-      .process-list li::before { content: counter(process-step); position: absolute; left: 0; top: 0; width: 1.75rem; height: 1.75rem; border-radius: 50%; background: rgba(0,0,0,0.08); color: #222; font-weight: 700; font-size: .9rem; display: flex; align-items: center; justify-content: center; }
-      .process-list li strong { display: block; margin-bottom: .25rem; }
-      .process-list li .process-desc { margin: 0; color: #444; }
+      /* Consistent inner rhythm for every subsection on this page */
+      .ofly-page > .work-split > .work-split__body {
+        padding: clamp(0.35rem, 1vw, 0.6rem) 0 clamp(0.5rem, 1.2vw, 0.85rem);
+      }
+      .ofly-story-chunk {
+        margin: clamp(2rem, 4.5vw, 3.25rem) 0 0;
+      }
+      .ofly-story-chunk:first-of-type {
+        margin-top: clamp(1.25rem, 3vw, 2rem);
+      }
+      .ofly-story-heading {
+        margin: 0 0 0.65rem 0;
+        font-family: var(--font-heading);
+        font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        color: var(--primary-color-dark);
+        max-width: 42ch;
+      }
+      .ofly-story-chunk .description {
+        max-width: 72ch;
+      }
+      /* Captions sit under full-bleed screenshots: same width as image, not the narrower body measure */
+      .ofly-story-chunk .ofly-iteration-figure__caption.description {
+        max-width: none;
+        width: 100%;
+        padding-left: 0;
+        margin-left: 0;
+        box-sizing: border-box;
+      }
+      .ofly-story-chunk .ofly-pull {
+        margin: 0.85rem 0 0;
+        padding: 0.85rem 0 0;
+        border-top: 1px solid var(--border-subtle);
+        font-style: italic;
+        color: var(--text-light);
+        max-width: 68ch;
+      }
       .flight-res-row { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.5rem; }
       .flight-res-row:last-of-type { margin-bottom: 0; }
       .flight-res-row .flight-res-img { flex: 0 0 75%; max-width: 75%; }
@@ -39,11 +84,348 @@
       .flight-res-row .flight-res-caption .description { margin: 0; font-size: 0.95rem; }
       .fight-res-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
       .fight-res-grid img { width: 100%; height: 260px; object-fit: cover; display: block; border-radius: 8px; }
+      .ofly-problem-copy {
+        max-width: 78ch;
+        font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.28rem);
+        line-height: 1.62;
+      }
+      .ofly-key-drivers-intro {
+        max-width: 82ch;
+        font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.28rem);
+        line-height: 1.62;
+      }
+      .ofly-key-drivers {
+        list-style: none;
+        padding: 0;
+        margin: clamp(1.4rem, 3vw, 2rem) 0 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(1.25rem, 2.8vw, 2rem);
+      }
+      .ofly-key-drivers li {
+        margin: 0;
+      }
+      .ofly-key-drivers__label {
+        display: block;
+        margin: 0 0 0.55rem 0;
+        font-family: var(--font-body);
+        font-size: clamp(0.82rem, 0.75rem + 0.35vw, 0.92rem);
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary-color-dark);
+      }
+      .ofly-key-drivers .description {
+        margin: 0;
+        font-size: clamp(1.02rem, 0.92rem + 0.45vw, 1.15rem);
+        line-height: 1.62;
+      }
+      @media (max-width: 920px) {
+        .ofly-key-drivers {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+      .ofly-events-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.8rem, 2vw, 1.2rem);
+        margin-top: 0.5rem;
+      }
+      .ofly-events-row video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--border-subtle);
+        background: #000;
+      }
+      @media (max-width: 920px) {
+        .ofly-events-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ofly-onboarding-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(0.8rem, 2vw, 1.2rem);
+        margin-top: clamp(1rem, 2.2vw, 1.35rem);
+      }
+      .ofly-onboarding-item img,
+      .ofly-onboarding-item video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 1px solid var(--border-subtle);
+        background: #fff;
+        box-sizing: border-box;
+      }
+      .ofly-onboarding-item video {
+        background: #000;
+      }
+      .ofly-onboarding-item__caption {
+        margin: clamp(0.65rem, 1.5vw, 0.9rem) 0 0;
+        font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+        line-height: 1.5;
+        font-style: italic;
+        color: var(--text-light);
+      }
+      @media (max-width: 920px) {
+        .ofly-onboarding-row {
+          grid-template-columns: 1fr;
+        }
+      }
       @media (max-width: 768px) {
         .flight-res-row { flex-direction: column; }
         .flight-res-row .flight-res-img { flex: none; max-width: 100%; }
       }
       @media (max-width: 600px) { .fight-res-grid { grid-template-columns: 1fr; } }
+
+      /* Case narrative: full-width images; copy above or below */
+      .ofly-iteration-figure {
+        margin: clamp(1.35rem, 3vw, 2.1rem) 0;
+        width: 100%;
+      }
+      .ofly-iteration-figure img {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 0;
+      }
+      .ofly-iteration-figure__caption {
+        display: block;
+        width: 100%;
+        max-width: none;
+        margin: clamp(0.9rem, 2.2vw, 1.2rem) 0 0;
+        text-align: left;
+        font-style: italic;
+        font-size: clamp(0.88rem, 1.4vw, 0.98rem);
+        line-height: 1.58;
+      }
+      .ofly-iteration-figure__caption.description {
+        margin-bottom: 0;
+      }
+      /* Full-bleed hero: lavender band + edge-to-edge product shot */
+      .case-study-hero--optimafly {
+        gap: clamp(0.35rem, 1vw, 0.65rem);
+        margin-bottom: clamp(0.6rem, 1.5vw, 0.85rem);
+      }
+      .case-study-hero--optimafly .case-study-hero__prompt {
+        margin-top: 0;
+        padding-top: clamp(1.4rem, 3.25vw, 2.1rem);
+        padding-bottom: clamp(1.4rem, 3.25vw, 2.1rem);
+      }
+      .ofly-page.section__work > .case-study-hero + .work-split {
+        margin-top: clamp(0.6rem, 1.5vw, 0.85rem);
+      }
+      .case-study-hero--optimafly .case-study-hero__bleed {
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding: var(--nav-height) 0 0;
+        box-sizing: border-box;
+        background: var(--case-hero-bleed-bg);
+        min-height: clamp(20rem, 52vw, 32rem);
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+      }
+      .case-study-hero--optimafly .case-study-hero__bleed .case-study-hero__image {
+        align-self: stretch;
+        width: 100%;
+        max-width: min(100%, 54rem);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 0;
+      }
+      /* No purple-tint title underline (mobile) or accent step labels on this page */
+      .ofly-page.section__work > .work-split .work-split__title {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .ofly-page.section__work > .work-split .work-split__title::before {
+        content: none;
+        display: none;
+      }
+      .case-study-hero--optimafly .case-study-hero__bleed .case-study-hero__image img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        object-fit: contain;
+      }
+      /* Match breathing room above and below the headline (flex row-gap + symmetric margins) */
+      .section__work .case-study-hero--optimafly h1.title {
+        margin-top: clamp(0.85rem, 2vw, 1.35rem);
+        margin-bottom: clamp(0.85rem, 2vw, 1.35rem);
+      }
+      .section__work .case-study-hero--optimafly h1.title .title__tagline {
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        font-style: italic;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        color: rgb(201, 122, 154);
+      }
+
+      /*
+ Hero overview uses .case-qa__intro (style.css):
+        font-size: clamp(calc(0.95rem + 2px), calc(1.35vw + 2px), calc(1.05rem + 2px));
+        line-height: 1.65;
+        Reuse for the four work-split content columns + design-iteration panels.
+      */
+      .ofly-page .work-split__body {
+        font-size: clamp(calc(0.95rem + 2px), calc(1.35vw + 2px), calc(1.05rem + 2px));
+        line-height: 1.65;
+      }
+
+      /* Market gaps + Product goals: compact numbered lines (title + detail same flow) */
+      .section__work ul.ofly-editorial-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+      }
+      .section__work ul.ofly-editorial-list > li {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.65rem;
+        margin: 0 0 0.65rem 0;
+        font-size: inherit;
+        line-height: inherit;
+        color: var(--text-dark);
+      }
+      .section__work ul.ofly-editorial-list > li:last-child {
+        margin-bottom: 0;
+      }
+      .section__work .ofly-editorial-list__index {
+        flex: 0 0 auto;
+        width: 2.1rem;
+        height: 2.1rem;
+        border-radius: 50%;
+        border: 1px solid rgb(201, 122, 154);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-body);
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--primary-color-dark);
+        box-sizing: border-box;
+        margin-top: 0.12rem;
+      }
+      .section__work .ofly-editorial-list__line {
+        margin: 0;
+        flex: 1;
+        min-width: 0;
+      }
+      .section__work .ofly-editorial-list__title {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        color: var(--primary-color-dark);
+      }
+
+      /* Personas: card edge-to-edge in the work-split content column */
+      .ofly-persona {
+        margin: 0.35rem 0 0;
+        width: 100%;
+        max-width: none;
+      }
+      .ofly-persona__context {
+        margin: 0.75rem 0 0;
+        line-height: inherit;
+        width: 100%;
+        max-width: none;
+      }
+      .ofly-persona-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        padding: clamp(1.1rem, 2.8vw, 1.65rem) clamp(1rem, 3vw, 1.85rem);
+        border: 1px solid var(--border-subtle);
+        border-radius: 0;
+        background: #fff;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+      }
+      @media (min-width: 640px) {
+        .ofly-persona-card {
+          grid-template-columns: 9.5rem 1fr;
+          align-items: start;
+        }
+      }
+      .ofly-persona-card__visual {
+        justify-self: center;
+      }
+      .ofly-persona__icon {
+        width: 9.5rem;
+        height: 9.5rem;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+      }
+      .ofly-persona__icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+      .ofly-persona-card__role {
+        margin: 0 0 0.5rem 0;
+        font-size: clamp(1rem, 2.4vw, 1.15rem);
+        font-weight: 700;
+        color: var(--primary-color-dark);
+        line-height: 1.35;
+      }
+      .ofly-persona-card__facts {
+        margin: 0 0 0.5rem 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.35rem 1rem;
+        font-size: 0.88rem;
+        line-height: 1.4;
+      }
+      @media (max-width: 480px) {
+        .ofly-persona-card__facts {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ofly-persona-card__facts > div {
+        margin: 0;
+      }
+      .ofly-persona-card__facts dt {
+        display: inline;
+        font-weight: 600;
+        color: var(--text-light);
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+      .ofly-persona-card__facts dt::after {
+        content: " ";
+      }
+      .ofly-persona-card__facts dd {
+        display: inline;
+        margin: 0;
+        color: var(--text-dark);
+      }
+      .ofly-persona-card__blurb {
+        margin: clamp(1.35rem, 3.4vw, 2.1rem) 0 0;
+        font-size: clamp(0.86rem, 1.55vw, 0.94rem);
+        line-height: 1.5;
+      }
     </style>
   </head>
   <body>
@@ -57,144 +439,212 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
-          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
           <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
+          <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
 
-    <div class="section__work">
-      <h1 class="title">Optimafly. A Multi-City Optimized Flight Planner</h1>
-      <div class="case-study-hero">
-        <div class="case-study-hero__image">
-          <img src="assets/flight/mainoptima.png" alt="Optimafly multi-city flight planner" />
+    <div class="section__work ofly-page">
+      <div class="case-study-hero case-study-hero--optimafly">
+        <div class="case-study-hero__bleed">
+          <div class="case-study-hero__image">
+            <img src="assets/flight/mainoptima-transparent.png" alt="Optimafly multi-city flight planner" />
+          </div>
         </div>
+        <h1 class="title">Optimafly <span class="title__tagline">A Multi-City Optimized Flight Planner</span></h1>
         <div class="case-study-hero__bottom">
           <div class="case-study-hero__info">
             <p class="description note">
               <span class="hero-meta-item"><strong class="hero-meta-label">Position</strong> <span class="hero-meta-value">Product Head + Full-Stack Developer</span></span>
               <span class="hero-meta-item"><strong class="hero-meta-label">Duration</strong> <span class="hero-meta-value">September 2025 - Present</span></span>
-              <span class="hero-meta-item"><strong class="hero-meta-label">Tools</strong> <span class="hero-meta-value">HTML/CSS, React (iterated directly in code)</span></span>
+              <span class="hero-meta-item"><strong class="hero-meta-label">Tools</strong> <span class="hero-meta-value">HTML/CSS, React</span></span>
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
-            <p class="description">
-              Existing flight tools assume fixed destinations or single round-trip routes, so travelers who want to explore multiple cities on a budget and within a loose time window end up planning manually, juggling many tabs, comparing prices, and checking feasibility. OptimaFly is a multi-city flight planner that reframes the problem. Users define their flexibility (when, how long, which cities matter), and the system returns ranked, cost-minimized itineraries that fit. This case study focuses on the design process and the product goal we set out to solve, helping users spend less time planning and more time deciding, which meant making that input model feel natural and the results easy to scan and act on.
+            <p class="case-qa__intro">OptimaFly helps you find <strong>cheaper multi-city itineraries</strong> when you share a <strong>flexible date window</strong>, how long you want to be gone, and which cities you’re considering. It then pulls in <strong>events</strong> that line up with those dates, so you can picture the trip, not just the flights.</p>
+          </div>
+        </div>
+        <section class="case-study-hero__prompt" aria-label="Research question">
+          <div class="case-qa case-qa--prompt-only">
+            <p class="case-qa__framing">The question that guided the work:</p>
+            <p class="case-qa__question case-qa__question--quoted">&ldquo;How might someone find an affordable multi-city trip inside their real-world window, and leave feeling like each stop is worth it?&rdquo;</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="work-split"><h2 class="subtitle work-split__title">Problem</h2><div class="work-split__body">
+      <p class="description ofly-problem-copy">
+        Most trip tools weren’t built for the way students actually plan: you’re balancing cost, dates that flex, and several cities at once, often across a dozen tabs. In conversations with student travelers, the same friction kept showing up: it’s exhausting to stitch fares, calendars, and “what’s happening there?” together, and easy to walk away without a plan you trust.
+      </p>
+</div></div>
+
+      <div class="work-split"><h2 class="subtitle work-split__title">Key Drivers</h2><div class="work-split__body">
+      <p class="description ofly-key-drivers-intro">
+        Those interviews became three anchors for the experience, so every screen answers something people actually said they needed.
+      </p>
+      <ul class="ofly-key-drivers">
+        <li>
+          <span class="ofly-key-drivers__label">Unified planning flow</span>
+          <p class="description">
+            One place to set your window, trip length, and cities, so you’re not rebuilding the same trip across three different sites.
+          </p>
+        </li>
+        <li>
+          <span class="ofly-key-drivers__label">Scannable ranked options</span>
+          <p class="description">
+            Rank what fits first, then spell out tradeoffs in plain language so you can compare options without a spreadsheet.
+          </p>
+        </li>
+        <li>
+          <span class="ofly-key-drivers__label">Events-aware decisions</span>
+          <p class="description">
+            Show what’s on while you’re there, so a city feels like a weekend, not just a layover.
+          </p>
+        </li>
+      </ul>
+</div></div>
+
+<div class="work-split"><h2 class="subtitle work-split__title">Who we designed for</h2><div class="work-split__body">
+      <div class="ofly-persona">
+        <article class="ofly-persona-card" aria-labelledby="ofly-persona-label">
+          <div class="ofly-persona-card__visual">
+            <div class="ofly-persona__icon">
+              <img
+                src="assets/flight/persona-optimafly-with-flower.png"
+                width="140"
+                height="129"
+                alt="Student traveler persona with flower detail"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+          <div class="ofly-persona-card__main">
+            <header>
+              <p class="ofly-persona-card__role" id="ofly-persona-label">Student traveler</p>
+            </header>
+            <dl class="ofly-persona-card__facts">
+              <div>
+                <dt>Age</dt>
+                <dd>19–22</dd>
+              </div>
+              <div>
+                <dt>Role</dt>
+                <dd>Undergraduate</dd>
+              </div>
+              <div>
+                <dt>Trips</dt>
+                <dd>Breaks · multi-city · cost-first</dd>
+              </div>
+              <div>
+                <dt>Tools</dt>
+                <dd>Laptop &amp; phone</dd>
+              </div>
+            </dl>
+            <p class="description ofly-persona-card__blurb">
+              Wants a <strong>cheap multi-city plan</strong> inside a <strong>date window</strong> without juggling sites or digging through irrelevant results.
             </p>
-            <div class="cta-row">
-              <a href="https://optimafly.com/" target="_blank" rel="noopener noreferrer" class="cta-btn">Live Website</a>
+          </div>
+        </article>
+        <p class="description ofly-persona__context">
+          I ran interviews with people who matched this profile, trying to understand their pain points as well as watching how they typed constraints, skimmed results, and decided when an itinerary was “good enough” over our preliminary build. That behavior is what the flows and UI below are built around.
+        </p>
+      </div>
+</div></div>
+
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">Sign-in and personalization</h2>
+        <div class="work-split__body">
+          <p class="description">
+            Before searching, travelers sign up and answer a short questionnaire so preferences and context carry through the rest of the flow.
+          </p>
+          <div class="ofly-onboarding-row">
+            <div class="ofly-onboarding-item">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="assets/flight/signup.mp4" type="video/mp4" />
+              </video>
+              <p class="ofly-onboarding-item__caption">Sign up</p>
+            </div>
+            <div class="ofly-onboarding-item">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="assets/flight/questionaire.mp4" type="video/mp4" />
+              </video>
+              <p class="ofly-onboarding-item__caption">Personalized questionnaire</p>
+            </div>
+          </div>
+          <div class="ofly-iteration-figure">
+            <img
+              src="assets/flight/questionaire_complete.png"
+              alt="Questionnaire complete confirmation screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="description ofly-iteration-figure__caption">
+              Questionnaire complete — the traveler can move on to entering cities, dates, and trip length with their profile already in place.
+            </p>
+          </div>
+        </div>
+      </div>
+
+<div class="work-split">
+        <h2 class="subtitle work-split__title">How the experience comes together</h2>
+        <div class="work-split__body">
+          <p class="description">
+            After onboarding, this section follows the path a traveler takes when they enter a travel location, dates available, and how long they want to spend there. Users can spend their time looking at a short list of optimal flights with clear details.
+          </p>
+
+          <div class="ofly-story-chunk">
+            <h3 class="ofly-story-heading">Make the short list scannable</h3>
+            <p class="description">
+              People don’t want to decode a wall of fares. They want to know what’s cheapest, what’s a reasonable alternative, and what they’re trading for a lower price, without opening five cards.
+            </p>
+            <p class="description ofly-pull">
+              If you only had thirty seconds: labels and “compared to best” lines are there so you can answer “is this worth it?” without doing mental math.
+            </p>
+            <div class="ofly-iteration-figure">
+              <img src="assets/flight/res1.png" alt="Result list with labels Best price, Alternative, Next cheapest, Different route" />
+              <p class="description ofly-iteration-figure__caption">
+                Each row is tagged so you immediately see the role of that option (best price, alternative, next cheapest, or a different route) instead of guessing from price alone.
+              </p>
+            </div>
+            <div class="ofly-iteration-figure">
+              <img src="assets/flight/res2.png" alt="Expanded result with Compared to best and layover duration" />
+              <p class="description ofly-iteration-figure__caption">
+                Expanding a card surfaces a plain-language comparison to the best option (for example extra layover time) so the tradeoff is obvious before you go deeper.
+              </p>
+            </div>
+            <div class="ofly-iteration-figure">
+              <img src="assets/flight/res3.png" alt="Itinerary details with leg pricing, nights stayed, airline, layovers, and segment times" />
+              <p class="description ofly-iteration-figure__caption">
+                The leg-by-leg view keeps the specifics you’d actually check before booking (pricing, nights, carriers, layovers, and segment times) in one scroll instead of scattered modals.
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      <h1 class="subtitle">Product Goal</h1>
-      <p class="description">
-        The goal of OptimaFly was to help users spend less time planning and more time deciding. From a UX perspective, that meant
-      </p>
-      <ul class="list">
-        <li><strong>Making trip setup intuitive even with multiple constraints</strong> Users can specify time windows, must-see vs. optional cities, and min/max stay days; the interface had to make these inputs clear without feeling like a form.</li>
-        <li><strong>Supporting flexible destinations and time windows without overwhelming users</strong> The product lets users choose a set of multiple cities and a date range instead of a single fixed itinerary. The design challenge was to surface that flexibility so it felt helpful, not overwhelming.</li>
-        <li><strong>Presenting ranked itinerary results in a way that made tradeoffs easy to scan and compare</strong> Results are ordered by cost and feasibility; the UI needed to surface key tradeoffs (price, dates, number of legs) so users could quickly choose among options.</li>
-      </ul>
-
-      <h1 class="subtitle">Process</h1>
-      <ol class="process-list">
-        <li>
-          <strong>Build a working first version</strong>
-          <p class="process-desc description">I built an initial full-stack version of OptimaFly to validate the core optimization workflow in a real product environment.</p>
-        </li>
-        <li>
-          <strong>Test the first iteration early</strong>
-          <p class="process-desc description">I ran usability testing with 10 student users to observe how they entered trip constraints, interpreted results, and compared itinerary options.</p>
-        </li>
-        <li>
-          <strong>Identify patterns and pain points</strong>
-          <p class="process-desc description">I synthesized recurring issues into user personas and behavior patterns, including differences in how users prioritized cost vs. convenience.</p>
-        </li>
-        <li>
-          <strong>Redesign key UI flows</strong>
-          <p class="process-desc description">Based on testing, I revised input patterns, information hierarchy, and results layout to reduce confusion and improve scannability.</p>
-        </li>
-        <li>
-          <strong>Implement and refine</strong>
-          <p class="process-desc description">I shipped the updated interface directly in the product and continued improving responsiveness through backend optimization work.</p>
-        </li>
-      </ol>
-
-      <h1 class="subtitle">Design Approach</h1>
-      <p class="description">
-        Design was iterated directly in code with React and HTML/CSS, no separate Figma phase, so that layout, copy, and interaction could evolve in lockstep with the backend API and optimization logic. Focus was on a single primary flow, set constraints, run search, scan results and compare. Reducing steps and clarifying labels (e.g., “must visit” vs. “optional”) helped keep trip setup intuitive; result cards were structured to highlight total cost, dates, and leg count so tradeoffs were scannable at a glance.
-      </p>
-
-      <h1 class="subtitle">Personas & user research</h1>
-      <p class="description">
-        We conducted 10 user interviews to observe how people entered trip constraints, interpreted results, and compared itinerary options. The persona we focused on is the <strong>student traveler</strong>. Students want to experience the world but are limited by budget, since many are not working yet, and constrained by time, such as school breaks. The design iterations below were shaped by this context and by what we learned in those interviews.
-      </p>
-
-      <h1 class="subtitle">Design Iterations</h1>
-      <p class="description" style="margin-bottom: 1rem;">
-        These iterations were driven by user interviews and testing, so the product better matches what users asked for and how they behaved. Key iterations addressed results readability and engagement.
-      </p>
-
-      <div class="iteration-block">
-        <h3>Iteration 1. Improving results readability</h3>
-        <p class="label">Issue</p>
-        <p class="description">Users could generate itineraries, but the results were not always easy to compare quickly.</p>
-        <p class="label">Change</p>
-        <p class="description">I redesigned the results layout to improve information hierarchy and make key details (e.g., timing and cost tradeoffs) easier to scan. Below, each screenshot is paired with the design choices behind it.</p>
-        <div class="flight-res-row">
-          <div class="flight-res-img">
-            <img src="assets/flight/res1.png" alt="Result list with labels Best price, Alternative, Next cheapest, Different route" />
-          </div>
-          <div class="flight-res-caption">
-            <p class="description"><strong>Image on the left.</strong> I added a short label next to each result number, e.g. “Best price”, “Alternative”, “Next cheapest”, “Different route”, so it’s clear at a glance which option is cheapest and which are alternatives. “Different route” is used when the user has two or more destinations, so they can see another path that might be more appealing despite a slightly higher cost.</p>
+      <div class="work-split">
+        <h2 class="subtitle work-split__title">After the search: places that fit you</h2>
+        <div class="work-split__body">
+          <p class="description">
+            Once someone has searched and compared flights, the flow doesn’t reset. It keeps track of the destinations they gravitate toward, the dates they’ve said they’re free, and what they shared in the onboarding questionnaire—then surfaces places (and events while they’re there) that match that picture, so recommendations feel tied to their real constraints and tastes, not a generic browse list.
+          </p>
+          <div class="ofly-events-row">
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/flight/discover_events1.mp4" type="video/mp4" />
+            </video>
+            <video autoplay muted loop playsinline preload="metadata">
+              <source src="assets/flight/discover_events2.mp4" type="video/mp4" />
+            </video>
           </div>
         </div>
-        <div class="flight-res-row">
-          <div class="flight-res-img">
-            <img src="assets/flight/res2.png" alt="Expanded result with Compared to best and layover duration" />
-          </div>
-          <div class="flight-res-caption">
-            <p class="description"><strong>Image on the left.</strong> When a user expands a result card, I added a “Compared to best” line (e.g. “+1h 5m more layover”) so they can quickly see what makes that option different from the cheapest one. I also surfaced the layover duration in this first-level expansion.</p>
-          </div>
-        </div>
-        <p class="description" style="margin-top: 1rem;"><strong>Both images below.</strong> Users in the interviews wanted to know exact details right away. For these screens, I focused on displaying the important details that are more specific so they could get that at a glance, like how many nights they’re staying, the airline they’ll be taking, where the layover is and how long it is, and clear times throughout, so the user isn’t left confused.</p>
-        <div class="fight-res-grid" aria-label="Result screens showing specific details, nights, airline, layover, times">
-          <img src="assets/flight/res3.png" alt="Result screen with nights, airline, and layover details" />
-          <img src="assets/flight/res4.png" alt="Result screen with specific times and trip details" />
-        </div>
-        <p class="label">Why</p>
-        <p class="description">Users were able to compare ranked options more efficiently and make decisions with less back-and-forth.</p>
-      </div>
-
-      <div class="iteration-block">
-        <h3>Iteration 2. Recommendation system for signed-in users</h3>
-        <p class="label">Issue</p>
-        <p class="description">Signed-in users had no way to get recommendations tailored to them or to save and revisit suggestions.</p>
-        <p class="label">Change</p>
-        <p class="description">I added a recommendation system for users who sign in, so they get personalized suggestions and can build and manage their destination list.</p>
-        <p class="label">Why</p>
-        <p class="description">Signed-in users can now see recommendations that fit their context and return to ideas they’ve saved, which makes the product more useful for repeat use.</p>
-      </div>
-
-      <div class="iteration-block">
-        <h3>Iteration 3. Recommendations for all users</h3>
-        <p class="label">Issue</p>
-        <p class="description">Without a way to surface suggestions to everyone, the product felt less exploratory for visitors who had not signed in.</p>
-        <p class="label">Additional research</p>
-        <p class="description">I referenced patterns from Booking.com, Expedia, and similar products when designing recommendations and result presentation.</p>
-        <p class="label">Change</p>
-        <p class="description">I added recommendations based on current top locations so that every user gets suggestions whether they have an account or not.</p>
-        <p class="description"><img src="assets/flight/pop_travel_des.png" alt="Popular destinations with hover to add" class="img-fluid" style="max-width: 100%; border-radius: 8px; margin: 0.75rem 0;" /></p>
-        <p class="description">When a user hovers over a specific destination, a + sign shows up over the image, which has a slightly darker tint to indicate hover. If you click on it, the destination gets added to your list of destinations on top. This influences users to try out popular destinations and see if they work well with their route and fit within their budget.</p>
-        <p class="label">Why</p>
-        <p class="description">This makes the product more interactive and inclusive. The audience can explore popular routes and get ideas without signing in, which keeps the experience engaging from the first visit.</p>
       </div>
 
     </div>
+
+
 
     <footer>
       <div class="footer__content">

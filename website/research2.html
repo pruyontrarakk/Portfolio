@@ -11,9 +11,9 @@
     <style>
       /* Match CS project pages layout (no hero image) */
       .section__work {
-        width: 90vw;
+        width: 86vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        padding: calc(var(--nav-height) + 1rem) var(--section-pad-x) 2rem var(--section-pad-x);
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -21,11 +21,9 @@
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
       .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
       .kpi strong { display:block; color: var(--text); }
-      a.kpi { text-decoration: none; display: block; color: inherit; transition: background-color 0.2s, border-color 0.2s; }
-      a.kpi:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.15); cursor: pointer; }
+      a.kpi { text-decoration: none; display: block; color: inherit; cursor: pointer; }
       .cta-row { margin: .5rem 0 1rem; display: flex; gap: .75rem; flex-wrap: wrap; }
-      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; transition:background-color .2s ease, transform .1s ease; }
-      .cta-btn:hover { background: rgba(78,53,101,0.16); transform: translateY(-1px); }
+      .cta-btn { display:inline-flex; align-items:center; gap:.4rem; padding:.5rem .85rem; border-radius:999px; border:1px solid var(--primary-color-dark); background: rgba(78,53,101,0.10); color:#2d1f3d; text-decoration:none; font-weight:600; }
     </style>
   </head>
   <body>
@@ -41,9 +39,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
           <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
-          <li><a href="index.html#casestudies" id="work-button" >case studies</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -63,16 +61,19 @@
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
+            <div class="work-split">
+            <div class="work-split__body">
             <p class="description">
               Algorithms typically try to minimize errors and failures. However, this research seeks to challenge this paradigm by investigating the potential advantages of failure. We explore failure-preserving evolutionary algorithms in the context of the Lunar Lander game environment, where the purple lander is the agent. Variants of FI-2Pop in the Lunar Lander environment are tested whether preserving "failed" individuals improves evolutionary search, revealing reward-hacking behaviors.
             </p>
+            </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <h1 class="subtitle">Summary</h1>
-        <div class="kpis">
+      <div class="work-split"><h2 class="subtitle work-split__title">Summary</h2><div class="work-split__body">
+<div class="kpis">
           <div class="kpi">
             <strong>Scalable experiment framework</strong>
             Modular runners for RS, ES, MAP-Elites (+mortality), FI-2Pop, and FI-2Pop with MAP-Elites.
@@ -90,11 +91,10 @@
 
 
         <p style="margin: 1rem 0;"><img src="assets/research2/lander.png" class="img-fluid" style="max-width: 400px; width: 100%;" alt="Lunar Lander" /></p>
+</div></div>
 
-        
-
-      <h1 class="subtitle">Methods</h1>
-      <p class="description">
+<div class="work-split"><h2 class="subtitle work-split__title">Methods</h2><div class="work-split__body">
+<p class="description">
         We ran these algorithms with 100,000 agents and selected the highest fitness agents:
       </p>
       <ul class="methods">
@@ -111,30 +111,35 @@
           <img src="assets/research2/f2p+map.png" class="img-fluid" style="max-width: 500px; width: 100%; margin: 0.5rem 0;" />
         </li>
       </ul>
+</div></div>
 
-      <h1 class="subtitle">Findings</h1>
-      <ul class="methods">
+<div class="work-split"><h2 class="subtitle work-split__title">Findings</h2><div class="work-split__body">
+<ul class="methods">
         <li>Best agents routinely exceeded fitness 200; a characteristic “tap-dancing” reward hack maximized score without landing between flags.</li>
-        <li>Top-performing agent achieved a fitness score of 237.278 with endpoint features <code>(0.591, −0.215)</code>.
+        <li>Top-performing agent achieved a fitness score of 237.278 with endpoint features <code>(0.591, −0.215)</code>.</li>
         <li>Aggregated heatmaps of elites across 20 trials revealed distinct coverage patterns for each evolutionary method (see poster figure set).</li>
       </ul>
+</div></div>
 
-      <h1 class="subtitle">Key Contributions</h1>
-      <ul class="methods">
+<div class="work-split"><h2 class="subtitle work-split__title">Key Contributions</h2><div class="work-split__body">
+<ul class="methods">
         <li>Added mortality to MAP-Elites; implemented heap-based parent selection for ES; built reproducible visualization pipelines.</li>
   <li>Parallelized evaluations with Python <code>multiprocessing</code>, achieving approximately 6.7× faster trial throughput.</li>
   <li>Validated RS/ES/MAP-Elites baselines against prior results to ensure correctness.</li>
       </ul>
+</div></div>
 
-
-      <h1 class="subtitle">Poster</h1>
-      <p class="description">Presented a research poster at the Lida Orzeck '68 Poster Session at Barnard College on July 31, 2024 and 
+<div class="work-split"><h2 class="subtitle work-split__title">Poster</h2><div class="work-split__body">
+<p class="description">Presented a research poster at the Lida Orzeck '68 Poster Session at Barnard College on July 31, 2024 and 
         at the Barnard Computer Science Senior Research Symposium on April 25, 2025. </p>
       <div class="cta-row">
         <a href="assets/research2/SRIPoster.pdf" target="_blank" rel="noopener noreferrer" class="cta-btn">View Research Poster (PDF)</a>
       </div>
+</div></div>
 
     </div>
+
+
 
     
     <footer>

@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Pru Yontrarak Portfolio</title>
+    <title>Pru Yontrarak · UX · UI · Product</title>
   </head>
-  <body>
+  <body class="home-page">
     <nav>
       <div class="nav__content">
         <div class="logo" id="home-button"><a href="./#top"><span class="name"> Pru Yontrarak</span></a></div>
@@ -20,9 +20,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="./#timeline" id="timeline-button">timeline</a></li>
-          <li><a href="./#csprojects" id="research-button">cs projects</a></li>
           <li><a href="./#casestudies" id="work-button">case studies</a></li>
+          <li><a href="./#csprojects" id="research-button">cs projects</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
       <hr>
@@ -50,66 +50,93 @@
     </div> -->
 
 
-    <section class="intro-section">
+    <div class="home-hero-stack">
+    <section class="intro-section intro-section--sketch" id="top">
       <div class="section__container">
         <div class="content">
-          <div class="intro-block">
-            <h1 class="hero-name">Pru Yontrarak</h1>
-            <p class="hero-tagline">Full-Stack Engineer & Product Manager · CS, ML @ Columbia</p>
-            <p class="description intro-paragraph">
-            I’m a master’s student in <strong>Computer Science</strong> at Columbia University, concentrating in <strong>machine learning</strong>. I bridge product intuition with engineering rigor, working across <strong>backend</strong> systems, <strong>frontend</strong> development, and <strong>algorithmic optimization</strong>, shipping features end-to-end from problem framing to code, metrics, and iteration.
-            <br> <br>
-            My recent projects span cost-aware multi-city travel planning, reinforcement-learning simulations, and market data services. I’ve contributed as a <strong>Research Assistant</strong> to the Accessible & Accelerated Robotics Lab (A²R) and Soros Lab through the Summer Research Institute, served as a <strong>Product Manager</strong> at Spectator Publishing Company, and previously worked as a <strong>UX Design</strong> Intern at Wunderman Thompson.
-            </p>
-            <div class="intro-actions">
-              <a class="btn btn--primary" href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a class="btn btn--accent" href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </div>
+          <div class="intro-block intro-block--hero">
+            <h1 class="hero-statement">
+              <span class="hero-line hero-serif">Pru Yontrarak is a</span>
+              <span class="hero-line hero-line--mixed">
+                <span class="hero-script hero-script--oval">full stack</span><span class="hero-serif"> engineer</span>
+              </span>
+              <span class="hero-line hero-line--role-second">
+                <span class="hero-connective">and </span><span class="hero-serif">product </span><span class="hero-script hero-script--underline">designer</span><span class="hero-serif">.</span>
+              </span>
+            </h1>
+            <p class="hero-subnote">M.S. Computer Science @ Columbia</p>
           </div>
         </div>
+        <div class="image hero-trace-figure">
+          <img src="assets/common/home-lily-traced.svg" alt="Traced lily illustration" />
+        </div>
       </div>
     </section>
 
-    <div data-section="timeline-start" style="position: absolute; visibility: hidden;"></div>
-    <section class="timeline-section">
-      <h2 class="section-heading" id="timeline">Timeline</h2>
+    <div data-section="casestudies-start" style="position: absolute; visibility: hidden;"></div>
+    <section class="case-studies-section">
+      <h2 class="section-heading" id="casestudies">Case studies</h2>
       <hr>
-      <div class="timeline-container">
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Present</div><div><span class="timeline-title">M.S. in Computer Science, ML concentration</span> · <span class="timeline-org">Columbia University, Fu Foundation School of Engineering and Applied Science | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Sep 2025 - Dec 2025; Jan 2024 - May 2024</div><div><span class="timeline-title">Introduction to Statistics Teaching Assistant / Grader</span> · <span class="timeline-org">Columbia University | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Jan 2025 - Present</div><div><span class="timeline-title">Graduate CS Research Assistant</span> · <span class="timeline-org">The Accessible and Accelerated Robotics Lab (A²R Lab) | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Sep 2021 - May 2025</div><div><span class="timeline-title">B.A. in Computer Science, Statistics Minor</span> · <span class="timeline-org">Barnard College, Columbia University | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Sep 2023 - May 2025</div><div><span class="timeline-title">Product Manager</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">Feb 2022 - Aug 2023</div><div><span class="timeline-title">Product Designer</span> · <span class="timeline-org">Spectator Publishing Company | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">May 2024 - May 2025</div><div><span class="timeline-title">Undergraduate CS Research Assistant</span> · <span class="timeline-org">Soros Lab, Summer Research Institute | New York, NY</span></div></div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-content"><div class="timeline-date">May 2022 - Aug 2022</div><div><span class="timeline-title">UX Design Intern</span> · <span class="timeline-org">Wunderman Thompson (currently VML) | Bangkok, Thailand</span></div></div>
-        </div>
+      <div class="case-studies-grid">
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="optimafly.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">Optimafly: A Multi-City Optimized Flight Planner</p>
+            <p class="description1">
+              Streamlining multi-city trip planning with flexible windows, intuitive setup, and scannable itinerary results.
+              <span class="card-cta"><strong>read more</strong></span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="image">
+        <img src="assets/flight/mainoptima-transparent.png" alt="Optimafly preview"/>
+      </div>
+    </div>
+
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="podcast.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">Columbia Daily Spectator App</p>
+            <p class="description1">
+              Designing the Spectator mobile podcast experience for in-app discovery, playback, and small-screen navigation.
+              <span class="card-cta"><strong>read more</strong></span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="image">
+        <img src="assets/podcast/mainpodcast-transparent.png" alt="Podcast preview"/>
+      </div>
+    </div>
+
+    <div class="section__container1 section-box">
+      <div class="content">
+        <a href="shaft.html" class="rectangle_button">
+          <div class="button_content">
+            <p class="title">theSHAFT Feature</p>
+            <p class="description1">
+              Redesigning theShaft dorm pages so students get a clearer view of each room and more confidence choosing housing.
+              <span class="card-cta"><strong>read more</strong></span>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div class="image">
+        <img src="assets/shaft/mainshaft-transparent.png" alt="theShaft preview"/>
+      </div>
+    </div>
       </div>
     </section>
-    <div data-section="timeline-end" style="position: absolute; visibility: hidden;"></div>
+    </div>
+    <div data-section="casestudies-end" style="position: absolute; visibility: hidden;"></div>
 
-    <br><br>
     <div data-section="csprojects-start" style="position: absolute; visibility: hidden;"></div>
     <section class="cs-projects-section">
-      <h2 class="section-heading" id="csprojects">CS Projects</h2>
+      <h2 class="section-heading" id="csprojects">CS projects</h2>
       <hr>
-      <!-- Research section -->
-      <br>
       <div class="research-grid">
     <!-- Flight Optimization card -->
     <div class="section__container1 section-box">
@@ -117,13 +144,9 @@
         <a href="flight-optimization.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Optimafly: A Multi-City Optimized Flight Planner</p>
-            <hr><br>
             <p class="description1">
-              <i>Python · FastAPI · Optimization · ML · Database</i>
-              <br><br>
-              Constraint-based flight planning API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
-              <br><br>
-              <strong>read more</strong>
+              Building a constraint-based API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
+              <span class="card-cta"><strong>read more</strong></span>
             </p>
           </div>
         </a>
@@ -137,13 +160,9 @@
         <a href="research1.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Trajectory Optimization Research @ A²R Lab</p>
-            <hr><br>
             <p class="description1">
-              <i>Python · CUDA · C++ · Robotics Simulation · Parallel Optimization</i>
-              <br><br>
-              Investigates how constraint-handling methods impact PDDP's feasibility, convergence, and speed on robotic control tasks using a Python + CUDA implementation.
-              <br><br>
-              <strong>read more</strong>
+              Benchmarking constraint-handling methods for PDDP on robotic control with a Python and CUDA implementation.
+              <span class="card-cta"><strong>read more</strong></span>
             </p>
           </div>
         </a>
@@ -157,13 +176,9 @@
         <a href="stock.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Financial Stock Price Forecasting API</p>
-            <hr><br>
             <p class="description1">
-              <i>Java · Python · Microservices · REST APIs · CI/CD · ML · NLP</i>
-              <br><br>
-              API that combines real-time stock data with news sentiment analysis, using prediction models to generate market price forecasts.
-              <br><br>
-              <strong>read more</strong>
+              Combining real-time market data and news sentiment to forecast stock prices behind a single API.
+              <span class="card-cta"><strong>read more</strong></span>
             </p>
           </div>
         </a>
@@ -177,13 +192,9 @@
         <a href="foosball.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Foosball Reinforcement Learning</p>
-            <hr><br>
             <p class="description1">
-              <i>Python · C++ · MuJoCo · Reinforcement Learning · GCP · OpenCV</i>
-              <br><br>
-              A reinforcement learning system modeling foosball dynamics. Trained Truncated Quantile Critics (TQC) agents in a custom MuJoCo environment.
-              <br><br>
-              <strong>read more</strong>
+              Training TQC agents in a custom MuJoCo environment to model competitive foosball dynamics with reinforcement learning.
+              <span class="card-cta"><strong>read more</strong></span>
             </p>
           </div>
         </a>
@@ -197,13 +208,9 @@
         <a href="research2.html" class="rectangle_button">
           <div class="button_content">
             <p class="title">Exploiting Failure in Evolution Research @ Soros Lab, SRI</p>
-            <hr><br>
             <p class="description1">
-              <i>Python · OpenAI Gymnasium API · Evolutionary Algorithms · Parallel Processing</i>
-              <br><br>
-              Tested FI-2Pop variants in the Lunar Lander environment to examine how preserving "failed" individuals affects search efficiency and reveals reward-hacking behaviors.
-              <br><br>
-              <strong>read more</strong>
+              Stress-testing FI-2Pop variants in Lunar Lander to study how preserving failed individuals shapes search and reward hacking.
+              <span class="card-cta"><strong>read more</strong></span>
             </p>
           </div>
         </a>
@@ -214,116 +221,12 @@
     </section>
     <div data-section="csprojects-end" style="position: absolute; visibility: hidden;"></div>
 
-    <br><br><br><br>
-    <div data-section="casestudies-start" style="position: absolute; visibility: hidden;"></div>
-    <section class="case-studies-section">
-      <h2 class="section-heading" id="casestudies">Case Studies</h2>
-      <hr>
-      <br>
-      <!-- Work section -->
-      <div class="case-studies-grid">
-    <div class="section__container1 section-box">
-      <div class="content">
-        <a href="optimafly.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">Optimafly: A Multi-City Optimized Flight Planner</p>
-            <hr><br>
-            <p class="description1">
-              <i>Product Development · User Research · UX/UI Design</i>
-              <br>
-              <br>
-              Design-focused case study: helping users spend less time planning and more time deciding with intuitive trip setup and scannable itinerary results.
-              <br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="image">
-        <img src="assets/flight/mainoptima.png" alt="Optimafly preview"/>
-      </div>
-    </div>
-
-    <div class="section__container1 section-box">
-      <div class="content">
-        <a href="shaft.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">theSHAFT Feature</p>
-            <hr><br>
-            <p class="description1">
-              <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
-              <br>
-              <br>
-              Redesign of the unofficial housing website for Columbia and Barnard to include the new 360° room tour feature. <br><br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="image">
-        <img src="assets/shaft/mainshaft.png" alt="theShaft preview"/>
-      </div>
-    </div>
-
-    <div class="section__container1 section-box">
-      <div class="content">
-        <a href="podcast.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">Columbia Daily Spectator App</p>
-            <hr><br>
-            <p class="description1">
-              <i>Product Management · User Research · UX/UI Design · Figma · Trello</i>
-              <br>
-              <br>
-              Design of the Columbia Daily Spectator mobile app's Podcast Page inspired by their existing website. <br><br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="image">
-        <img src="assets/podcast/mainpodcast.png" alt="Podcast preview"/>
-      </div>
-    </div>
-
-    <div class="section__container1 section-box">
-      <div class="content">
-        <a href="wt.html" class="rectangle_button">
-          <div class="button_content">
-            <p class="title">Smart Building App @ Wunderman Thompson</p>
-            <hr><br>
-            <p class="description1">
-              <i>UX/UI Design · Figma · User Research</i>
-              <br>
-              <br>
-              Design mobile app for office buildings, enhancing workplace convenience and providing personalized comfort controls. <br><br>
-              <br>
-              <strong>read more</strong>
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="image">
-        <img src="assets/wt/mainwt.png" alt="WT preview"/>
-      </div>
-    </div>
-      </div>
-    </section>
-    <div data-section="casestudies-end" style="position: absolute; visibility: hidden;"></div>
-
-    <br><br><br><br>
-
     <script>
       (function () {
         // active link state (unchanged)
         var links = {
-          timeline: document.getElementById('timeline-button'),
-          csprojects: document.getElementById('research-button'),
           casestudies: document.getElementById('work-button'),
-          profile: document.getElementById('profile-button')
+          csprojects: document.getElementById('research-button')
         };
         function setActive(id) {
           Object.keys(links).forEach(function(key){
@@ -345,12 +248,12 @@
             }
           });
         }, { root: null, rootMargin: "-45% 0px -45% 0px", threshold: 0 });
-        ['top','timeline','csprojects','casestudies','profile'].forEach(function(id){
+        ['top','casestudies','csprojects'].forEach(function(id){
           var el = document.getElementById(id);
           if (el) observer.observe(el);
         });
         // Also observe sentinel elements
-        ['timeline-start','timeline-end','csprojects-start','csprojects-end','casestudies-start','casestudies-end'].forEach(function(section){
+        ['casestudies-start','casestudies-end','csprojects-start','csprojects-end'].forEach(function(section){
           var el = document.querySelector('[data-section="' + section + '"]');
           if (el) observer.observe(el);
         });
@@ -418,34 +321,9 @@
 
       // Removed downscroll nudge feature per request
 
-      // Timeline reveal animation
-      (function() {
-        var items = document.querySelectorAll('.timeline-item');
-        if (items.length === 0) return;
-        
-        var itemObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry, index) {
-            if (entry.isIntersecting) {
-              setTimeout(function() {
-                entry.target.classList.add('visible');
-              }, index * 100); // Stagger animation
-              itemObserver.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        });
-        
-        items.forEach(function(item) {
-          itemObserver.observe(item);
-        });
-      })();
-
       })();
     </script>
     <script src="background.js"></script>
-    <script src="labels-hover-stars.js" defer></script>
 
     <footer>
       <div class="footer__content">

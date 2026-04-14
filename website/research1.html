@@ -11,9 +11,9 @@
     <style>
       /* Match CS project pages layout (no hero image) */
       .section__work {
-        width: 90vw;
+        width: 86vw;
         max-width: 1200px;
-        padding: calc(var(--nav-height) + 1rem) 1.25rem 2rem 1.25rem;
+        padding: calc(var(--nav-height) + 1rem) var(--section-pad-x) 2rem var(--section-pad-x);
         margin: 0 auto;
       }
       .note { background: transparent; border: 1px solid rgba(0,0,0,.1); padding: .75rem 1rem; border-radius: 10px; color: #1a1a1a; }
@@ -21,8 +21,7 @@
       .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .75rem; margin: .5rem 0 1rem; }
       .kpi { border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; font-size: .95rem; color: #555; }
       .kpi strong { display:block; color: var(--text); }
-      a.kpi { text-decoration: none; display: block; color: inherit; transition: background-color 0.2s, border-color 0.2s; }
-      a.kpi:hover { background-color: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.15); cursor: pointer; }
+      a.kpi { text-decoration: none; display: block; color: inherit; cursor: pointer; }
     </style>
   </head>
   <body>
@@ -38,9 +37,9 @@
         </label>
         <input type="checkbox" name="check" id="check" />
         <ul>
-          <li><a href="index.html#timeline" id="timeline-button">timeline</a></li>
+          <li><a href="index.html#casestudies" id="work-button">case studies</a></li>
           <li><a href="index.html#csprojects" id="research-button">cs projects</a></li>
-          <li><a href="index.html#casestudies" id="work-button" >case studies</a></li>
+          <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
     </nav>
@@ -60,16 +59,19 @@
             </p>
           </div>
           <div class="case-study-hero__overview">
-            <h1 class="subtitle">Overview</h1>
+            <div class="work-split">
+            <div class="work-split__body">
             <p class="description">
               Robotic trajectory optimizers often fail under hard constraints (e.g., joint limits, obstacles). This project strengthens Parallel DDP (PDDP) by evaluating constraint-handling methods to improve feasibility, stability, and speed on CPU/GPU. We implement these methods on both a pendulum and a 7-joint IIWA robot to map and understand findings, using Python as a reference to compare against and validate the CUDA implementation.
             </p>
+            </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <h1 class="subtitle">Summary</h1>
-      <div class="kpis">
+      <div class="work-split"><h2 class="subtitle work-split__title">Summary</h2><div class="work-split__body">
+<div class="kpis">
         <div class="kpi">
           <strong>System integration</strong>
           Extended the lab's PDDP codebase with a modular <em>Augmented Lagrangian</em> constraint-handling component in Python/CUDA.
@@ -79,47 +81,54 @@
           Refactored experiment scripts and added documentation for reuse.
         </div>
       </div>
+</div></div>
 
-        <h1 class="subtitle">Methods</h1>
-        <ul class="methods">
+<div class="work-split"><h2 class="subtitle work-split__title">Methods</h2><div class="work-split__body">
+<ul class="methods">
             <li><strong>Unconstrained (Baseline):</strong> Standard PDDP backward/forward passes with adaptive LM-style regularization; no explicit constraint terms.</li>
             <li><strong>Log Barrier:</strong> Adds barrier terms to the cost (e.g., −μ&nbsp;∑log(slack)) to discourage constraint violation; uses a decreasing barrier schedule and safeguarded step sizes.</li>
             <li><strong>Augmented Lagrangian (AL):</strong> Penalty + multipliers for state/path constraints with conservative μ updates; enforces feasibility via violation metrics and PD-checked <code>Q<sub>uu</sub></code>.</li>
             <li><strong>Interior-Point (IP):</strong> Primal-dual formulation with slack variables; solves damped/centered subproblems to reduce KKT residuals while maintaining strict feasibility.</li>
             <li><strong>Quadratic Programming (QP):</strong> Local QP subproblems from linearized dynamics + quadratic cost; applies explicit state/box/linear constraints via batched QP solves for control updates.</li>
           </ul>
+</div></div>
 
-        <h1 class="subtitle">Augmented Lagrangian Constraint-Handling Method</h1>
-        <ul class="methods">
+<div class="work-split"><h2 class="subtitle work-split__title">Augmented Lagrangian Constraint-Handling Method</h2><div class="work-split__body">
+<ul class="methods">
             <li>Developed and implemented the Augmented Lagrangian constraint-handling method within PDDP in both Python and CUDA, combining penalty and multiplier updates to enforce state feasibility.</li>
             <li>Designed a μ-update rule that increased only after consecutive violations and decreased once constraints were satisfied, improving numerical stability and avoiding oscillation.</li>
             <li>Documented the implementation and benchmark results for future lab use in extending PDDP to higher-dimensional robotic systems.</li>
         </ul>
-          
+</div></div>
 
-        <h1 class="subtitle">Augmented Lagrangian Method <u>Python</u> Results for IIWA</h1>
+<div class="work-split"><h2 class="subtitle work-split__title">Augmented Lagrangian Method <u>Python</u> Results for IIWA</h2><div class="work-split__body">
         <p class="description">We are able to see that the Augmented Lagrangian method converges to the solution while staying within the soft constraints set.</p>
       <div style="display:flex; flex-wrap:nowrap; gap:.5rem; margin:.5rem 0; align-items:flex-start;">
         <img src="assets/research1/position.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Position plot" />
         <img src="assets/research1/velocity.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Velocity plot" />
         <img src="assets/research1/control.png" class="img-fluid" style="flex:0 0 33.333%; width:33.333%;" alt="Control plot" />
       </div>
+</div></div>
 
-        <h1 class="subtitle">Augmented Lagrangian Method <u>CUDA</u> Results for IIWA</h1>
+<div class="work-split"><h2 class="subtitle work-split__title">Augmented Lagrangian Method <u>CUDA</u> Results for IIWA</h2><div class="work-split__body">
         <p class="description">We are able to see that the Augmented Lagrangian method converges to the correct position with minimal errors.</p>
       <div style="display:flex; flex-wrap:nowrap; gap:.5rem; margin:.5rem 0; align-items:flex-start;">
         <img src="assets/research1/cuda_pos.png" class="img-fluid" style="flex:0 0 50%; width:50%;" alt="CUDA position plot" />
         <img src="assets/research1/cuda_errors.png" class="img-fluid" style="flex:0 0 50%; width:50%;" alt="CUDA errors plot" />
       </div>
+</div></div>
 
-        <h1 class="subtitle">Next Steps</h1>
-        <ul class="methods">
+<div class="work-split"><h2 class="subtitle work-split__title">Next Steps</h2><div class="work-split__body">
+<ul class="methods">
           <li>GPU profiling and kernel optimizations for constraint projection and residual evaluation.</li>
           <li>Batched experiments and comparisons for all constraint-handling methods.</li>
           <li>Unit tests for constraint satisfaction and ensure close enough values between CPU and GPU.</li>
         </ul>
+</div></div>
 
     </div>
+
+
 
     
     <footer>
