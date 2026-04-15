@@ -15,6 +15,7 @@ Default source: assets/common/ladybug-source.png
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -29,6 +30,48 @@ TARGET_W = 168
 STROKE = "#242028"
 STROKE_W = "1.32"
 MAX_PATHS = 160
+
+# Photo legs are drawn separately in HTML; drop traced leg-only contours from SVG output.
+_SKIP_PATH_D_PREFIXES: tuple[str, ...] = (
+    "M 44.00,69.00",
+    "M 117.00,81.00",
+    "M 136.00,99.00",
+    "M 127.00,68.00",
+    "M 91.00,89.00",
+    "M 69.00,66.00",
+    "M 49.00,60.00",
+    "M 72.00,59.00",
+    "M 122.00,108.00",
+    "M 119.00,121.00",
+    "M 47.00,115.00",
+    "M 73.00,68.00",
+    "M 64.00,65.00",
+    "M 100.00,10.00",
+    "M 79.00,145.00",
+    "M 50.00,128.00",
+    "M 40.00,106.00",
+    "M 51.00,55.00",
+    "M 61.00,53.00",
+    "M 73.00,31.00",
+)
+
+
+def _skip_leg_like_contour(cnt: np.ndarray, iw: int, ih: int) -> bool:
+    """Heuristic: tangled mid-height blobs on far left/right (traced photo legs)."""
+    m = cv2.moments(cnt)
+    if m["m00"] == 0:
+        return False
+    cx = m["m10"] / m["m00"]
+    cy = m["m01"] / m["m00"]
+    n = len(cnt)
+    area = abs(cv2.contourArea(cnt))
+    if n < 50 or area < 400:
+        return False
+    mid_y = 0.22 * ih < cy < 0.78 * ih
+    side = cx < 0.34 * iw or cx > 0.66 * iw
+    if mid_y and side and area < 0.22 * iw * ih:
+        return True
+    return False
 
 
 def _bug_region_mask(bgr: np.ndarray) -> np.ndarray:
@@ -152,6 +195,8 @@ def main() -> None:
             continue
         if ymin <= 2 and xmean > 94.0:
             continue
+        if _skip_leg_like_contour(cnt, new_w, new_h):
+            continue
         kept_cnts.append(cnt)
 
     if not kept_cnts:
@@ -179,6 +224,12 @@ def main() -> None:
         paths.append(f'<path d="{d}" />')
 
     paths.sort(key=lambda s: s.count("L"), reverse=True)
+
+    def _path_d_attr(p_el: str) -> str:
+        m = re.search(r'd="([^"]*)"', p_el)
+        return m.group(1).strip() if m else ""
+
+    paths = [p for p in paths if not any(_path_d_attr(p).startswith(pre) for pre in _SKIP_PATH_D_PREFIXES)]
     kept_paths = paths[:MAX_PATHS]
     svg_inner = "\n            ".join(kept_paths)
 

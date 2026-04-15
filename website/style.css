@@ -106,19 +106,19 @@ nav .logo a {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--primary-color-dark);
-  transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.38rem 1rem 0.42rem;
-  border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: rgba(255, 255, 255, 0.85);
+  padding: 0.25rem 0;
+  border: none;
+  background: none;
   box-sizing: border-box;
+  text-decoration: none;
 }
 nav .logo a:hover {
-  border-color: rgba(0, 0, 0, 0.18);
-  background: rgba(0, 0, 0, 0.03);
+  color: var(--primary-color-dark);
+  opacity: 0.82;
 }
 nav .logo a .name {
   font-family: var(--font-body);
@@ -176,7 +176,7 @@ nav ul li a.active { color: var(--accent-color); border-bottom-color: var(--acce
 /* Bottom of the home hero (first screen), still in normal flow — not fixed */
 .contact-links--hero {
   position: relative;
-  z-index: 6;
+  z-index: 5;
   flex: 0 0 auto;
   justify-content: center;
   width: 100%;
@@ -218,6 +218,28 @@ nav ul li a.active { color: var(--accent-color); border-bottom-color: var(--acce
   max-width: var(--max-width);
   margin: 0 auto;
   text-align: center;
+}
+.home-page .home-page-footer .detail-page-end {
+  margin: 0 auto;
+  padding-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  width: 100%;
+  max-width: 40rem;
+  box-sizing: border-box;
+}
+.home-page .home-page-footer .detail-page-end__text {
+  margin: 0 auto clamp(1.05rem, 2vw, 1.4rem);
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.94rem, 0.88rem + 0.3vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--text-dark);
+  text-wrap: balance;
+}
+.home-page .home-page-footer .contact-links--footer {
+  padding-bottom: 0.4rem;
 }
 .home-page .home-page-footer__kicker {
   font-family: var(--font-heading);
@@ -999,6 +1021,7 @@ nav + br + br + br + br { display: none; }
 .intro-section--sketch {
   overflow-x: visible;
   background: var(--page-background);
+  position: relative;
 }
 
 /* Home: full-viewport hero stays pinned while Case studies scrolls over it */
@@ -1028,7 +1051,7 @@ nav + br + br + br + br { display: none; }
 }
 .home-page .intro-section .section__container {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   align-self: stretch;
   width: 100%;
   flex: 1 1 auto;
@@ -1038,39 +1061,54 @@ nav + br + br + br + br { display: none; }
   transform: translateY(-2rem);
 }
 
-/* Ladybug: corner arcs ~20–30% into viewport; zone fills hero/main so top % reaches real bottom; mile rotate ≈ path tangent */
-.ladybug-crawl {
+@property --lb-scale {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+/* Flying ladybug: stroke wing frames; home lands on #hero-name-p via --lb-land-x/y from ladybug-flight.js */
+.ladybug-flight {
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   width: 100%;
+  height: 100%;
   min-height: 100%;
   pointer-events: none;
-  z-index: 5;
+  z-index: 30;
   overflow: visible;
+  --lb-land-x: 28%;
+  --lb-land-y: 34%;
 }
-.ladybug-crawl__mile {
+.ladybug-flight__mile {
   position: absolute;
-  width: clamp(2.35rem, 5.5vw, 2.85rem);
+  width: clamp(2.35rem, 5.2vw, 2.85rem);
   height: auto;
   opacity: 0;
-  animation: none;
-  animation-fill-mode: forwards;
-  will-change: left, top, transform, opacity;
+  animation-fill-mode: both;
+  will-change: left, top, opacity;
+  transform: translate(-50%, -50%);
+  --lb-scale: 1;
+  z-index: 1;
 }
-.ladybug-crawl__mile.ladybug-crawl--playing[data-corner="tl"] {
-  animation: ladybug-corner-tl 10s linear forwards;
+.ladybug-flight__orient {
+  display: block;
+  width: 100%;
+  transform: rotate(var(--lb-heading, 0deg)) scale(var(--lb-scale, 1));
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
-.ladybug-crawl__mile.ladybug-crawl--playing[data-corner="tr"] {
-  animation: ladybug-corner-tr 10s linear forwards;
+.home-page .ladybug-flight:not(.ladybug-flight--ambient) .ladybug-flight__mile {
+  /* Linear between keyframes; even keyframe spacing targets near-constant speed along path */
+  animation: ladybug-hero-fly 18s linear infinite;
+  animation-delay: 0s;
 }
-.ladybug-crawl__mile.ladybug-crawl--playing[data-corner="bl"] {
-  animation: ladybug-corner-bl 10s linear forwards;
-}
-.ladybug-crawl__mile.ladybug-crawl--playing[data-corner="br"] {
-  animation: ladybug-corner-br 10s linear forwards;
+.ladybug-flight--ambient .ladybug-flight__mile {
+  animation: ladybug-ambient-fly 24s linear infinite;
+  animation-delay: 0.5s;
 }
 .ladybug-traced-svg {
   display: block;
@@ -1078,124 +1116,51 @@ nav + br + br + br + br { display: none; }
   height: auto;
   pointer-events: none;
 }
-.ladybug-traced-svg .ladybug-legs {
-  stroke-width: 2.65;
-  paint-order: stroke fill;
+.ladybug-traced-svg--flying .ladybug-wingtrace {
+  pointer-events: none;
 }
-/* CSS leg gait: pivot at body/shin joint — line starts at (0,0); fill-box + corner origin locks that point */
-.ladybug-traced-svg .ladybug-leg__hip,
-.ladybug-traced-svg .ladybug-leg__knee {
-  transform-box: fill-box;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 1.3s;
-  will-change: transform;
+.ladybug-traced-svg--flying .ladybug-wing-splotches {
+  pointer-events: none;
 }
-/* Left legs: thigh/shin extend into -x,+y from attach point → joint is top-right of stroke bbox */
-.ladybug-traced-svg .ladybug-leg__hip--l,
-.ladybug-traced-svg .ladybug-leg__knee--l {
-  transform-origin: right top;
+/* Two hand-drawn wing poses per layer; opacity crossfade (no blob fills / no rotate hacks). */
+.ladybug-traced-svg--flying .ladybug-wingframe {
+  opacity: 0;
+  will-change: opacity;
 }
-/* Right legs: extend into +x,+y → joint is top-left of bbox */
-.ladybug-traced-svg .ladybug-leg__hip--r,
-.ladybug-traced-svg .ladybug-leg__knee--r {
-  transform-origin: left top;
+.ladybug-traced-svg--flying .ladybug-wingframe--a {
+  animation: ladybug-wingframe-a 0.22s ease-in-out infinite;
 }
-.ladybug-traced-svg .ladybug-leg__hip--l {
-  animation-name: ladybug-leg-hip-l;
+.ladybug-traced-svg--flying .ladybug-wingframe--b {
+  animation: ladybug-wingframe-b 0.22s ease-in-out infinite;
 }
-.ladybug-traced-svg .ladybug-leg__knee--l {
-  animation-name: ladybug-leg-knee-l;
-}
-.ladybug-traced-svg .ladybug-leg__hip--r {
-  animation-name: ladybug-leg-hip-r;
-}
-.ladybug-traced-svg .ladybug-leg__knee--r {
-  animation-name: ladybug-leg-knee-r;
-}
-/* Knee ~half-cycle after hip */
-.ladybug-traced-svg .ladybug-leg__knee--l,
-.ladybug-traced-svg .ladybug-leg__knee--r {
-  animation-delay: -0.65s;
-}
-.ladybug-traced-svg .ladybug-leg--1 .ladybug-leg__hip--l {
-  animation-delay: 0s;
-}
-.ladybug-traced-svg .ladybug-leg--1 .ladybug-leg__knee--l {
-  animation-delay: -0.65s;
-}
-.ladybug-traced-svg .ladybug-leg--2 .ladybug-leg__hip--l {
-  animation-delay: -0.24s;
-}
-.ladybug-traced-svg .ladybug-leg--2 .ladybug-leg__knee--l {
-  animation-delay: -0.89s;
-}
-.ladybug-traced-svg .ladybug-leg--3 .ladybug-leg__hip--l {
-  animation-delay: -0.48s;
-}
-.ladybug-traced-svg .ladybug-leg--3 .ladybug-leg__knee--l {
-  animation-delay: -1.13s;
-}
-.ladybug-traced-svg .ladybug-leg--4 .ladybug-leg__hip--r {
-  animation-delay: -0.12s;
-}
-.ladybug-traced-svg .ladybug-leg--4 .ladybug-leg__knee--r {
-  animation-delay: -0.77s;
-}
-.ladybug-traced-svg .ladybug-leg--5 .ladybug-leg__hip--r {
-  animation-delay: -0.32s;
-}
-.ladybug-traced-svg .ladybug-leg--5 .ladybug-leg__knee--r {
-  animation-delay: -0.97s;
-}
-.ladybug-traced-svg .ladybug-leg--6 .ladybug-leg__hip--r {
-  animation-delay: -0.52s;
-}
-.ladybug-traced-svg .ladybug-leg--6 .ladybug-leg__knee--r {
-  animation-delay: -1.17s;
-}
-.ladybug-crawl__mile:not(.ladybug-crawl--playing) .ladybug-leg__hip,
-.ladybug-crawl__mile:not(.ladybug-crawl--playing) .ladybug-leg__knee {
-  animation-play-state: paused;
-}
-@keyframes ladybug-leg-hip-l {
+@keyframes ladybug-wingframe-a {
   0%,
-  100% {
-    transform: rotate(-22deg);
+  38% {
+    opacity: 1;
   }
   50% {
-    transform: rotate(28deg);
+    opacity: 0.4;
+  }
+  62%,
+  100% {
+    opacity: 0;
   }
 }
-@keyframes ladybug-leg-knee-l {
+@keyframes ladybug-wingframe-b {
   0%,
-  100% {
-    transform: rotate(22deg);
+  38% {
+    opacity: 0;
   }
   50% {
-    transform: rotate(-36deg);
+    opacity: 0.6;
   }
-}
-@keyframes ladybug-leg-hip-r {
-  0%,
+  62%,
   100% {
-    transform: rotate(22deg);
-  }
-  50% {
-    transform: rotate(-28deg);
+    opacity: 1;
   }
 }
-@keyframes ladybug-leg-knee-r {
-  0%,
-  100% {
-    transform: rotate(-22deg);
-  }
-  50% {
-    transform: rotate(36deg);
-  }
-}
-.about-section--page .ladybug-crawl {
-  z-index: 1;
+.about-section--page .ladybug-flight {
+  z-index: 30;
 }
 /* Symmetric cushion around headline + subnote; overrides global .intro-block--hero / mobile asymmetry */
 .home-page .intro-block.intro-block--hero {
@@ -1205,169 +1170,405 @@ nav + br + br + br + br { display: none; }
   padding-left: 0.5rem;
   padding-right: 0;
 }
-/* Tangents from a wide-strip pixel model (W×H); exit frames use -90deg (mostly vertical lift) */
-@keyframes ladybug-corner-tl {
+/*
+ * Home flight: keyframe times ∝ path length with metric hypot(Δleft×1.72, Δtop)
+ * so perceived speed stays even in a wide hero zone; uses .ladybug-flight land defaults 28%/34%.
+ */
+@keyframes ladybug-hero-fly {
   0% {
-    left: -4%;
-    top: 110%;
+    left: -22%;
+    top: 49%;
     opacity: 0;
-    transform: translate(-50%, -50%) rotate(-4deg);
+    --lb-scale: 0.84;
   }
-  7% {
+  1.26% {
     opacity: 1;
-    left: 14%;
-    top: 88%;
-    transform: translate(-50%, -50%) rotate(-7deg);
+    left: -18%;
+    top: 48.5%;
+    --lb-scale: 0.86;
   }
-  28% {
-    left: 27%;
-    top: 60%;
-    transform: translate(-50%, -50%) rotate(-11deg);
+  8.2% {
+    left: max(-16%, calc(var(--lb-land-x) - 24%));
+    top: calc(var(--lb-land-y) + 11%);
+    --lb-scale: 0.87;
+  }
+  8.57% {
+    left: max(-14%, calc(var(--lb-land-x) - 25%));
+    top: calc(var(--lb-land-y) + 10%);
+    --lb-scale: 0.875;
+  }
+  /* Glide in from the left — extra step for a rounder approach */
+  8.93% {
+    left: max(-12%, calc(var(--lb-land-x) - 26%));
+    top: calc(var(--lb-land-y) + 9%);
+    --lb-scale: 0.88;
+  }
+  10.27% {
+    left: max(-10%, calc(var(--lb-land-x) - 22%));
+    top: calc(var(--lb-land-y) + 6.5%);
+    --lb-scale: 0.89;
+  }
+  11.6% {
+    left: max(-8%, calc(var(--lb-land-x) - 18%));
+    top: calc(var(--lb-land-y) + 4%);
+    --lb-scale: 0.9;
+  }
+  12.59% {
+    left: max(-10%, calc(var(--lb-land-x) - 15%));
+    top: calc(var(--lb-land-y) + 2.5%);
+    --lb-scale: 0.905;
+  }
+  /* One smooth CCW loop (ellipse) above the P — many small steps, no sharp reversals */
+  13.57% {
+    left: calc(var(--lb-land-x) - 12%);
+    top: calc(var(--lb-land-y) + 1%);
+    --lb-scale: 0.91;
+  }
+  14.76% {
+    left: calc(var(--lb-land-x) - 9%);
+    top: calc(var(--lb-land-y) - 3%);
+    --lb-scale: 0.92;
+  }
+  15.95% {
+    left: calc(var(--lb-land-x) - 6%);
+    top: calc(var(--lb-land-y) - 7%);
+    --lb-scale: 0.92;
+  }
+  17.03% {
+    left: calc(var(--lb-land-x) - 3.5%);
+    top: calc(var(--lb-land-y) - 11%);
+    --lb-scale: 0.93;
+  }
+  17.5% {
+    left: calc(var(--lb-land-x) - 2.2%);
+    top: calc(var(--lb-land-y) - 12.3%);
+    --lb-scale: 0.93;
+  }
+  17.94% {
+    left: calc(var(--lb-land-x) - 1%);
+    top: calc(var(--lb-land-y) - 13.5%);
+    --lb-scale: 0.93;
+  }
+  18.41% {
+    left: calc(var(--lb-land-x) + 0.5%);
+    top: calc(var(--lb-land-y) - 13.8%);
+    --lb-scale: 0.935;
+  }
+  18.88% {
+    left: calc(var(--lb-land-x) + 2%);
+    top: calc(var(--lb-land-y) - 14%);
+    --lb-scale: 0.94;
+  }
+  19.58% {
+    left: calc(var(--lb-land-x) + 4.2%);
+    top: calc(var(--lb-land-y) - 13.5%);
+    --lb-scale: 0.94;
+  }
+  20.15% {
+    left: calc(var(--lb-land-x) + 6%);
+    top: calc(var(--lb-land-y) - 13%);
+    --lb-scale: 0.94;
+  }
+  21.24% {
+    left: calc(var(--lb-land-x) + 9%);
+    top: calc(var(--lb-land-y) - 10%);
+    --lb-scale: 0.94;
+  }
+  22.04% {
+    left: calc(var(--lb-land-x) + 10%);
+    top: calc(var(--lb-land-y) - 6%);
+    --lb-scale: 0.95;
+  }
+  23% {
+    left: calc(var(--lb-land-x) + 8%);
+    top: calc(var(--lb-land-y) - 2%);
+    --lb-scale: 0.97;
+  }
+  23.6% {
+    left: calc(var(--lb-land-x) + 6.2%);
+    top: calc(var(--lb-land-y) - 0.9%);
+    --lb-scale: 0.98;
+  }
+  24.33% {
+    left: calc(var(--lb-land-x) + 4%);
+    top: calc(var(--lb-land-y) + 0.4%);
+    --lb-scale: 0.99;
+  }
+  25.44% {
+    left: calc(var(--lb-land-x) + 0.5%);
+    top: calc(var(--lb-land-y) + 0.15%);
+    --lb-scale: 1;
+  }
+  25.52% {
+    left: calc(var(--lb-land-x) + 0.22%);
+    top: calc(var(--lb-land-y) + 0.08%);
+    --lb-scale: 1;
+  }
+  25.59% {
+    left: var(--lb-land-x);
+    top: var(--lb-land-y);
+    --lb-scale: 1;
+  }
+  /* Short perch, then lift off quickly */
+  26.63% {
+    left: var(--lb-land-x);
+    top: var(--lb-land-y);
+    --lb-scale: 1;
+  }
+  27.67% {
+    left: var(--lb-land-x);
+    top: var(--lb-land-y);
+    --lb-scale: 1;
+  }
+  /* Leave P: stronger first beats + evenly spaced % steps ≈ steady speed along arc */
+  28.71% {
+    left: calc(var(--lb-land-x) + 0.12%);
+    top: calc(var(--lb-land-y) - 0.45%);
+    --lb-scale: 1;
+  }
+  28.98% {
+    left: calc(var(--lb-land-x) + 0.45%);
+    top: calc(var(--lb-land-y) - 1.8%);
+    --lb-scale: 0.995;
+  }
+  29.34% {
+    left: calc(var(--lb-land-x) + 0.88%);
+    top: calc(var(--lb-land-y) - 3.6%);
+    --lb-scale: 0.99;
+  }
+  29.75% {
+    left: calc(var(--lb-land-x) + 1.32%);
+    top: calc(var(--lb-land-y) - 5.7%);
+    --lb-scale: 0.985;
+  }
+  30.17% {
+    left: calc(var(--lb-land-x) + 1.82%);
+    top: calc(var(--lb-land-y) - 7.85%);
+    --lb-scale: 0.98;
+  }
+  30.58% {
+    left: calc(var(--lb-land-x) + 2.32%);
+    top: calc(var(--lb-land-y) - 9.95%);
+    --lb-scale: 0.975;
+  }
+  30.97% {
+    left: calc(var(--lb-land-x) + 2.82%);
+    top: calc(var(--lb-land-y) - 11.9%);
+    --lb-scale: 0.97;
+  }
+  31.34% {
+    left: calc(var(--lb-land-x) + 3.28%);
+    top: calc(var(--lb-land-y) - 13.75%);
+    --lb-scale: 0.965;
+  }
+  31.7% {
+    left: calc(var(--lb-land-x) + 3.72%);
+    top: calc(var(--lb-land-y) - 15.55%);
+    --lb-scale: 0.96;
+  }
+  32.03% {
+    left: min(88%, calc(var(--lb-land-x) + 4.12%));
+    top: calc(var(--lb-land-y) - 17.25%);
+    --lb-scale: 0.955;
+  }
+  32.34% {
+    left: min(88%, calc(var(--lb-land-x) + 4.45%));
+    top: calc(var(--lb-land-y) - 18.85%);
+    --lb-scale: 0.952;
+  }
+  32.63% {
+    left: min(88%, calc(var(--lb-land-x) + 4.72%));
+    top: calc(var(--lb-land-y) - 20.35%);
+    --lb-scale: 0.948;
+  }
+  32.91% {
+    left: min(88%, calc(var(--lb-land-x) + 4.88%));
+    top: calc(var(--lb-land-y) - 21.85%);
+    --lb-scale: 0.944;
+  }
+  /* After apex: ~2s turn right (continuing past peak), then smooth left, then steady climb off */
+  33% {
+    left: min(88%, calc(var(--lb-land-x) + 5.02%));
+    top: calc(var(--lb-land-y) - 22.3%);
+    --lb-scale: 0.94;
+  }
+  33.18% {
+    left: min(88%, calc(var(--lb-land-x) + 5.28%));
+    top: calc(var(--lb-land-y) - 23.15%);
+    --lb-scale: 0.938;
+  }
+  33.36% {
+    left: min(88%, calc(var(--lb-land-x) + 5.52%));
+    top: calc(var(--lb-land-y) - 24.05%);
+    --lb-scale: 0.936;
+  }
+  33.54% {
+    left: min(88%, calc(var(--lb-land-x) + 5.74%));
+    top: calc(var(--lb-land-y) - 25%);
+    --lb-scale: 0.934;
+  }
+  33.72% {
+    left: min(88%, calc(var(--lb-land-x) + 5.9%));
+    top: calc(var(--lb-land-y) - 25.95%);
+    --lb-scale: 0.932;
+  }
+  33.9% {
+    left: min(88%, calc(var(--lb-land-x) + 5.98%));
+    top: calc(var(--lb-land-y) - 26.9%);
+    --lb-scale: 0.93;
+  }
+  34.07% {
+    left: min(88%, calc(var(--lb-land-x) + 6.02%));
+    top: calc(var(--lb-land-y) - 27.85%);
+    --lb-scale: 0.928;
+  }
+  34.24% {
+    left: min(88%, calc(var(--lb-land-x) + 5.95%));
+    top: calc(var(--lb-land-y) - 28.75%);
+    --lb-scale: 0.926;
+  }
+  34.68% {
+    left: calc(var(--lb-land-x) + 4.72%);
+    top: calc(var(--lb-land-y) - 29.95%);
+    --lb-scale: 0.924;
+  }
+  35.16% {
+    left: calc(var(--lb-land-x) + 3.38%);
+    top: calc(var(--lb-land-y) - 31.1%);
+    --lb-scale: 0.922;
+  }
+  35.67% {
+    left: calc(var(--lb-land-x) + 1.88%);
+    top: calc(var(--lb-land-y) - 32.25%);
+    --lb-scale: 0.92;
+  }
+  36.22% {
+    left: calc(var(--lb-land-x) + 0.28%);
+    top: calc(var(--lb-land-y) - 33.45%);
+    --lb-scale: 0.918;
+  }
+  36.73% {
+    left: calc(var(--lb-land-x) - 1.2%);
+    top: calc(var(--lb-land-y) - 34.65%);
+    --lb-scale: 0.916;
+  }
+  37.22% {
+    left: max(4%, calc(var(--lb-land-x) - 2.55%));
+    top: calc(var(--lb-land-y) - 35.9%);
+    --lb-scale: 0.914;
+  }
+  37.66% {
+    left: max(4%, calc(var(--lb-land-x) - 3.75%));
+    top: calc(var(--lb-land-y) - 37.15%);
+    --lb-scale: 0.912;
+  }
+  37.99% {
+    left: max(4%, calc(var(--lb-land-x) - 4.55%));
+    top: calc(var(--lb-land-y) - 38.35%);
+    --lb-scale: 0.91;
+  }
+  38.24% {
+    left: max(4%, calc(var(--lb-land-x) - 4.92%));
+    top: calc(var(--lb-land-y) - 39.55%);
+    --lb-scale: 0.908;
+  }
+  38.89% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: max(-2%, calc(var(--lb-land-y) - 41%));
+    opacity: 1;
+    --lb-scale: 0.906;
+  }
+  40.71% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: max(-12%, calc(var(--lb-land-y) - 46%));
+    opacity: 1;
+    --lb-scale: 0.904;
+  }
+  41.63% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: max(-22%, calc(var(--lb-land-y) - 51%));
+    opacity: 1;
+    --lb-scale: 0.902;
+  }
+  48.94% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: -57%;
+    opacity: 1;
+    --lb-scale: 0.9;
+  }
+  49.67% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: -61%;
+    opacity: 1;
+    --lb-scale: 0.9;
+  }
+  50.21% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: -64%;
+    opacity: 1;
+    --lb-scale: 0.9;
+  }
+  50.58% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: -66%;
+    opacity: 0;
+    --lb-scale: 0.9;
+  }
+  /* Invisible off-screen until loop restarts (matches 0% hidden entry) */
+  100% {
+    left: max(4%, calc(var(--lb-land-x) - 5%));
+    top: -66%;
+    opacity: 0;
+    --lb-scale: 0.9;
+  }
+}
+/* About only: alternate two straight diagonals continuously (no long pause) */
+@keyframes ladybug-ambient-fly {
+  /* Path A: middle-left -> middle-top */
+  0% {
+    left: -2%;
+    top: 50%;
+    opacity: 0;
+    --lb-scale: 0.9;
+  }
+  4% {
+    opacity: 1;
+  }
+  46% {
+    left: 50%;
+    top: -2%;
+    opacity: 1;
+    --lb-scale: 0.96;
   }
   50% {
-    left: 34%;
-    top: 36%;
-    transform: translate(-50%, -50%) rotate(-131.4deg);
+    left: 50%;
+    top: -2%;
+    opacity: 0;
+    --lb-scale: 0.96;
   }
-  70% {
-    left: 33%;
-    top: 16%;
-    transform: translate(-50%, -50%) rotate(-141.6deg);
+  /* Jump while hidden to Path B start */
+  50.01% {
+    left: 102%;
+    top: 50%;
+    opacity: 0;
+    --lb-scale: 0.96;
   }
-  86% {
+  54% {
     opacity: 1;
-    left: 32%;
-    top: 2%;
-    transform: translate(-50%, calc(-50% - 2vh)) rotate(-90deg);
+  }
+
+  /* Path B: middle-right -> middle-bottom */
+  96% {
+    left: 50%;
+    top: 102%;
+    opacity: 1;
+    --lb-scale: 0.9;
   }
   100% {
+    left: 50%;
+    top: 102%;
     opacity: 0;
-    left: 31%;
-    top: 0%;
-    transform: translate(-50%, calc(-50% - 18vh)) rotate(-90deg);
-  }
-}
-@keyframes ladybug-corner-tr {
-  0% {
-    left: 104%;
-    top: 108%;
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(-176deg);
-  }
-  7% {
-    opacity: 1;
-    left: 86%;
-    top: 86%;
-    transform: translate(-50%, -50%) rotate(-173.5deg);
-  }
-  28% {
-    left: 72%;
-    top: 58%;
-    transform: translate(-50%, -50%) rotate(-168.3deg);
-  }
-  50% {
-    left: 66%;
-    top: 36%;
-    transform: translate(-50%, -50%) rotate(-48.6deg);
-  }
-  70% {
-    left: 67%;
-    top: 16%;
-    transform: translate(-50%, -50%) rotate(-38.4deg);
-  }
-  86% {
-    opacity: 1;
-    left: 68%;
-    top: 2%;
-    transform: translate(-50%, calc(-50% - 2vh)) rotate(-90deg);
-  }
-  100% {
-    opacity: 0;
-    left: 69%;
-    top: 0%;
-    transform: translate(-50%, calc(-50% - 18vh)) rotate(-90deg);
-  }
-}
-@keyframes ladybug-corner-bl {
-  0% {
-    left: -5%;
-    top: 108%;
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(8deg);
-  }
-  8% {
-    opacity: 1;
-    left: 10%;
-    top: 96%;
-    transform: translate(-50%, -50%) rotate(4deg);
-  }
-  35% {
-    left: 28%;
-    top: 88%;
-    transform: translate(-50%, -50%) rotate(-2deg);
-  }
-  55% {
-    left: 36%;
-    top: 84%;
-    transform: translate(-50%, -50%) rotate(-42deg);
-  }
-  72% {
-    left: 32%;
-    top: 92%;
-    transform: translate(-50%, -50%) rotate(68deg);
-  }
-  90% {
-    opacity: 1;
-    left: 28%;
-    top: 104%;
-    transform: translate(-50%, calc(-50% + 1vh)) rotate(88deg);
-  }
-  100% {
-    opacity: 0;
-    left: 26%;
-    top: 118%;
-    transform: translate(-50%, calc(-50% + 14vh)) rotate(90deg);
-  }
-}
-@keyframes ladybug-corner-br {
-  0% {
-    left: 105%;
-    top: 108%;
-    opacity: 0;
-    transform: translate(-50%, -50%) rotate(-188deg);
-  }
-  8% {
-    opacity: 1;
-    left: 90%;
-    top: 96%;
-    transform: translate(-50%, -50%) rotate(-184deg);
-  }
-  35% {
-    left: 72%;
-    top: 88%;
-    transform: translate(-50%, -50%) rotate(-178deg);
-  }
-  55% {
-    left: 64%;
-    top: 84%;
-    transform: translate(-50%, -50%) rotate(-138deg);
-  }
-  72% {
-    left: 68%;
-    top: 92%;
-    transform: translate(-50%, -50%) rotate(-112deg);
-  }
-  90% {
-    opacity: 1;
-    left: 72%;
-    top: 104%;
-    transform: translate(-50%, calc(-50% + 1vh)) rotate(-92deg);
-  }
-  100% {
-    opacity: 0;
-    left: 74%;
-    top: 118%;
-    transform: translate(-50%, calc(-50% + 14vh)) rotate(-90deg);
+    --lb-scale: 0.9;
   }
 }
 .home-page .case-studies-section {
@@ -1425,7 +1626,7 @@ nav + br + br + br + br { display: none; }
   height: auto;
   object-fit: contain;
   /* Tiny lift so the line art separates from pure white */
-  filter: drop-shadow(0 2px 14px rgba(36, 32, 40, 0.07));
+  filter: drop-shadow(0 2px 14px rgba(74, 49, 98, 0.1));
 }
 .home-page .hero-serif {
   font-size: clamp(1.95rem, 5.2vw, 3.35rem);
@@ -1470,7 +1671,7 @@ nav + br + br + br + br { display: none; }
 
 .hero-statement {
   position: relative;
-  z-index: 1;
+  z-index: 0;
   margin: 0;
   padding: 0 0.5rem;
   color: var(--hero-ink);
@@ -1677,6 +1878,8 @@ nav + br + br + br + br { display: none; }
 .about-flower-column {
   display: flex;
   justify-content: flex-start;
+  position: relative;
+  z-index: 1;
 }
 .about-flower-column--right {
   justify-content: flex-end;
@@ -1995,7 +2198,7 @@ ul.methods > li { display: list-item; margin-bottom: .5rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .design-banner .design-text, .design-banner .design-text.alt { animation: none; opacity: .22; left: 50%; transform: translate(-50%, -50%); }
-  .ladybug-crawl {
+  .ladybug-flight {
     display: none;
   }
 }

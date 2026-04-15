@@ -70,21 +70,17 @@
         box-sizing: border-box;
       }
       .ofly-story-chunk .ofly-pull {
-        margin-top: clamp(1.1rem, 2.5vw, 1.65rem);
-        margin-bottom: clamp(1.1rem, 2.5vw, 1.65rem);
+        margin-top: clamp(1.5rem, 3vw, 2.2rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2.2rem);
         margin-left: auto;
         margin-right: 0;
         width: 75%;
         max-width: none;
-        padding: clamp(1.35rem, 3vw, 2rem) clamp(1.15rem, 2.8vw, 1.5rem);
+        padding: 0;
         box-sizing: border-box;
         text-align: left;
-        background: var(--surface);
-        border: 1px solid var(--border-subtle);
-        border-radius: 10px;
-        box-shadow: var(--shadow);
         font-style: italic;
-        color: var(--text-light);
+        color: #4a3162;
       }
       .flight-res-row { display: flex; gap: 1.25rem; align-items: flex-start; margin-bottom: 1.5rem; }
       .flight-res-row:last-of-type { margin-bottom: 0; }
@@ -149,7 +145,8 @@
         width: 100%;
         height: auto;
         display: block;
-        background: #000;
+        background: #fff;
+        border: 1px solid var(--border-subtle);
       }
       .ofly-events-item__caption {
         margin: clamp(0.65rem, 1.5vw, 0.9rem) 0 0;
@@ -172,9 +169,10 @@
         display: block;
         background: #fff;
         box-sizing: border-box;
+        border: 1px solid var(--border-subtle);
       }
       .ofly-onboarding-item video {
-        background: #000;
+        background: #fff;
       }
       .ofly-onboarding-item__caption {
         margin: clamp(0.65rem, 1.5vw, 0.9rem) 0 0;
@@ -690,7 +688,7 @@
               People don’t want to decode a wall of fares. They want to know what’s cheapest, what’s a reasonable alternative, and what they’re trading for a lower price, without opening five cards.
             </p>
             <p class="description ofly-pull">
-              If you only had thirty seconds: labels and “compared to best” lines are there so you can answer “is this worth it?” without doing mental math.
+              &ldquo;If you only had thirty seconds: labels and &ldquo;compared to best&rdquo; lines are there so you can answer &ldquo;is this worth it?&rdquo; without doing mental math.&rdquo;
             </p>
             <div class="ofly-iteration-figure">
               <img src="assets/flight/res1.png" alt="Result list with labels Best price, Alternative, Next cheapest, Different route" />

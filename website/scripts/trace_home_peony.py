@@ -32,8 +32,8 @@ _DEFAULT_CURSOR_ASSET = (
 _FALLBACK_REPO_PNG = REPO_ROOT / "assets" / "common" / "home-peony.png"
 
 TARGET_W = 170
-# Darker forest green (matches hero text family); reads clearly on pink
-STROKE = "#1a2f28"
+# Hero peony line color (matches about-lily / stay-connected-orchid traces)
+STROKE = "#4a3162"
 # Thin at large CSS scale; nudge up if you regenerate at higher TARGET_W
 STROKE_W = "0.34"
 

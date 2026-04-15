@@ -1,2 +1,3 @@
 # Large media — keep out of git; use CDN URLs in HTML or Git LFS if you need them in-repo
 website/assets/
+website/assets.zip
