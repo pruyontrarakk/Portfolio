@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/common/favicon-daisy.svg" type="image/svg+xml" />
 
     <link rel="stylesheet" href="style.css" />
     <title>Optimafly, A Multi-City Optimized Flight Planner, Pru Yontrarak</title>
@@ -95,12 +96,12 @@
       .fight-res-grid img { width: 100%; height: 260px; object-fit: cover; display: block; }
       .ofly-problem-copy {
         max-width: 78ch;
-        font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.28rem);
+        font-size: clamp(1.02rem, 0.88rem + 0.55vw, 1.15rem);
         line-height: 1.62;
       }
       .ofly-key-drivers-intro {
         max-width: 82ch;
-        font-size: clamp(1.1rem, 0.95rem + 0.65vw, 1.28rem);
+        font-size: clamp(1.02rem, 0.88rem + 0.55vw, 1.15rem);
         line-height: 1.62;
       }
       .ofly-key-drivers {
@@ -126,7 +127,7 @@
       }
       .ofly-key-drivers .description {
         margin: 0;
-        font-size: clamp(1.02rem, 0.92rem + 0.45vw, 1.15rem);
+        font-size: clamp(0.95rem, 0.84rem + 0.38vw, 1.05rem);
         line-height: 1.62;
       }
       @media (max-width: 920px) {
@@ -271,7 +272,7 @@
         margin-bottom: clamp(0.85rem, 2vw, 1.35rem);
       }
       .section__work .case-study-hero--optimafly h1.title .title__tagline {
-        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        font-size: clamp(0.9rem, 1.55vw, 1.1rem);
         font-style: italic;
         font-weight: 500;
         letter-spacing: 0.01em;
@@ -280,12 +281,12 @@
 
       /*
  Hero overview uses .case-qa__intro (style.css):
-        font-size: clamp(calc(0.95rem + 2px), calc(1.35vw + 2px), calc(1.05rem + 2px));
+        font-size: clamp(calc(0.88rem + 2px), calc(1.22vw + 2px), calc(0.98rem + 2px));
         line-height: 1.65;
         Reuse for the four work-split content columns + design-iteration panels.
       */
       .ofly-page .work-split__body {
-        font-size: clamp(calc(0.95rem + 2px), calc(1.35vw + 2px), calc(1.05rem + 2px));
+        font-size: clamp(calc(0.88rem + 2px), calc(1.22vw + 2px), calc(0.98rem + 2px));
         line-height: 1.65;
       }
 
@@ -429,15 +430,59 @@
       }
       .ofly-persona-card__blurb {
         margin: clamp(1.35rem, 3.4vw, 2.1rem) 0 0;
-        font-size: clamp(0.86rem, 1.55vw, 0.94rem);
+        font-size: clamp(0.8rem, 1.42vw, 0.88rem);
         line-height: 1.5;
+      }
+
+      /* Site color palette — full-width even row of circles */
+      .ofly-palette-lead {
+        margin: 0 0 clamp(1rem, 2vw, 1.35rem);
+        max-width: 42ch;
+      }
+      .ofly-palette-dots {
+        display: grid;
+        grid-template-columns: repeat(10, minmax(0, 1fr));
+        width: 100%;
+        column-gap: clamp(0.2rem, 1.2vw, 0.65rem);
+        row-gap: clamp(0.5rem, 2vw, 0.85rem);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+      }
+      .ofly-palette-dots li {
+        margin: 0;
+        min-width: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .ofly-palette-dot {
+        display: block;
+        width: min(100%, clamp(2.55rem, 5.75vw, 4.35rem));
+        aspect-ratio: 1;
+        height: auto;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+        flex-shrink: 0;
+      }
+      @media (max-width: 520px) {
+        .ofly-palette-dots {
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+        }
+      }
+      .ofly-palette-dot--dark {
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
       }
     </style>
   </head>
   <body>
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="index.html"><span class="name"> Pru Yontrarak</span></a></div>
+        <div class="logo" id="home-button"><a href="index.html"><span class="name">Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span><span></span><span></span>
@@ -561,6 +606,44 @@
 </div></div>
 
       <div class="work-split">
+        <h2 class="subtitle work-split__title">Site color palette</h2>
+        <div class="work-split__body">
+          <ul class="ofly-palette-dots" aria-label="Optimafly site color palette">
+            <li>
+              <span class="ofly-palette-dot ofly-palette-dot--dark" style="background: #000000" role="img" aria-label="#000000" title="#000000"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot ofly-palette-dot--dark" style="background: #666666" role="img" aria-label="#666666" title="#666666"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ffffff" role="img" aria-label="#ffffff" title="#ffffff"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #fff8f0" role="img" aria-label="#fff8f0" title="#fff8f0"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ffe4b5" role="img" aria-label="#ffe4b5" title="#ffe4b5"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ff8c00" role="img" aria-label="#ff8c00" title="#ff8c00"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ff7f00" role="img" aria-label="#ff7f00" title="#ff7f00"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ffb347" role="img" aria-label="#ffb347" title="#ffb347"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #ffd700" role="img" aria-label="#ffd700" title="#ffd700"></span>
+            </li>
+            <li>
+              <span class="ofly-palette-dot" style="background: #fff8dc" role="img" aria-label="#fff8dc" title="#fff8dc"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="work-split">
         <h2 class="subtitle work-split__title">Sign-in and personalization</h2>
         <div class="work-split__body">
           <p class="description">
@@ -657,6 +740,17 @@
           </div>
         </div>
       </div>
+
+      <footer class="detail-page-end" role="contentinfo">
+        <p class="detail-page-end__text">
+          Awh you've reached the end :( Want to learn more about me? I want to learn more about you too; lets stay connected!
+        </p>
+        <div class="contact-links" role="navigation" aria-label="Contact links">
+          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:ppy2104@columbia.edu">Email</a>
+        </div>
+      </footer>
 
     </div><script>
       (function(){

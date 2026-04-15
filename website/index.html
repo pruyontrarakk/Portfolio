@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/common/favicon-daisy.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="style.css" />
     <title>Pru Yontrarak · UX · UI · Product</title>
   </head>
   <body class="home-page">
     <nav>
       <div class="nav__content">
-        <div class="logo" id="home-button"><a href="index.html"><span class="name"> Pru Yontrarak</span></a></div>
+        <div class="logo" id="home-button"><a href="index.html"><span class="name">Pru Yontrarak</span></a></div>
         <label for="check" class="checkbox" aria-label="Toggle navigation">
           <span class="hamburger" aria-hidden="true">
             <span></span>
@@ -25,7 +26,6 @@
           <li><a href="about.html" id="about-button">about</a></li>
         </ul>
       </div>
-      <hr>
     </nav>
 
     <!-- <div class="section__container hero" id="top">
@@ -76,63 +76,135 @@
         <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="mailto:ppy2104@columbia.edu">Email</a>
       </div>
+      <div class="ladybug-crawl" aria-hidden="true">
+        <div class="ladybug-crawl__mile">
+          <svg class="ladybug-traced-svg" viewBox="0 0 166 168" fill="none" focusable="false">
+            <use href="assets/common/ladybug-traced.svg#ladybug-trace" width="166" height="168" />
+            <!-- Six legs: anchors for watercolor top-down trace (head ≈ top); drawn on top of line-art -->
+            <g class="ladybug-legs" stroke="#242028" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <g class="ladybug-leg ladybug-leg--1" transform="translate(48,42)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--l">
+                  <line x1="0" y1="0" x2="-10.21" y2="7.15" />
+                  <g transform="translate(-10,7)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--l">
+                      <line x1="0.13" y1="-0.11" x2="-11" y2="10" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="ladybug-leg ladybug-leg--2" transform="translate(44,84)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--l">
+                  <line x1="0" y1="0" x2="-9.22" y2="6.15" />
+                  <g transform="translate(-9,6)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--l">
+                      <line x1="0.15" y1="-0.13" x2="-10" y2="9" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="ladybug-leg ladybug-leg--3" transform="translate(42,130)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--l">
+                  <line x1="0" y1="0" x2="-8.2" y2="8.2" />
+                  <g transform="translate(-8,8)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--l">
+                      <line x1="0.13" y1="-0.14" x2="-9" y2="10" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="ladybug-leg ladybug-leg--4" transform="translate(120,42)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--r">
+                  <line x1="0" y1="0" x2="10.21" y2="7.15" />
+                  <g transform="translate(10,7)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--r">
+                      <line x1="-0.13" y1="-0.11" x2="11" y2="10" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="ladybug-leg ladybug-leg--5" transform="translate(124,84)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--r">
+                  <line x1="0" y1="0" x2="9.22" y2="6.15" />
+                  <g transform="translate(9,6)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--r">
+                      <line x1="-0.15" y1="-0.13" x2="10" y2="9" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="ladybug-leg ladybug-leg--6" transform="translate(126,130)">
+                <g class="ladybug-leg__hip ladybug-leg__hip--r">
+                  <line x1="0" y1="0" x2="8.2" y2="8.2" />
+                  <g transform="translate(8,8)">
+                    <g class="ladybug-leg__knee ladybug-leg__knee--r">
+                      <line x1="-0.13" y1="-0.14" x2="9" y2="10" />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
     </section>
 
     <div data-section="casestudies-start" style="position: absolute; visibility: hidden;"></div>
     <section class="case-studies-section">
       <h2 class="section-heading" id="casestudies">Case studies</h2>
-      <hr>
-      <div class="case-studies-grid">
-    <div class="section__container1 section-box">
+      <div class="case-studies-grid project-cards-grid">
+    <a href="optimafly.html" class="section__container1 section-box case-study-card-row" aria-label="Optimafly case study">
       <div class="content">
-        <a href="optimafly.html" class="rectangle_button">
+        <div class="rectangle_button case-card-block">
           <div class="button_content">
-            <p class="title">Optimafly: A Multi-City Optimized Flight Planner</p>
-            <p class="description1">
-              Streamlining multi-city trip planning with flexible windows, intuitive setup, and scannable itinerary results.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Product design</span>
+            <p class="title case-card-title">Optimafly: A Multi-City Optimized Flight Planner</p>
+            <ul class="case-card-bullets">
+              <li>Shaped multi-city trip planning with flexible date windows and a guided setup flow.</li>
+              <li>Designed scannable itinerary results so travelers can compare legs, cost, and timing at a glance.</li>
+            </ul>
           </div>
-        </a>
+        </div>
       </div>
       <div class="image">
-        <img src="assets/flight/mainoptima-transparent.png" alt="Optimafly preview"/>
+        <img src="assets/flight/mainoptima-transparent.png" alt="" />
       </div>
-    </div>
+    </a>
 
-    <div class="section__container1 section-box">
+    <a href="podcast.html" class="section__container1 section-box case-study-card-row" aria-label="Columbia Daily Spectator podcast case study">
       <div class="content">
-        <a href="podcast.html" class="rectangle_button">
+        <div class="rectangle_button case-card-block">
           <div class="button_content">
-            <p class="title">Columbia Daily Spectator App</p>
-            <p class="description1">
-              Designing the Spectator mobile podcast experience for in-app discovery, playback, and small-screen navigation.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Mobile UX</span>
+            <p class="title case-card-title">Columbia Daily Spectator App</p>
+            <ul class="case-card-bullets">
+              <li>Led UX for the in-app podcast experience: discovery, playback, and small-screen navigation.</li>
+              <li>Iterated on information architecture and UI patterns so content stays readable and tappable in a news context.</li>
+            </ul>
           </div>
-        </a>
+        </div>
       </div>
       <div class="image">
-        <img src="assets/podcast/mainpodcast-transparent.png" alt="Podcast preview"/>
+        <img src="assets/podcast/mainpodcast-transparent.png" alt="" />
       </div>
-    </div>
+    </a>
 
-    <div class="section__container1 section-box">
+    <a href="shaft.html" class="section__container1 section-box case-study-card-row" aria-label="theSHAFT case study">
       <div class="content">
-        <a href="shaft.html" class="rectangle_button">
+        <div class="rectangle_button case-card-block">
           <div class="button_content">
-            <p class="title">theSHAFT Feature</p>
-            <p class="description1">
-              Redesigning theShaft dorm pages so students get a clearer view of each room and more confidence choosing housing.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Editorial UX</span>
+            <p class="title case-card-title">theSHAFT Feature</p>
+            <ul class="case-card-bullets">
+              <li>Redesigned dorm detail pages so room data, media, and comparisons are easier to scan.</li>
+              <li>Tightened hierarchy and labeling so students can shortlist housing with less guesswork.</li>
+            </ul>
           </div>
-        </a>
+        </div>
       </div>
       <div class="image">
-        <img src="assets/shaft/mainshaft-transparent.png" alt="theShaft preview"/>
+        <img src="assets/shaft/mainshaft-transparent.png" alt="" />
       </div>
-    </div>
+    </a>
       </div>
     </section>
     </div>
@@ -141,18 +213,17 @@
     <div data-section="csprojects-start" style="position: absolute; visibility: hidden;"></div>
     <section class="cs-projects-section">
       <h2 class="section-heading" id="csprojects">CS projects</h2>
-      <hr>
-      <div class="research-grid">
+      <div class="research-grid project-cards-grid">
     <!-- Flight Optimization card -->
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="flight-optimization.html" class="rectangle_button">
+        <a href="flight-optimization.html" class="rectangle_button case-card-link" aria-label="Optimafly backend and API project">
           <div class="button_content">
-            <p class="title">Optimafly: A Multi-City Optimized Flight Planner</p>
-            <p class="description1">
-              Building a constraint-based API that assembles cost-minimized, multi-city itineraries from flexible trip windows.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Backend · API</span>
+            <p class="title case-card-title">Optimafly: A Multi-City Optimized Flight Planner</p>
+            <ul class="case-card-bullets">
+              <li>Building a constraint-based API that assembles cost-minimized, multi-city itineraries from flexible trip windows.</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -162,13 +233,13 @@
     <!-- Trajectory Optimization Research @ A²R Lab card -->
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="research1.html" class="rectangle_button">
+        <a href="research1.html" class="rectangle_button case-card-link" aria-label="Trajectory optimization research at A²R Lab">
           <div class="button_content">
-            <p class="title">Trajectory Optimization Research @ A²R Lab</p>
-            <p class="description1">
-              Benchmarking constraint-handling methods for PDDP on robotic control with a Python and CUDA implementation.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Robotics research</span>
+            <p class="title case-card-title">Trajectory Optimization Research @ A²R Lab</p>
+            <ul class="case-card-bullets">
+              <li>Benchmarking constraint-handling methods for PDDP on robotic control with a Python and CUDA implementation.</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -178,13 +249,13 @@
     <!-- Financial Stock Price Forecasting API card -->
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="stock.html" class="rectangle_button">
+        <a href="stock.html" class="rectangle_button case-card-link" aria-label="Stock price forecasting API project">
           <div class="button_content">
-            <p class="title">Financial Stock Price Forecasting API</p>
-            <p class="description1">
-              Combining real-time market data and news sentiment to forecast stock prices behind a single API.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">ML · Data</span>
+            <p class="title case-card-title">Financial Stock Price Forecasting API</p>
+            <ul class="case-card-bullets">
+              <li>Combining real-time market data and news sentiment to forecast stock prices behind a single API.</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -194,13 +265,13 @@
     <!-- Foosball RL card -->
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="foosball.html" class="rectangle_button">
+        <a href="foosball.html" class="rectangle_button case-card-link" aria-label="Foosball reinforcement learning project">
           <div class="button_content">
-            <p class="title">Foosball Reinforcement Learning</p>
-            <p class="description1">
-              Training TQC agents in a custom MuJoCo environment to model competitive foosball dynamics with reinforcement learning.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Reinforcement learning</span>
+            <p class="title case-card-title">Foosball Reinforcement Learning</p>
+            <ul class="case-card-bullets">
+              <li>Training TQC agents in a custom MuJoCo environment to model competitive foosball dynamics with reinforcement learning.</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -210,13 +281,13 @@
     <!-- Exploiting Failure in Evolution Research card -->
     <div class="section__container1 section-box">
       <div class="content">
-        <a href="research2.html" class="rectangle_button">
+        <a href="research2.html" class="rectangle_button case-card-link" aria-label="Evolution and failure research at Soros Lab, SRI">
           <div class="button_content">
-            <p class="title">Exploiting Failure in Evolution Research @ Soros Lab, SRI</p>
-            <p class="description1">
-              Stress-testing FI-2Pop variants in Lunar Lander to study how preserving failed individuals shapes search and reward hacking.
-              <span class="card-cta"><strong>read more</strong></span>
-            </p>
+            <span class="case-card-badge">Research</span>
+            <p class="title case-card-title">Exploiting Failure in Evolution Research @ Soros Lab, SRI</p>
+            <ul class="case-card-bullets">
+              <li>Stress-testing FI-2Pop variants in Lunar Lander to study how preserving failed individuals shapes search and reward hacking.</li>
+            </ul>
           </div>
         </a>
       </div>
@@ -225,6 +296,20 @@
       </div>
     </section>
     <div data-section="csprojects-end" style="position: absolute; visibility: hidden;"></div>
+
+    <footer class="home-page-footer" id="bottom">
+      <div class="home-page-footer__inner">
+        <p class="home-page-footer__kicker">Aw, you've reached the end!</p>
+        <p class="home-page-footer__text">
+          <a href="about.html" class="home-page-footer__about-link">Click here to learn more about me.</a>
+        </p>
+        <div class="contact-links contact-links--footer" role="navigation" aria-label="Contact links">
+          <a href="https://www.linkedin.com/in/pruyontrarak" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/pruyontrarakk" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="mailto:ppy2104@columbia.edu">Email</a>
+        </div>
+      </div>
+    </footer>
 
     <script>
       (function () {
@@ -347,6 +432,7 @@
 
       })();
     </script>
+    <script src="scripts/ladybug-crawl.js"></script>
     <script src="background.js"></script>
   </body>
 </html>
